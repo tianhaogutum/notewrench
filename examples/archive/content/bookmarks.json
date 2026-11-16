@@ -1,0 +1,20 @@
+{
+  "bookmarks": [
+    {
+      "id": "bookmark-with-saved-html",
+      "userId": "alice",
+      "createdAt": "2026-10-01T10:00:00Z",
+      "title": "Local cached body",
+      "archived": false,
+      "favourited": false,
+      "tags": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/saved-html",
+        "htmlContent": null,
+        "contentAssetId": "saved-html-1"
+      }
+    }
+  ],
+  "nextCursor": null
+}

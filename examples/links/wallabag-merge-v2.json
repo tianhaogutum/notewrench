@@ -1,0 +1,15 @@
+[
+  {
+    "id": 10, "url": "https://example.org/a?utm_source=mail", "title": "Keeper",
+    "tags": ["研究"], "created_at": "2026-11-11T09:00:00+0000", "is_archived": 0,
+    "content": "<p>synthetic</p>",
+    "annotations": [{"text": "", "quote": "synthetic", "ranges": [{"start": "/p[1]", "end": "/p[1]", "startOffset": 0, "endOffset": 9}], "id": 101}]
+  },
+  {
+    "id": 11, "url": "https://example.org/a", "title": "Other title",
+    "tags": ["offline", "研究"], "created_at": "2026-11-11T10:00:00+0000", "is_archived": 1,
+    "content": "<p>synthetic</p>", "note": "extension note", "custom": {"keep": true},
+    "annotations": [{"text": "", "quote": "synthetic", "ranges": [{"start": "/p[1]", "end": "/p[1]", "startOffset": 0, "endOffset": 9}]}]
+  },
+  {"id": 12, "url": "https://example.org/b", "title": null, "tags": [], "created_at": "2026-11-11T09:00:00+0000", "is_archived": false}
+]

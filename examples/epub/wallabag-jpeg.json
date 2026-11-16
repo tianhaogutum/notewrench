@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Shared JPEG 1",
+    "url": "https://example.invalid/1",
+    "content": "<p>Original synthetic JPEG sample 1.</p><img src=\"/shared.jpg\" alt=\"Gray sample 1\">"
+  },
+  {
+    "id": 2,
+    "title": "Shared JPEG 2",
+    "url": "https://example.invalid/2",
+    "content": "<p>Original synthetic JPEG sample 2.</p><img src=\"/shared.jpg\" alt=\"Gray sample 2\">"
+  }
+]

@@ -1,0 +1,7 @@
+[
+  {
+    "url": "https://example.org/landscape",
+    "title": "Saved landscape",
+    "content": "<figure><img src=\"https://saved.invalid/landscape.jpeg\" alt=\"Synthetic landscape\"><figcaption>A synthetic sky, sun and hills.</figcaption></figure><img src=\"local-photo\" alt=\"Same saved photo\">"
+  }
+]

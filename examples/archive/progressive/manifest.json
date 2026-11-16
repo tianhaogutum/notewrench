@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "reference": "https://saved.invalid/progressive",
+      "file": "photo-420.jpg",
+      "sha256": "dfe65fbb8d64497398246a890123cd760efdfc5321f4c67b1bdf3a2929c95c32"
+    },
+    {
+      "reference": "copy",
+      "file": "photo-420.jpg",
+      "sha256": "dfe65fbb8d64497398246a890123cd760efdfc5321f4c67b1bdf3a2929c95c32"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source": {
+    "format": "wallabag-api",
+    "namespace": "readbundle:original-fixture"
+  },
+  "pages": [
+    {
+      "file": "page.json",
+      "namespace": "readbundle:original-fixture",
+      "page": 1
+    }
+  ]
+}

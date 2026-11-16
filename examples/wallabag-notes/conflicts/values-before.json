@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": null,
+    "url": "https://example.org/values",
+    "content": "<p>原文 🌱\r\n</p>",
+    "removed": "",
+    "empty_list": [],
+    "empty_object": {},
+    "annotations": [
+      {
+        "id": 9,
+        "quote": "中文 🌱\r\n引文",
+        "text": "",
+        "ranges": [9007199254740993, 0.123456789012345678901, 1e-999, {"id": "009"}],
+        "removed": null
+      }
+    ]
+  }
+]

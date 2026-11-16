@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "images": [
+    {
+      "key": "1:1",
+      "src": "https://cdn.invalid/shared-restart.jpg",
+      "path": "image-resources/shared-restart.jpg",
+      "media_type": "image/jpeg",
+      "sha256": "637abe51e3499d6d02a8f802f24f012396ad8bf5864199c10ceb360a8630d8ab"
+    },
+    {
+      "key": "1:2",
+      "src": "https://cdn.invalid/shared-restart.jpg",
+      "path": "image-resources/shared-restart.jpg",
+      "media_type": "image/jpeg",
+      "sha256": "637abe51e3499d6d02a8f802f24f012396ad8bf5864199c10ceb360a8630d8ab"
+    }
+  ]
+}

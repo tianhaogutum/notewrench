@@ -1,0 +1,27 @@
+{
+  "old": [
+    {
+      "id": "A",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "B",
+      "DOI": "10.123/b"
+    }
+  ],
+  "new": [
+    {
+      "id": "B",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "Longer",
+      "DOI": "10.123/b"
+    }
+  ],
+  "input": "﻿中文 🐝\r\n- [see @A, pp. 4–6; -@B, chap. 2]\r\n\r\n> [cf. \\@literal @A, pp\\. 7–9\\; appendix \\]] and [@B suffix]. Code `[see @A]`.",
+  "expected": "﻿中文 🐝\r\n- [see @B, pp. 4–6; -@Longer, chap. 2]\r\n\r\n> [cf. \\@literal @B, pp\\. 7–9\\; appendix \\]] and [@Longer suffix]. Code `[see @A]`.",
+  "reviewInput": "﻿中文 🐝\r\n[see @A, p. 1; -@unknown, appendix]. Then [@A; @unknown @B]. Finally [@B, chap. 2].",
+  "reviewExpected": "﻿中文 🐝\r\n[see @B, p. 1; -@unknown, appendix]. Then [@A; @unknown @B]. Finally [@Longer, chap. 2].",
+  "unsupported": "[@A; @unknown @B]"
+}

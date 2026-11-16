@@ -1,0 +1,33 @@
+{
+  "seed": 100,
+  "uniqueFiles": 256,
+  "duplicateResultsEqual": true,
+  "environment": {
+    "python": "3.14.4",
+    "platform": "Linux x86_64"
+  },
+  "baseline": "hash every inventoried regular file using the same SHA-256 reader",
+  "measurements": {
+    "hash-all": {
+      "filesInventoried": 295,
+      "bytesInventoried": 1154637,
+      "filesHashAttempted": 295,
+      "filesHashed": 295,
+      "bytesHashed": 1154637,
+      "filesSkippedUniqueSize": 0,
+      "duplicateGroups": 13,
+      "wallSeconds": 0.01765522499954386
+    },
+    "size-prefilter": {
+      "filesInventoried": 295,
+      "bytesInventoried": 1154637,
+      "filesHashAttempted": 37,
+      "filesHashed": 37,
+      "bytesHashed": 73375,
+      "filesSkippedUniqueSize": 258,
+      "duplicateGroups": 13,
+      "wallSeconds": 0.009813966000365326
+    }
+  },
+  "note": "Sequential warm-cache local experiment. Wall time is descriptive, not a speed guarantee."
+}

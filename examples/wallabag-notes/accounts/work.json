@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Work reading",
+    "url": "https://example.org/work",
+    "annotations": [
+      {
+        "id": 9,
+        "quote": "Work quote",
+        "text": "Work comment",
+        "ranges": []
+      }
+    ]
+  }
+]

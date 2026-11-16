@@ -1,0 +1,6 @@
+[
+  { "url": "https://catalog.example/a?utm_source=x&ref=one", "title": null, "tags": [], "created_at": "2026-11-11", "is_archived": 0 },
+  { "url": "https://catalog.example/a?utm_source=y&ref=one", "title": null, "tags": [], "created_at": "2026-11-11", "is_archived": 0 },
+  { "url": "https://catalog.example/a?utm_source=x&ref=two", "title": null, "tags": [], "created_at": "2026-11-11", "is_archived": 0 },
+  { "url": "https://catalog.example/a?utm_source=y&ref=two", "title": null, "tags": [], "created_at": "2026-11-11", "is_archived": 0 }
+]

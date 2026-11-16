@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source": {
+    "format": "karakeep-api",
+    "namespace": "karakeep:offline-example:alice",
+    "user_id": "alice"
+  },
+  "pages": [
+    {
+      "file": "karakeep-1.json",
+      "namespace": "karakeep:offline-example:alice",
+      "cursor": null
+    },
+    {
+      "file": "karakeep-2.json",
+      "namespace": "karakeep:offline-example:alice",
+      "cursor": "saved-next-1"
+    }
+  ]
+}

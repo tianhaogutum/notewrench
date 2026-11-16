@@ -1,0 +1,19 @@
+{
+  "description": "Entirely fictional metadata; checksum-valid ISBNs are mathematical examples, not claims of registration. No ebook contents.",
+  "A": [
+    {"title": "The Clockwork Estuary", "authors": ["Mira Example"], "identifiers": {"isbn": "0-306-40615-2"}, "formats": ["EPUB"]},
+    {"title": "ＣＡＦÉ—Maps", "authors": ["Zoë Sample"], "formats": ["EPUB"]},
+    {"title": "Shared Name", "authors": ["Alice Example"], "formats": ["PDF"]},
+    {"title": "Conflicting Edition", "authors": ["Mira Example"], "identifiers": {"isbn": "9780131103627"}, "formats": ["EPUB"]},
+    {"title": "Unattributed Atlas", "authors": [], "identifiers": {"isbn": "9780201633610"}, "formats": ["PDF"]},
+    {"title": "Bad Checksum", "authors": ["Lee Example"], "identifiers": {"isbn": "9780306406158"}, "formats": []}
+  ],
+  "B": [
+    {"title": "The Clockwork Estuary", "authors": ["Mira Example"], "identifiers": {"isbn": "9780306406157"}, "formats": ["PDF"]},
+    {"title": "café maps", "authors": ["Zoë Sample"], "formats": ["PDF"]},
+    {"title": "Shared Name", "authors": ["Bob Example"], "formats": ["EPUB"]},
+    {"title": "Conflicting Edition", "authors": ["Mira Example"], "identifiers": {"isbn": "9780262033848"}, "formats": ["PDF"]},
+    {"title": "Unattributed Atlas", "authors": ["Unknown"], "identifiers": {"isbn": "9780201633610"}, "formats": ["EPUB"]},
+    {"title": "Bad Checksum", "authors": ["Lee Example"], "identifiers": {"isbn": "not-an-isbn"}, "formats": ["EPUB"]}
+  ]
+}

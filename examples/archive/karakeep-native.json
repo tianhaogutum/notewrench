@@ -1,0 +1,9 @@
+{
+  "bookmarks": [
+    {"createdAt": 1790841600, "title": "合成链接", "tags": ["研究"], "lists": ["synthetic-list"], "content": {"type": "link", "url": "https://example.org/a"}, "note": "合成注记 <不可作为HTML执行>", "archived": true},
+    {"createdAt": 1790841601, "title": null, "tags": [], "content": {"type": "text", "text": "纯文本笔记没有原生 URL，不能伪造。"}, "note": null},
+    {"createdAt": 1790841602, "title": "不在原生导出中携带的资产", "tags": [], "content": null, "note": null}
+  ],
+  "lists": [{"id": "synthetic-list", "name": "合成清单", "description": null, "icon": "📚", "type": "manual", "query": null, "parentId": null}],
+  "synthetic_extension": "合成，非真实用户数据"
+}

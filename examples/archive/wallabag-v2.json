@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "离线读物：合成的阅读记录",
+    "url": "https://example.org/a",
+    "is_archived": false,
+    "is_starred": true,
+    "created_at": "2026-10-01T09:30:00+0200",
+    "updated_at": "2026-10-02T08:00:00Z",
+    "content": "<h2>缓存正文</h2><p>原站离线后，这段中文仍可阅读。</p><blockquote>保存知识，也保存上下文。</blockquote><p><a href='/reference'>合成参考链接</a></p>",
+    "mimetype": "text/html",
+    "language": "zh",
+    "tags": ["研究", "离线"],
+    "annotations": [
+      {"id": 41, "quote": "保存知识", "text": "这是合成注释，不来自真实用户。", "ranges": [{"start": "/p[1]", "end": "/p[1]", "startOffset": 0, "endOffset": 4}]}
+    ],
+    "synthetic_extension": {"purpose": "unknown fields survive"}
+  }
+]

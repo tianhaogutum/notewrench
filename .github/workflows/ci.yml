@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      # Rules and per-file ignores live in [tool.ruff] in pyproject.toml.
+      - run: uvx ruff check .
+
+  test:
+    name: test (${{ matrix.os }}, Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          allow-prereleases: true
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install
+        run: python -m pip install -e ".[test]"
+      - name: Check git
+        # The citekeys suite applies its unified diffs with `git apply`; git is
+        # preinstalled on GitHub-hosted Ubuntu and macOS runners.
+        run: git --version
+      - name: Run tests
+        # The archive and zotero-attachments suites need Linux kernel interfaces and
+        # are skipped on macOS by tests/conftest.py.
+        run: python -m pytest -q
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Build wheel and sdist
+        run: |
+          python -m pip install build twine
+          python -m build
+      - name: Check distribution metadata and PyPI README
+        run: python -m twine check --strict dist/*
+      - name: Smoke-test the built wheel
+        run: |
+          python -m venv /tmp/wheel-env
+          /tmp/wheel-env/bin/python -m pip install dist/*.whl
+          cd /tmp
+          /tmp/wheel-env/bin/notewrench --version
+          /tmp/wheel-env/bin/notewrench --help
+          for command in zotero-logseq joplin-logseq wallabag-notes archive epub links \
+              joplin-dupes calibre-dupes citekeys zotero-attachments; do
+            /tmp/wheel-env/bin/notewrench "$command" --help > /dev/null
+          done
+          /tmp/wheel-env/bin/python -m notewrench joplin-logseq --help > /dev/null
+      - name: Run real examples from the installed wheel
+        # Read-only commands on the synthetic inputs in examples/ (run outside the
+        # checkout so the installed wheel, not src/, is imported). `links` imports the
+        # packaged UTS #46 data table (linkdedupe/_idna_data.py) on every run.
+        run: |
+          cd /tmp
+          /tmp/wheel-env/bin/notewrench links --dry-run \
+            "$GITHUB_WORKSPACE/examples/links/karakeep.json" \
+            "$GITHUB_WORKSPACE/examples/links/wallabag-v2.json"
+          /tmp/wheel-env/bin/notewrench citekeys \
+            --old "$GITHUB_WORKSPACE/examples/citekeys/old.json" \
+            --new "$GITHUB_WORKSPACE/examples/citekeys/new.json" \
+            --root "$GITHUB_WORKSPACE/examples/citekeys" paper.md
+      - name: Check the wheel contents
+        run: |
+          python - <<'PY'
+          import glob, zipfile
+          names = set(zipfile.ZipFile(glob.glob("dist/*.whl")[0]).namelist())
+          required = ["notewrench/linkdedupe/_idna_data.py", "notewrench/cli.py"]
+          missing = [name for name in required if name not in names]
+          licenses = [name for name in names if "/licenses/" in name]
+          print("license files:", sorted(licenses))
+          assert not missing, missing
+          assert any(name.endswith("THIRD_PARTY.md") for name in licenses), licenses
+          assert any(name.endswith("Unicode-3.0.txt") for name in licenses), licenses
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/

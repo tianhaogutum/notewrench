@@ -1,0 +1,30 @@
+{
+  "bookmarks": [
+    {
+      "id": "bookmark-1",
+      "createdAt": "2026-10-01T10:00:00Z",
+      "modifiedAt": null,
+      "title": "Saved article 1",
+      "archived": false,
+      "favourited": true,
+      "taggingStatus": "success",
+      "summarizationStatus": null,
+      "embeddingStatus": null,
+      "userId": "alice",
+      "tags": [
+        {
+          "id": "tag-offline",
+          "name": "offline",
+          "attachedBy": "human"
+        }
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/article-1",
+        "htmlContent": "<p>Karakeep cached body 1</p>"
+      },
+      "assets": []
+    }
+  ],
+  "nextCursor": "saved-next-1"
+}

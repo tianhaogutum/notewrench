@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "title": "阅读：离线笔记",
+    "url": "https://example.org/a?q=%E9%98%85%E8%AF%BB&n=1",
+    "is_archived": false,
+    "tags": [
+      "阅读",
+      "合成"
+    ],
+    "content": "<p>合成的文章正文；bagnotes 不会由此推断 quote。</p>",
+    "annotations": [
+      {
+        "quote": "证据：\"阅读与记录\"\n第二行，保留 Unicode — café 🌱",
+        "text": "我的注释，含 \"引号\"\n与换行；不是 HTML：<em>原文</em>",
+        "ranges": [
+          {
+            "start": "/div[1]/p[2]",
+            "startOffset": 2,
+            "end": "/div[1]/p[2]",
+            "endOffset": 18
+          }
+        ]
+      },
+      {
+        "quote": "证据：\"阅读与记录\"\n第二行，保留 Unicode — café 🌱",
+        "text": "我的注释，含 \"引号\"\n与换行；不是 HTML：<em>原文</em>",
+        "ranges": [
+          {
+            "start": "/div[1]/p[2]",
+            "startOffset": 2,
+            "end": "/div[1]/p[2]",
+            "endOffset": 18
+          }
+        ]
+      },
+      {
+        "quote": "范围未知也保留",
+        "text": "",
+        "ranges": [
+          {
+            "futureLocator": "合成值",
+            "offset": "unknown"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "没有高亮的文章",
+    "url": "https://example.org/empty",
+    "annotations": []
+  }
+]

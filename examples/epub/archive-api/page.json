@@ -1,0 +1,32 @@
+{
+  "page": 1,
+  "pages": 1,
+  "limit": 2,
+  "total": 2,
+  "_embedded": {
+    "items": [
+      {
+        "id": 1,
+        "title": "Saved 图 1",
+        "url": "https://example.invalid/1",
+        "content": "<p>Original body 1 中文 <img src=\"/shared.png\" alt=\"图 1\"></p><p><img src=\"https://undeclared.invalid/no.png\"></p>",
+        "tags": [
+          {
+            "label": "offline"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Saved 图 2",
+        "url": "https://example.invalid/2",
+        "content": "<p>Original body 2 中文 <img src=\"/shared.png\" alt=\"图 2\"></p><p><img src=\"https://undeclared.invalid/no.png\"></p>",
+        "tags": [
+          {
+            "label": "offline"
+          }
+        ]
+      }
+    ]
+  }
+}

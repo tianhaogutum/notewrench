@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "images": [
+    {
+      "key": "1:1",
+      "src": "/shared.png",
+      "path": "image-resources/shared.png",
+      "media_type": "image/png",
+      "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23"
+    },
+    {
+      "key": "1:2",
+      "src": "/shared.png",
+      "path": "image-resources/shared.png",
+      "media_type": "image/png",
+      "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23"
+    }
+  ]
+}

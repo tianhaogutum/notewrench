@@ -1,0 +1,20 @@
+[
+  {
+    "content": "<p>Original body 1 中文 <img src=\"/shared.png\" alt=\"图 1\"></p><p><img src=\"https://undeclared.invalid/no.png\"></p>",
+    "id": 1,
+    "tags": [
+      "offline"
+    ],
+    "title": "Saved 图 1",
+    "url": "https://example.invalid/1"
+  },
+  {
+    "content": "<p>Original body 2 中文 <img src=\"/shared.png\" alt=\"图 2\"></p><p><img src=\"https://undeclared.invalid/no.png\"></p>",
+    "id": 2,
+    "tags": [
+      "offline"
+    ],
+    "title": "Saved 图 2",
+    "url": "https://example.invalid/2"
+  }
+]

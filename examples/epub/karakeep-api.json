@@ -1,0 +1,11 @@
+{
+  "id": "api-synthetic-1",
+  "createdAt": "2026-01-02T12:00:00Z",
+  "modifiedAt": null,
+  "title": "A saved API HTML snapshot",
+  "tags": [{"id": "tag-1", "name": "weekend"}],
+  "content": {"type": "link", "url": "https://example.invalid/api-article", "htmlContent": "<!DOCTYPE html><html><head><title>Cached page</title></head><body><p>This original synthetic HTML is already on disk.</p><ol><li>Save locally</li><li>Bundle offline</li></ol></body></html>"},
+  "archived": false,
+  "favourited": false,
+  "assets": []
+}

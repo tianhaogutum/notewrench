@@ -1,0 +1,26 @@
+{
+  "page": 2,
+  "pages": 2,
+  "limit": 1,
+  "total": 2,
+  "_embedded": {
+    "items": [
+      {
+        "id": 2,
+        "url": "https://example.org/article-2",
+        "title": "Saved article 2",
+        "content": "<p>Wallabag cached body 2</p>",
+        "tags": [
+          {
+            "id": 1,
+            "label": "offline",
+            "slug": "offline"
+          }
+        ],
+        "created_at": "2026-10-01T10:00:00+0000",
+        "is_archived": 0,
+        "is_starred": 1
+      }
+    ]
+  }
+}

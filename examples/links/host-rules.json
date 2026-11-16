@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    { "id": "catalog-business-source", "host": "catalog.example", "keepParams": ["utm_source"] },
+    { "id": "news-tracking", "host": "news.example", "dropParams": ["utm_source", "ref"] }
+  ]
+}

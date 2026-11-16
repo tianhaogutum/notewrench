@@ -1,0 +1,7 @@
+[
+  {
+    "url": "https://example.org/images",
+    "title": "Synthetic offline images",
+    "content": "<p>Two references to the same saved red square.</p><img src=\"https://example.org/red.png\" alt=\"Red square\"><img src=\"local-red.png\" alt=\"Same bytes\">"
+  }
+]

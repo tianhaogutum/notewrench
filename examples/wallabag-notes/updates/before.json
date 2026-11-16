@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "title": "Reading",
+    "url": "https://example.org",
+    "annotations": [
+      {
+        "id": 9,
+        "quote": "original",
+        "text": "old comment",
+        "ranges": []
+      },
+      {
+        "id": 10,
+        "quote": "remove me",
+        "text": "deleted comment",
+        "ranges": []
+      }
+    ]
+  }
+]

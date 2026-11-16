@@ -1,0 +1,6 @@
+[
+  {"id":"Doe20","type":"article-journal","title":"Synthetic moth navigation","DOI":"https://doi.org/10.123/DEMO","author":[{"family":"Doe","given":"Ada"}],"issued":{"date-parts":[[2020]]}},
+  {"id":"Field-Notes","type":"webpage","title":"Synthetic field notebook","URL":"https://example.org/notebook"},
+  {"id":"chainB","type":"book","title":"Synthetic chain A","DOI":"10.5555/chain-a"},
+  {"id":"chainC","type":"book","title":"Synthetic chain B","DOI":"10.5555/chain-b"}
+]

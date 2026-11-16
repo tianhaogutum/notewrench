@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Personal reading",
+    "url": "https://example.org/personal",
+    "annotations": [
+      {
+        "id": 9,
+        "quote": "Personal quote",
+        "text": "Personal comment",
+        "ranges": []
+      }
+    ]
+  }
+]

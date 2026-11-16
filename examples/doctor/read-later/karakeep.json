@@ -1,0 +1,23 @@
+{
+  "bookmarks": [
+    {
+      "createdAt": 1794384000,
+      "title": "离线阅读实验",
+      "tags": ["研究", "offline"],
+      "lists": ["reading"],
+      "content": { "type": "link", "url": "https://EXAMPLE.org:443/a?utm_source=letter" },
+      "note": "保留这条手写笔记。",
+      "archived": false
+    },
+    {
+      "createdAt": 1794384001,
+      "title": "没有 URL 的草稿",
+      "tags": ["草稿"],
+      "content": { "type": "text", "text": "原创合成样例：待办与想法。" },
+      "note": null
+    }
+  ],
+  "lists": [
+    { "id": "reading", "name": "阅读", "description": null, "icon": "📖", "type": "manual", "query": null, "parentId": null }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Restart image 1",
+    "url": "https://example.invalid/restart/1",
+    "content": "<p>Original restart example 1.</p><img src=\"https://cdn.invalid/shared-restart.jpg\" alt=\"Gray restart image\">"
+  },
+  {
+    "id": 2,
+    "title": "Restart image 2",
+    "url": "https://example.invalid/restart/2",
+    "content": "<p>Original restart example 2.</p><img src=\"https://cdn.invalid/shared-restart.jpg\" alt=\"Gray restart image\">"
+  }
+]

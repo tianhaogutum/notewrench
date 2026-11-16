@@ -1,0 +1,28 @@
+[
+  {
+    "id": 42,
+    "title": "Offline reading experiment",
+    "url": "https://example.org/a",
+    "is_archived": true,
+    "is_starred": false,
+    "created_at": "2026-11-11T09:00:00+0100",
+    "updated_at": "2026-11-11T10:00:00+0100",
+    "content": "<p>Original synthetic cached article. No third-party article text.</p>",
+    "mimetype": "text/html",
+    "language": "en",
+    "reading_time": 1,
+    "domain_name": "example.org",
+    "tags": ["offline", "阅读"],
+    "annotations": [
+      { "text": "另一个来源的注释", "quote": "synthetic", "ranges": [{ "start": "/p[1]", "end": "/p[1]", "startOffset": 9, "endOffset": 18 }] }
+    ]
+  },
+  {
+    "id": "43",
+    "title": "离线阅读实验",
+    "url": "http://example.org/a",
+    "is_archived": false,
+    "created_at": "2026-11-11T09:00:00+0100",
+    "tags": []
+  }
+]

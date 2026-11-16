@@ -1,0 +1,7 @@
+[
+  {
+    "url": "https://example.org/progressive",
+    "title": "Saved progressive photo",
+    "content": "<img src=\"https://saved.invalid/progressive\" alt=\"Original synthetic photo\"><img src=\"copy\" alt=\"Same saved bytes\">"
+  }
+]

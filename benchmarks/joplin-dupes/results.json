@@ -1,0 +1,58 @@
+{
+  "body_resource_state": {
+    "counts": {
+      "note_hashes": 960,
+      "note_signatures": 240,
+      "resource_bytes_hashed": 295760,
+      "resource_hashes": 240
+    },
+    "elapsed_seconds": [
+      0.023721460998785915,
+      0.01961979099905875,
+      0.020047902999067446
+    ],
+    "false_negatives": 0,
+    "false_positives": 0,
+    "median_seconds": 0.020047902999067446,
+    "precision": 1.0,
+    "predicted_pairs": 120,
+    "recall": 1.0,
+    "true_positives": 120
+  },
+  "dataset": {
+    "cases_per_family": [
+      "three copies, one renamed",
+      "same body/different attachment",
+      "same body/completed TODO",
+      "same title/different body"
+    ],
+    "families": 40,
+    "files": 721,
+    "gold_duplicate_pairs": 120,
+    "notes": 240,
+    "repeats": 3
+  },
+  "method": "Sequential warm-cache trials; perf_counter; generation excluded; each method reads its own files. Title baseline reads all metadata and no blobs. Signature method includes reading, hashing and report construction. Times are observations, not speedup claims.",
+  "title_only": {
+    "counts": {
+      "metadata_bytes_read": 84308,
+      "metadata_files": 481,
+      "note_hashes": 0,
+      "note_signatures": 0,
+      "resource_bytes_hashed": 0,
+      "resource_hashes": 0
+    },
+    "elapsed_seconds": [
+      0.005086707000373281,
+      0.004765876999954344,
+      0.004932407000524108
+    ],
+    "false_negatives": 80,
+    "false_positives": 360,
+    "median_seconds": 0.004932407000524108,
+    "precision": 0.1,
+    "predicted_pairs": 400,
+    "recall": 0.3333333333333333,
+    "true_positives": 40
+  }
+}

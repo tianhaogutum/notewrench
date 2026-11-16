@@ -1,0 +1,280 @@
+{
+  "contract": "Original source contracts: LF/CRLF/CR soft breaks are normalized LF text in otherwise flat link labels. Preserve escape token boundaries, all ASCII punctuation, closing-bracket/backslash parity and entity text without rescanning. Odd backslash-newline and two-or-more-space newline anywhere in a run roll back atomically. Nested brackets, raw code/emphasis/HTML, malformed destinations and links inside emphasis remain unsupported. Destinations stay opaque and URI filtering unchanged. Blank lines and multiline lists remain outside this extension.",
+  "rendered": [
+    {
+      "source": "[Read\nsaved](https://example.invalid/notes) and **notes**.",
+      "html": "<p><a href=\"https://example.invalid/notes\">Read\nsaved</a> and <strong>notes</strong>.</p>"
+    },
+    {
+      "source": "[Punctuation\n\\! end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n! end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\\" end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n&quot; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\# end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n# end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\$ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n$ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\% end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n% end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\& end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n&amp; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\' end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n&#x27; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\( end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n( end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\) end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n) end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\* end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n* end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\+ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n+ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\, end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n, end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\- end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n- end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\. end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n. end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\/ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n/ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\: end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n: end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\; end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\< end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n&lt; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\= end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n= end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\> end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n&gt; end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\? end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n? end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\@ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n@ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\[ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n[ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\\\ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n\\ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\] end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n] end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\^ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n^ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\_ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n_ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\` end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n` end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\{ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n{ end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\| end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n| end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\} end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n} end</a></p>"
+    },
+    {
+      "source": "[Punctuation\n\\~ end](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Punctuation\n~ end</a></p>"
+    },
+    {
+      "source": "[first\nsecond\nthird](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">first\nsecond\nthird</a></p>"
+    },
+    {
+      "source": "[\nlabel](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">\nlabel</a></p>"
+    },
+    {
+      "source": "[label\n](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">label\n</a></p>"
+    },
+    {
+      "source": "[\n](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">\n</a></p>"
+    },
+    {
+      "source": "[one \ntwo](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">one \ntwo</a></p>"
+    },
+    {
+      "source": "[one\ntwo three](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">one\ntwo three</a></p>"
+    },
+    {
+      "source": "[read\r\nsaved](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">read\nsaved</a></p>"
+    },
+    {
+      "source": "[read\rsaved](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">read\nsaved</a></p>"
+    },
+    {
+      "source": "[close\\]\nstays](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">close]\nstays</a></p>"
+    },
+    {
+      "source": "[even\\\\\nnext](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">even\\\nnext</a></p>"
+    },
+    {
+      "source": "[odd\\\\\\]\nnext](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">odd\\]\nnext</a></p>"
+    },
+    {
+      "source": "[end\ntrail\\\\](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">end\ntrail\\</a></p>"
+    },
+    {
+      "source": "[path\\notes\n\\中 \\«](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">path\\notes\n\\中 \\«</a></p>"
+    },
+    {
+      "source": "[\\<script\\>\ninactive\\</script\\> \\&amp; &amp;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">&lt;script&gt;\ninactive&lt;/script&gt; &amp;amp; &amp;</a></p>"
+    },
+    {
+      "source": "[&#91; &#93;\n&#42; &#92; &#10; &lt;img&gt;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">[ ]\n* \\ \n &lt;img&gt;</a></p>"
+    },
+    {
+      "source": "[&am\np;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">&amp;am\np;</a></p>"
+    },
+    {
+      "source": "[one\ntwo](<https://example.invalid/a_(b)*c?x=1&amp;y=2>)",
+      "html": "<p><a href=\"https://example.invalid/a_(b)*c?x=1&amp;y=2\">one\ntwo</a></p>"
+    },
+    {
+      "source": "> [Read\n> saved](https://example.invalid/notes)",
+      "html": "<blockquote><p><a href=\"https://example.invalid/notes\">Read\nsaved</a></p></blockquote>"
+    },
+    {
+      "source": "[one\ntwo](https://example.invalid/notes) and [three\nfour](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">one\ntwo</a> and <a href=\"https://example.invalid/notes\">three\nfour</a></p>"
+    },
+    {
+      "source": "[safe\\*\nlabel\\*](https://example.invalid/a\\*b\\_c)",
+      "html": "<p><a>safe*\nlabel*</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "https://example.invalid/a\\*b\\_c"
+        }
+      ]
+    },
+    {
+      "source": "[safe\\*\nlabel\\*](jav&#x61;script:evil)",
+      "html": "<p><a>safe*\nlabel*</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "javascript:evil"
+        }
+      ]
+    },
+    {
+      "source": "[safe\\*\nlabel\\*](file:///etc/passwd)",
+      "html": "<p><a>safe*\nlabel*</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "file:///etc/passwd"
+        }
+      ]
+    }
+  ],
+  "literal": [
+    "**before** &amp; [hard\\\nbreak](https://example.invalid/notes)",
+    "**before** &amp; [hard  \nbreak](https://example.invalid/notes)",
+    "**before** &amp; [hard   \nbreak](https://example.invalid/notes)",
+    "**before** &amp; [odd\\\\\\\nbreak](https://example.invalid/notes)",
+    "**before** &amp; [odd\\\\\\\\\\\nbreak](https://example.invalid/notes)",
+    "**before** &amp; [pair\\\\  \nbreak](https://example.invalid/notes)",
+    "**before** &amp; [nested\n[inner]](https://example.invalid/notes)",
+    "**before** &amp; [raw\n*emphasis*](https://example.invalid/notes)",
+    "**before** &amp; [raw\n_emphasis_](https://example.invalid/notes)",
+    "**before** &amp; [raw\n`code`](https://example.invalid/notes)",
+    "**before** &amp; [raw\n<script>](https://example.invalid/notes)",
+    "**before** &amp; [raw\nangle >](https://example.invalid/notes)",
+    "**before** &amp; [entity &bsol;\n*raw*](https://example.invalid/notes)",
+    "**before** &amp; [even\\\\*\nraw](https://example.invalid/notes)",
+    "**before** &amp; [odd end\ntrail\\](https://example.invalid/notes)",
+    "**before** &amp; [soft\nlabel] (url)",
+    "**before** &amp; [soft\nlabel][ref]",
+    "**before** &amp; [soft\nlabel](https://example.invalid \"title\")",
+    "**before** &amp; [soft\nlabel](url(with-parens))",
+    "**before** &amp; [soft\nlabel](<https://example.invalid)",
+    "**before** &amp; [soft\nlabel](https://example.invalid",
+    "**before** &amp; [soft\nlabel](https://example.invalid/\nnext)",
+    "**before** &amp; [soft\nlabel](<https://example.invalid/\nnext>)",
+    "**before** &amp; **[soft\nlabel](https://example.invalid/notes)**",
+    "**before** &amp; [okay\nlabel](https://example.invalid/notes) and **unclosed",
+    "**before** &amp; [okay\nlabel](https://example.invalid/notes) <script>raw</script>",
+    "**before** &amp; [okay\nlabel](https://example.invalid/notes) ![image](file:///x)",
+    "**before** &amp; [okay\nlabel](https://example.invalid/notes)\\\nnext",
+    "**before** &amp; [okay\nlabel](https://example.invalid/notes)  \nnext"
+  ]
+}

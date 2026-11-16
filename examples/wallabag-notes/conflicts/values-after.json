@@ -1,0 +1,19 @@
+[
+  {
+    "id": "001",
+    "url": "https://example.org/values",
+    "content": "<p>修改 🦊\n</p>",
+    "added": null,
+    "empty_list": null,
+    "empty_object": [],
+    "annotations": [
+      {
+        "id": "009",
+        "quote": "",
+        "text": "批注 🦊\n第二行\r\n",
+        "ranges": [9007199254740994, 0.123456789012345678902, 2e-999, {"id": 9}],
+        "added": false
+      }
+    ]
+  }
+]

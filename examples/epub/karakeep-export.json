@@ -1,0 +1,7 @@
+{
+  "bookmarks": [
+    {"createdAt": 1767351600, "title": "Synthetic local note", "tags": ["weekend"], "lists": [], "content": {"type": "text", "text": "Original note.\n\nMarkdown **stays literal**; <script> is text here."}, "note": null, "archived": false},
+    {"createdAt": 1767355200, "title": "Link without cached content", "tags": ["weekend"], "lists": [], "content": {"type": "link", "url": "https://example.invalid/no-body"}, "note": null, "archived": false}
+  ],
+  "lists": []
+}

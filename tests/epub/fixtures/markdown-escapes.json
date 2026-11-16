@@ -1,0 +1,377 @@
+{
+  "contract": "Original synthetic escape contracts. ASCII punctuation escapes are text tokens in ordinary inline text and flat emphasis; non-punctuation/trailing backslashes stay visible. Code spans/fences and existing simple link destinations stay opaque. Unsupported nested/ambiguous syntax and hard breaks roll back the entire inline run without decoding escapes or entities.",
+  "rendered": [
+    {
+      "source": "Read \\*literal\\* and **bold**.",
+      "html": "<p>Read *literal* and <strong>bold</strong>.</p>"
+    },
+    {
+      "source": "Read \\_literal\\_ and _italic_.",
+      "html": "<p>Read _literal_ and <em>italic</em>.</p>"
+    },
+    {
+      "source": "**Keep \\*stars\\* and \\_underscores\\_**",
+      "html": "<p><strong>Keep *stars* and _underscores_</strong></p>"
+    },
+    {
+      "source": "*end\\** and **end\\***",
+      "html": "<p><em>end*</em> and <strong>end*</strong></p>"
+    },
+    {
+      "source": "\\**inside* and \\_ _inside_",
+      "html": "<p>*<em>inside</em> and _ <em>inside</em></p>"
+    },
+    {
+      "source": "\\\\*active* and \\\\\\*inactive\\*",
+      "html": "<p>\\<em>active</em> and \\*inactive*</p>"
+    },
+    {
+      "source": "\\<script\\>safe\\</script\\> and **\\<img src=x onerror=evil()\\>**",
+      "html": "<p>&lt;script&gt;safe&lt;/script&gt; and <strong>&lt;img src=x onerror=evil()&gt;</strong></p>"
+    },
+    {
+      "source": "Escaped \\&amp; and &amp; and *\\&#42;*",
+      "html": "<p>Escaped &amp;amp; and &amp; and <em>&amp;#42;</em></p>"
+    },
+    {
+      "source": "\\[label\\]\\(target\\) and \\!\\[image\\]",
+      "html": "<p>[label](target) and ![image]</p>"
+    },
+    {
+      "source": "\\![label](https://example.invalid/)",
+      "html": "<p>!<a href=\"https://example.invalid/\">label</a></p>"
+    },
+    {
+      "source": "\\# title and 1\\. item",
+      "html": "<p># title and 1. item</p>"
+    },
+    {
+      "source": "Path \\notes \\7 \\中 \\« \\🙂 \\ space",
+      "html": "<p>Path \\notes \\7 \\中 \\« \\🙂 \\ space</p>"
+    },
+    {
+      "source": "Tab: \\\tend and end\\",
+      "html": "<p>Tab: \\\tend and end\\</p>"
+    },
+    {
+      "source": "*Path \\notes* and **trail\\\\**",
+      "html": "<p><em>Path \\notes</em> and <strong>trail\\</strong></p>"
+    },
+    {
+      "source": "Read \\\\\nsoft *break*",
+      "html": "<p>Read \\\nsoft <em>break</em></p>"
+    },
+    {
+      "source": "`\\*code\\* &amp;` and **saved**",
+      "html": "<p><code>\\*code\\* &amp;amp;</code> and <strong>saved</strong></p>"
+    },
+    {
+      "source": "[opaque](https://example.invalid/a\\*b\\_c) and \\*text\\*",
+      "html": "<p><a>opaque</a> and *text*</p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "https://example.invalid/a\\*b\\_c"
+        }
+      ]
+    },
+    {
+      "source": "## **Saved \\*note\\*** \\#",
+      "html": "<h2><strong>Saved *note*</strong> #</h2>"
+    },
+    {
+      "source": "- \\*First\\*\n- __Second \\_note\\___",
+      "html": "<ul><li>*First*</li><li><strong>Second _note_</strong></li></ul>"
+    },
+    {
+      "source": "> **Saved \\<note\\>**\n> \\_literal\\_",
+      "html": "<blockquote><p><strong>Saved &lt;note&gt;</strong>\n_literal_</p></blockquote>"
+    },
+    {
+      "source": "```\n\\*fenced\\*\n```",
+      "html": "<pre><code>\\*fenced\\*\n</code></pre>"
+    },
+    {
+      "source": "Punctuation: \\! end.",
+      "html": "<p>Punctuation: ! end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\! end.**",
+      "html": "<p><strong>Punctuation: ! end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\\" end.",
+      "html": "<p>Punctuation: &quot; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\\" end.**",
+      "html": "<p><strong>Punctuation: &quot; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\# end.",
+      "html": "<p>Punctuation: # end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\# end.**",
+      "html": "<p><strong>Punctuation: # end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\$ end.",
+      "html": "<p>Punctuation: $ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\$ end.**",
+      "html": "<p><strong>Punctuation: $ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\% end.",
+      "html": "<p>Punctuation: % end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\% end.**",
+      "html": "<p><strong>Punctuation: % end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\& end.",
+      "html": "<p>Punctuation: &amp; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\& end.**",
+      "html": "<p><strong>Punctuation: &amp; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\' end.",
+      "html": "<p>Punctuation: &#x27; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\' end.**",
+      "html": "<p><strong>Punctuation: &#x27; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\( end.",
+      "html": "<p>Punctuation: ( end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\( end.**",
+      "html": "<p><strong>Punctuation: ( end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\) end.",
+      "html": "<p>Punctuation: ) end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\) end.**",
+      "html": "<p><strong>Punctuation: ) end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\* end.",
+      "html": "<p>Punctuation: * end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\* end.**",
+      "html": "<p><strong>Punctuation: * end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\+ end.",
+      "html": "<p>Punctuation: + end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\+ end.**",
+      "html": "<p><strong>Punctuation: + end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\, end.",
+      "html": "<p>Punctuation: , end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\, end.**",
+      "html": "<p><strong>Punctuation: , end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\- end.",
+      "html": "<p>Punctuation: - end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\- end.**",
+      "html": "<p><strong>Punctuation: - end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\. end.",
+      "html": "<p>Punctuation: . end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\. end.**",
+      "html": "<p><strong>Punctuation: . end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\/ end.",
+      "html": "<p>Punctuation: / end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\/ end.**",
+      "html": "<p><strong>Punctuation: / end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\: end.",
+      "html": "<p>Punctuation: : end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\: end.**",
+      "html": "<p><strong>Punctuation: : end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\; end.",
+      "html": "<p>Punctuation: ; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\; end.**",
+      "html": "<p><strong>Punctuation: ; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\< end.",
+      "html": "<p>Punctuation: &lt; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\< end.**",
+      "html": "<p><strong>Punctuation: &lt; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\= end.",
+      "html": "<p>Punctuation: = end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\= end.**",
+      "html": "<p><strong>Punctuation: = end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\> end.",
+      "html": "<p>Punctuation: &gt; end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\> end.**",
+      "html": "<p><strong>Punctuation: &gt; end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\? end.",
+      "html": "<p>Punctuation: ? end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\? end.**",
+      "html": "<p><strong>Punctuation: ? end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\@ end.",
+      "html": "<p>Punctuation: @ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\@ end.**",
+      "html": "<p><strong>Punctuation: @ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\[ end.",
+      "html": "<p>Punctuation: [ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\[ end.**",
+      "html": "<p><strong>Punctuation: [ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\\\ end.",
+      "html": "<p>Punctuation: \\ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\\\ end.**",
+      "html": "<p><strong>Punctuation: \\ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\] end.",
+      "html": "<p>Punctuation: ] end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\] end.**",
+      "html": "<p><strong>Punctuation: ] end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\^ end.",
+      "html": "<p>Punctuation: ^ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\^ end.**",
+      "html": "<p><strong>Punctuation: ^ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\_ end.",
+      "html": "<p>Punctuation: _ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\_ end.**",
+      "html": "<p><strong>Punctuation: _ end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\` end.",
+      "html": "<p>Punctuation: ` end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\` end.**",
+      "html": "<p><strong>Punctuation: ` end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\{ end.",
+      "html": "<p>Punctuation: { end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\{ end.**",
+      "html": "<p><strong>Punctuation: { end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\| end.",
+      "html": "<p>Punctuation: | end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\| end.**",
+      "html": "<p><strong>Punctuation: | end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\} end.",
+      "html": "<p>Punctuation: } end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\} end.**",
+      "html": "<p><strong>Punctuation: } end.</strong></p>"
+    },
+    {
+      "source": "Punctuation: \\~ end.",
+      "html": "<p>Punctuation: ~ end.</p>"
+    },
+    {
+      "source": "**Punctuation: \\~ end.**",
+      "html": "<p><strong>Punctuation: ~ end.</strong></p>"
+    },
+    {
+      "source": "[escaped \\*label\\*](https://example.invalid)",
+      "html": "<p><a href=\"https://example.invalid\">escaped *label*</a></p>"
+    },
+    {
+      "source": "Read \\*literal\\* and pre_note_post",
+      "html": "<p>Read *literal* and pre_note_post</p>"
+    }
+  ],
+  "literal": [
+    "Read \\*literal\\* and **outer *inner* outer**",
+    "Read \\*literal\\* and **unclosed",
+    "Read \\*literal\\* and ***ambiguous***",
+    "Read \\*literal\\* and _bad*",
+    "*flat \\*text\\* and `code`*",
+    "**flat \\_text\\_ and [link](https://example.invalid)**",
+    "Read \\*literal\\* and &amp; ~~unsupported~~",
+    "Read \\<safe\\> and <script>raw</script>",
+    "Read \\*literal\\* ![image](file:///x)",
+    "Read \\*literal\\* and **bold**\\\nnext",
+    "Read \\*literal\\*  \nnext",
+    "*flat\\\nnext*",
+    "Read \\*literal\\* and [nested](url(with-parens))",
+    "Read \\*literal\\* and \\\\*unclosed"
+  ]
+}

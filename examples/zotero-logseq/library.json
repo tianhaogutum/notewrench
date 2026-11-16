@@ -1,0 +1,28 @@
+[
+  {
+    "id": "Doe2024",
+    "type": "article-journal",
+    "title": "Local notes",
+    "DOI": "10.5555/synthetic.zotlog.2024",
+    "author": [
+      {"family": "Doe", "given": "Robin"},
+      {"literal": "Synthetic Research Collective"}
+    ],
+    "issued": {"date-parts": [[2024, 2, 29]]},
+    "URL": "https://example.org/papers/local-notes",
+    "keyword": "offline; notes; synthetic",
+    "container-title": "Journal of Synthetic Examples",
+    "volume": "2",
+    "page": "11-19",
+    "abstract": "Invented metadata for interoperability testing. No real publication."
+  },
+  {
+    "id": "Lin2025",
+    "type": "paper-conference",
+    "title": "Local notes",
+    "author": [{"family": "Lin", "given": "Alex"}],
+    "issued": {"date-parts": [[2025]]},
+    "URL": "https://example.org/papers/second-local-notes",
+    "keyword": "file graph, offline"
+  }
+]

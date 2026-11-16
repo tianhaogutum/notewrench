@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Illustrated note 1",
+    "url": "https://example.invalid/notes/1",
+    "content": "<p>Original synthetic note 1.</p><figure><img src=\"/shared.png\" alt=\"Shared 2×2 color sample\"/><figcaption>Explicit local image.</figcaption></figure>"
+  },
+  {
+    "id": 2,
+    "title": "Illustrated note 2",
+    "url": "https://example.invalid/notes/2",
+    "content": "<p>Original synthetic note 2.</p><figure><img src=\"/shared.png\" alt=\"Shared 2×2 color sample\"/><figcaption>Explicit local image.</figcaption></figure>"
+  }
+]

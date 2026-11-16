@@ -1,0 +1,252 @@
+{
+  "files": {
+    "article-afebb11c3fe7b713659860db99022a1b6ad69c1ce5b78e93a959760cc64c3bb0.html": {
+      "bytes": 587,
+      "sha256": "c426b94b55d94930c12106e76ad76fc6d34938109c690d53556b562c8737ee48"
+    },
+    "article-f3955099324e333bc18f1b57e9361eb1d120fc9ab7ed2c1ec26b08731a8f327f.html": {
+      "bytes": 587,
+      "sha256": "ded8a781d332f9857f5cf48a3ebc474b9744a97d28791c8bea19ceeba364fc38"
+    },
+    "asset-fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23.png": {
+      "bytes": 78,
+      "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23"
+    },
+    "index.html": {
+      "bytes": 619,
+      "sha256": "e304f31845cf093f8d55ec358b93a8f142b4945cd1ccb627c180f2e4fe724b76"
+    },
+    "provenance.json": {
+      "bytes": 6578,
+      "sha256": "387af92bc77b7ec76e3f64cbe54a1a38aa43e117c757f2e1c8cfe0ea7e384b2c"
+    },
+    "wallabag.json": {
+      "bytes": 539,
+      "sha256": "20602f804dfbd96443e10d2e2921b940bf1a381e9ed0533a5eb3f56b30db0c8c"
+    }
+  },
+  "image_assets": {
+    "input_sha256": "78d462b6f234cb33bd36e3c82c97e220cc17b9c8212feb0d7e5c7bc621a26f36",
+    "mapping": [
+      {
+        "asset_index": 0,
+        "bytes": 78,
+        "expected_sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23",
+        "file": "asset-fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23.png",
+        "media_type": "image/png",
+        "reference": "/shared.png",
+        "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23",
+        "source_file": "shared.png",
+        "status": "archived"
+      }
+    ]
+  },
+  "input_count": 2,
+  "input_sha256": "cbbe71a2111e4e01e53eefafe28a23af289b05aab8674248c46b7a73a0fe7eac",
+  "issues": [
+    {
+      "code": "archived_images",
+      "count": 1,
+      "entry": 0,
+      "message": "HTML normalization; original retained in provenance.json.",
+      "severity": "info",
+      "source": {
+        "file": "page.json",
+        "item_id": 1,
+        "item_index": 0,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "missing_image_asset",
+      "count": 1,
+      "entry": 0,
+      "message": "Image source missing or not available in the explicit local asset manifest; no fetch attempted.",
+      "severity": "loss",
+      "source": {
+        "file": "page.json",
+        "item_id": 1,
+        "item_index": 0,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "removed_elements",
+      "count": 1,
+      "entry": 0,
+      "message": "HTML normalization; original retained in provenance.json.",
+      "severity": "loss",
+      "source": {
+        "file": "page.json",
+        "item_id": 1,
+        "item_index": 0,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "provenance_only_fields",
+      "entry": 0,
+      "fields": [
+        "id"
+      ],
+      "message": "Fields retained in provenance, not rendered as article metadata.",
+      "severity": "info",
+      "source": {
+        "file": "page.json",
+        "item_id": 1,
+        "item_index": 0,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "archived_images",
+      "count": 1,
+      "entry": 1,
+      "message": "HTML normalization; original retained in provenance.json.",
+      "severity": "info",
+      "source": {
+        "file": "page.json",
+        "item_id": 2,
+        "item_index": 1,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "missing_image_asset",
+      "count": 1,
+      "entry": 1,
+      "message": "Image source missing or not available in the explicit local asset manifest; no fetch attempted.",
+      "severity": "loss",
+      "source": {
+        "file": "page.json",
+        "item_id": 2,
+        "item_index": 1,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "removed_elements",
+      "count": 1,
+      "entry": 1,
+      "message": "HTML normalization; original retained in provenance.json.",
+      "severity": "loss",
+      "source": {
+        "file": "page.json",
+        "item_id": 2,
+        "item_index": 1,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    },
+    {
+      "code": "provenance_only_fields",
+      "entry": 1,
+      "fields": [
+        "id"
+      ],
+      "message": "Fields retained in provenance, not rendered as article metadata.",
+      "severity": "info",
+      "source": {
+        "file": "page.json",
+        "item_id": 2,
+        "item_index": 1,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      }
+    }
+  ],
+  "mode": "api-import",
+  "output_count": 2,
+  "pagination": {
+    "complete": true,
+    "page_count": 1,
+    "pages": [
+      {
+        "actual_sha256": "e3dd43675d82674d8205b626ff1fa68151017b53957d32649aa728a9a818926d",
+        "expected_sha256": null,
+        "file": "page.json",
+        "page": 1,
+        "page_index": 0,
+        "sha256": "e3dd43675d82674d8205b626ff1fa68151017b53957d32649aa728a9a818926d",
+        "status": "unpinned"
+      }
+    ],
+    "scope": "supplied response sequence; not a verified live account snapshot"
+  },
+  "records": [
+    {
+      "cached_body": true,
+      "entry": 0,
+      "file": "article-afebb11c3fe7b713659860db99022a1b6ad69c1ce5b78e93a959760cc64c3bb0.html",
+      "image_references": [
+        {
+          "asset_index": 0,
+          "file": "asset-fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23.png",
+          "reference": "/shared.png",
+          "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23",
+          "status": "archived"
+        },
+        {
+          "file": null,
+          "reference": "https://undeclared.invalid/no.png",
+          "sha256": null,
+          "status": "undeclared"
+        }
+      ],
+      "source": {
+        "file": "page.json",
+        "item_id": 1,
+        "item_index": 0,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      },
+      "stable_id": "afebb11c3fe7b713659860db99022a1b6ad69c1ce5b78e93a959760cc64c3bb0",
+      "title": "Saved 图 1",
+      "url": "https://example.invalid/1"
+    },
+    {
+      "cached_body": true,
+      "entry": 1,
+      "file": "article-f3955099324e333bc18f1b57e9361eb1d120fc9ab7ed2c1ec26b08731a8f327f.html",
+      "image_references": [
+        {
+          "asset_index": 0,
+          "file": "asset-fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23.png",
+          "reference": "/shared.png",
+          "sha256": "fb5e4dc04449231dc2ef8be56ab26c7c1fd46a8476bded538d5d67c806a4ff23",
+          "status": "archived"
+        },
+        {
+          "file": null,
+          "reference": "https://undeclared.invalid/no.png",
+          "sha256": null,
+          "status": "undeclared"
+        }
+      ],
+      "source": {
+        "file": "page.json",
+        "item_id": 2,
+        "item_index": 1,
+        "namespace": "readbundle:original-fixture",
+        "page_index": 0
+      },
+      "stable_id": "f3955099324e333bc18f1b57e9361eb1d120fc9ab7ed2c1ec26b08731a8f327f",
+      "title": "Saved 图 2",
+      "url": "https://example.invalid/2"
+    }
+  ],
+  "schema_version": 1,
+  "skipped_count": 0,
+  "source": {
+    "format": "wallabag-api",
+    "namespace": "readbundle:original-fixture"
+  },
+  "tool": "bagkeep",
+  "version": "0.1.0"
+}

@@ -1,0 +1,8 @@
+[
+  {"id":101,"title":"First","url":"https://subgroups.example/a?utm_source=one","tags":["tag-1","shared"],"content":"<p>same</p>","created_at":"2026-01-01","is_archived":0,"annotations":[{"text":"note-1","quote":"same","ranges":[]}]},
+  {"id":102,"title":"Second","url":"https://subgroups.example/a?utm_source=two","tags":["tag-2","shared"],"content":"<p>same</p>","created_at":"2026-01-02","is_archived":1,"annotations":[{"text":"note-2","quote":"same","ranges":[]}]},
+  {"id":103,"title":"Third keeper","url":"https://subgroups.example/a?utm_source=three","tags":["tag-3","shared"],"content":"<p>same</p>","created_at":"2026-01-03","is_archived":0,"annotations":[{"text":"note-3","quote":"same","ranges":[]}]},
+  {"id":104,"title":"Fourth","url":"https://subgroups.example/a?utm_source=four","tags":["tag-4","shared"],"content":"<p>same</p>","created_at":"2026-01-04","is_archived":1,"annotations":[{"text":"note-4","quote":"same","ranges":[]}]},
+  {"id":105,"title":"Unselected outlier","url":"https://subgroups.example/a","tags":["tag-5","shared"],"content":"<p>different</p>","created_at":"2026-01-05","is_archived":0,"annotations":[{"text":"note-5","quote":"different","ranges":[]}]},
+  {"id":106,"title":"Standalone","url":"https://subgroups.example/other","tags":["tag-6","shared"],"content":"<p>other</p>","created_at":"2026-01-06","is_archived":1,"annotations":[{"text":"note-6","quote":"other","ranges":[]}]}
+]

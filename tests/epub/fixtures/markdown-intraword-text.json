@@ -1,0 +1,395 @@
+{
+  "contract": "Original source contracts established before parser edits. Ordinary inline text only: accept complete raw underscore runs of any width between immediate source str.isalnum() characters, without Unicode normalization, entity or escape predecoding. Keep emphasis interiors unchanged. Preserve boundary emphasis, nested/mixed/unmatched fallback, token precedence, ASCII escapes, entity safety and atomic rollback with normalized LF/source line events.",
+  "rendered": [
+    {
+      "source": "read_notes and **saved**.",
+      "html": "<p>read_notes and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "read__notes and **saved**.",
+      "html": "<p>read__notes and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "read___notes and **saved**.",
+      "html": "<p>read___notes and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "a________b and **saved**.",
+      "html": "<p>a________b and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "a_b_c__d and **saved**.",
+      "html": "<p>a_b_c__d and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "1_2 and **saved**.",
+      "html": "<p>1_2 and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "12__34 and **saved**.",
+      "html": "<p>12__34 and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "é_ñ and **saved**.",
+      "html": "<p>é_ñ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "中文__笔记 and **saved**.",
+      "html": "<p>中文__笔记 and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "字_٣ and **saved**.",
+      "html": "<p>字_٣ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "٣__४ and **saved**.",
+      "html": "<p>٣__४ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "𝟘_𝟙 and **saved**.",
+      "html": "<p>𝟘_𝟙 and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "α_Ж and **saved**.",
+      "html": "<p>α_Ж and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "²_³ and **saved**.",
+      "html": "<p>²_³ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "Ⅳ_Ⅴ and **saved**.",
+      "html": "<p>Ⅳ_Ⅴ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "½_¼ and **saved**.",
+      "html": "<p>½_¼ and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "pre_note_post and **saved**.",
+      "html": "<p>pre_note_post and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "pre__note__post and **saved**.",
+      "html": "<p>pre__note__post and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "a_b\nc__d and _saved_.",
+      "html": "<p>a_b\nc__d and <em>saved</em>.</p>"
+    },
+    {
+      "source": "a_b\r\nc__d and _saved_.",
+      "html": "<p>a_b\nc__d and <em>saved</em>.</p>"
+    },
+    {
+      "source": "a_b\rc__d and _saved_.",
+      "html": "<p>a_b\nc__d and <em>saved</em>.</p>"
+    },
+    {
+      "source": "a_b _one_ and __two__.",
+      "html": "<p>a_b <em>one</em> and <strong>two</strong>.</p>"
+    },
+    {
+      "source": "(_one_) a_b (__two__).",
+      "html": "<p>(<em>one</em>) a_b (<strong>two</strong>).</p>"
+    },
+    {
+      "source": "a_b read*note*book and pre**note**post",
+      "html": "<p>a_b read<em>note</em>book and pre<strong>note</strong>post</p>"
+    },
+    {
+      "source": "a_b `___ &amp; \\_` c_d",
+      "html": "<p>a_b <code>___ &amp;amp; \\_</code> c_d</p>"
+    },
+    {
+      "source": "`a_b` c__d",
+      "html": "<p><code>a_b</code> c__d</p>"
+    },
+    {
+      "source": "a_b [c_d](https://example.invalid/a___b*c?x=1&amp;y=2)",
+      "html": "<p>a_b <a href=\"https://example.invalid/a___b*c?x=1&amp;y=2\">c_d</a></p>"
+    },
+    {
+      "source": "a_b [c_d](<https://example.invalid/a(b)__c>)",
+      "html": "<p>a_b <a href=\"https://example.invalid/a(b)__c\">c_d</a></p>"
+    },
+    {
+      "source": "a_b &amp; c_d &#95; &#42; &#91; &#93; &#96;",
+      "html": "<p>a_b &amp; c_d _ * [ ] `</p>"
+    },
+    {
+      "source": "a&#95;b and **saved**",
+      "html": "<p>a_b and <strong>saved</strong></p>"
+    },
+    {
+      "source": "&#97;&#95;&#98; and **saved**",
+      "html": "<p>a_b and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b &lt;script&gt;x&lt;/script&gt;",
+      "html": "<p>a_b &lt;script&gt;x&lt;/script&gt;</p>"
+    },
+    {
+      "source": "a_b \\<script\\>x\\</script\\>",
+      "html": "<p>a_b &lt;script&gt;x&lt;/script&gt;</p>"
+    },
+    {
+      "source": "a_b \\&amp; &amp;",
+      "html": "<p>a_b &amp;amp; &amp;</p>"
+    },
+    {
+      "source": "a\\_b and c_d",
+      "html": "<p>a_b and c_d</p>"
+    },
+    {
+      "source": "\\qa_b c_d\\",
+      "html": "<p>\\qa_b c_d\\</p>"
+    },
+    {
+      "source": "a_b\\\\\nc_d",
+      "html": "<p>a_b\\\nc_d</p>"
+    },
+    {
+      "source": "a_b c_d",
+      "html": "<p>a_b c_d</p>"
+    },
+    {
+      "source": "a_b́ c_d",
+      "html": "<p>a_b́ c_d</p>"
+    },
+    {
+      "source": "a_b \\! c__d and **saved**",
+      "html": "<p>a_b ! c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\\" c__d and **saved**",
+      "html": "<p>a_b &quot; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\# c__d and **saved**",
+      "html": "<p>a_b # c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\$ c__d and **saved**",
+      "html": "<p>a_b $ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\% c__d and **saved**",
+      "html": "<p>a_b % c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\& c__d and **saved**",
+      "html": "<p>a_b &amp; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\' c__d and **saved**",
+      "html": "<p>a_b &#x27; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\( c__d and **saved**",
+      "html": "<p>a_b ( c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\) c__d and **saved**",
+      "html": "<p>a_b ) c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\* c__d and **saved**",
+      "html": "<p>a_b * c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\+ c__d and **saved**",
+      "html": "<p>a_b + c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\, c__d and **saved**",
+      "html": "<p>a_b , c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\- c__d and **saved**",
+      "html": "<p>a_b - c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\. c__d and **saved**",
+      "html": "<p>a_b . c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\/ c__d and **saved**",
+      "html": "<p>a_b / c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\: c__d and **saved**",
+      "html": "<p>a_b : c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\; c__d and **saved**",
+      "html": "<p>a_b ; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\< c__d and **saved**",
+      "html": "<p>a_b &lt; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\= c__d and **saved**",
+      "html": "<p>a_b = c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\> c__d and **saved**",
+      "html": "<p>a_b &gt; c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\? c__d and **saved**",
+      "html": "<p>a_b ? c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\@ c__d and **saved**",
+      "html": "<p>a_b @ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\[ c__d and **saved**",
+      "html": "<p>a_b [ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\\\ c__d and **saved**",
+      "html": "<p>a_b \\ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\] c__d and **saved**",
+      "html": "<p>a_b ] c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\^ c__d and **saved**",
+      "html": "<p>a_b ^ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\_ c__d and **saved**",
+      "html": "<p>a_b _ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\` c__d and **saved**",
+      "html": "<p>a_b ` c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\{ c__d and **saved**",
+      "html": "<p>a_b { c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\| c__d and **saved**",
+      "html": "<p>a_b | c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\} c__d and **saved**",
+      "html": "<p>a_b } c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b \\~ c__d and **saved**",
+      "html": "<p>a_b ~ c__d and <strong>saved</strong></p>"
+    },
+    {
+      "source": "a_b [c_d](jav&#x61;script:evil)",
+      "html": "<p>a_b <a>c_d</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "value": "javascript:evil",
+          "element": "a",
+          "attribute": "href"
+        }
+      ]
+    },
+    {
+      "source": "a_b [c_d](file:///etc/passwd)",
+      "html": "<p>a_b <a>c_d</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "value": "file:///etc/passwd",
+          "element": "a",
+          "attribute": "href"
+        }
+      ]
+    },
+    {
+      "source": "a_b [c_d](https://example.invalid/a\\_b)",
+      "html": "<p>a_b <a>c_d</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "value": "https://example.invalid/a\\_b",
+          "element": "a",
+          "attribute": "href"
+        }
+      ]
+    },
+    {
+      "source": "a_b [c_d](#absent)",
+      "html": "<p>a_b <a>c_d</a></p>",
+      "events": [
+        {
+          "code": "removed_broken_fragment",
+          "value": "#absent"
+        }
+      ]
+    }
+  ],
+  "literal": [
+    "**before** &amp; _a",
+    "**before** &amp; a_",
+    "**before** &amp; ___",
+    "**before** &amp; a___",
+    "**before** &amp; ___b",
+    "**before** &amp; a_ b",
+    "**before** &amp; a _b",
+    "**before** &amp; a_!b",
+    "**before** &amp; a!_b",
+    "**before** &amp; a_。字",
+    "**before** &amp; a。_字",
+    "**before** &amp; a_\nb",
+    "**before** &amp; a\n_b",
+    "**before** &amp; a_\tb",
+    "**before** &amp; a\t_b",
+    "**before** &amp; a_ b",
+    "**before** &amp; a _b",
+    "**before** &amp; a_́b",
+    "**before** &amp; á_b",
+    "**before** &amp; a_🙂b",
+    "**before** &amp; a🙂_b",
+    "**before** &amp; a_‍b",
+    "**before** &amp; a‍_b",
+    "**before** &amp; a\\__b",
+    "**before** &amp; a_\\_b",
+    "**before** &amp; &#97;_b",
+    "**before** &amp; a_&#98;",
+    "**before** &amp; a&#95;_b",
+    "**before** &amp; a_&#95;b",
+    "**before** &amp; a__b_c_",
+    "**before** &amp; a_b*",
+    "**before** &amp; a_b ***raw***",
+    "**before** &amp; a_b *unclosed",
+    "**before** &amp; a_b unopened**",
+    "**before** &amp; a_b *one_",
+    "**before** &amp; a_b **one*",
+    "**before** &amp; a_b *one**",
+    "**before** &amp; a_b ****one****",
+    "**before** &amp; a_b ____one____",
+    "**before** &amp; a_b **outer *inner* outer**",
+    "**before** &amp; a_b _outer _inner_ outer_",
+    "**before** &amp; a_b *a_b*",
+    "**before** &amp; a_b **c__d**",
+    "**before** &amp; a_b _c_d_",
+    "**before** &amp; a_b __c_d__",
+    "**before** &amp; a_b *`code`*",
+    "**before** &amp; a_b *[label](https://example.invalid)*",
+    "**before** &amp; a_b <script>x</script>",
+    "**before** &amp; a_b <a onclick=\"x\">raw</a>",
+    "**before** &amp; a_b <!--comment-->",
+    "**before** &amp; a_b ![image](file:///x)",
+    "**before** &amp; a_b [*c_d*](https://example.invalid)",
+    "**before** &amp; a_b [c_d](missing",
+    "**before** &amp; a_b ~~extension~~",
+    "**before** &amp; a_b\\\nc_d",
+    "**before** &amp; a_b  \nc_d",
+    "**before** &amp; a_b   \nc_d",
+    "**before** &amp; a_b [hard\\\nbreak](https://example.invalid)"
+  ]
+}

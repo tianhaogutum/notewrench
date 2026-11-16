@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    { "id": "edition", "host": "catalog.example", "keepParams": ["utm_source"] },
+    { "id": "ref", "host": "catalog.example", "dropParams": ["ref"] },
+    { "id": "unused", "host": "absent.example", "dropParams": ["ref"] }
+  ]
+}

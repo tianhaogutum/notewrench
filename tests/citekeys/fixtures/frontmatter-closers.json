@@ -1,0 +1,1066 @@
+{
+  "old": [
+    {
+      "id": "A",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "B",
+      "DOI": "10.123/b"
+    }
+  ],
+  "new": [
+    {
+      "id": "B",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "Longer",
+      "DOI": "10.123/b"
+    }
+  ],
+  "examples": [
+    {
+      "name": "dash-lf-body",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @A; -@B; @A ]\t ' \t# [@unknown] \n--- \t\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @B; -@Longer; @B ]\t ' \t# [@unknown] \n--- \t\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 0,
+      "edits": 4
+    },
+    {
+      "name": "dash-lf-body-review",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @A; -@unknown; @A ]\t ' \t# [@unknown] \n--- \t\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @B; -@unknown; @B ]\t ' \t# [@unknown] \n--- \t\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 1,
+      "edits": 3
+    },
+    {
+      "name": "dash-lf-eof",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @A; -@B; @A ]\t ' \t# [@unknown] \n--- \t",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t' \t[ @B; -@Longer; @B ]\t ' \t# [@unknown] \n--- \t",
+      "exitCode": 0,
+      "edits": 3
+    },
+    {
+      "name": "dash-crlf-body",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @A; -@B; @A ]\t ' \t# [@unknown] \r\n--- \t\r\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @B; -@Longer; @B ]\t ' \t# [@unknown] \r\n--- \t\r\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 0,
+      "edits": 4
+    },
+    {
+      "name": "dash-crlf-body-review",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @A; -@unknown; @A ]\t ' \t# [@unknown] \r\n--- \t\r\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @B; -@unknown; @B ]\t ' \t# [@unknown] \r\n--- \t\r\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 1,
+      "edits": 3
+    },
+    {
+      "name": "dash-crlf-eof",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @A; -@B; @A ]\t ' \t# [@unknown] \r\n--- \t",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ @B; -@Longer; @B ]\t ' \t# [@unknown] \r\n--- \t",
+      "exitCode": 0,
+      "edits": 3
+    },
+    {
+      "name": "dot-lf-body",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @A; -@B; @A ]\t \" \t# [@unknown] \n... \t\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @B; -@Longer; @B ]\t \" \t# [@unknown] \n... \t\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 0,
+      "edits": 4
+    },
+    {
+      "name": "dot-lf-body-review",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @A; -@unknown; @A ]\t \" \t# [@unknown] \n... \t\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @B; -@unknown; @B ]\t \" \t# [@unknown] \n... \t\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 1,
+      "edits": 3
+    },
+    {
+      "name": "dot-lf-eof",
+      "input": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @A; -@B; @A ]\t \" \t# [@unknown] \n... \t",
+      "expected": "﻿---\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\nnocite:\t\" \t[ @B; -@Longer; @B ]\t \" \t# [@unknown] \n... \t",
+      "exitCode": 0,
+      "edits": 3
+    },
+    {
+      "name": "dot-crlf-body",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @A; -@B; @A ]\t \" \t# [@unknown] \r\n... \t\r\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @B; -@Longer; @B ]\t \" \t# [@unknown] \r\n... \t\r\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 0,
+      "edits": 4
+    },
+    {
+      "name": "dot-crlf-body-review",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @A; -@unknown; @A ]\t \" \t# [@unknown] \r\n... \t\r\nBody [@B]. Code `[@unknown]`.",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @B; -@unknown; @B ]\t \" \t# [@unknown] \r\n... \t\r\nBody [@Longer]. Code `[@unknown]`.",
+      "exitCode": 1,
+      "edits": 3
+    },
+    {
+      "name": "dot-crlf-eof",
+      "input": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @A; -@B; @A ]\t \" \t# [@unknown] \r\n... \t",
+      "expected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ @B; -@Longer; @B ]\t \" \t# [@unknown] \r\n... \t",
+      "exitCode": 0,
+      "edits": 3
+    }
+  ],
+  "invalid": [
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---﻿\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\u000b\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\f\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- # comment\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- content\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\t# comment\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\t[@A]\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n ---\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n\t---\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n----\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- nocite: \"[@A]\"\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---﻿",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\u000b",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\f",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- # comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- content",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\t# comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n---\t[@A]",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n ---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n\t---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n----",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n--- nocite: \"[@A]\"",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---﻿\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\u000b\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\f\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- # comment\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- content\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\t# comment\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\t[@A]\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n ---\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n\t---\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n----\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- nocite: \"[@A]\"\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---﻿",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\u000b",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\f",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- # comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- content",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\t# comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n---\t[@A]",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n ---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n\t---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n----",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n--- nocite: \"[@A]\"",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... \nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...﻿\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\u000b\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\f\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... # comment\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... content\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\t# comment\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\t[@A]\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n ...\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n\t...\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...-\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n..\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... nocite: \"[@A]\"\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...﻿",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\u000b",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\f",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... # comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... content",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\t# comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...\t[@A]",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n ...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n\t...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n...-",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n..",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; -@B]'\n... nocite: \"[@A]\"",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... \r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...﻿\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\u000b\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\f\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... # comment\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... content\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\t# comment\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\t[@A]\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n ...\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n\t...\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...-\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n..\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... nocite: \"[@A]\"\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... ",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...﻿",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\u000b",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\f",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... # comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... content",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\t# comment",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...\t[@A]",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n ...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n\t...",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n...-",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n..",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; -@B]'\r\n... nocite: \"[@A]\"",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": " ---\nnocite: \"[@A]\"\n---\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]'",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]'\n--- \t\nBody [@A].\n--- \t\nnocite: \"[@A]\"\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]'",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]'\r\n--- \t\r\nBody [@A].\r\n--- \t\r\nnocite: \"[@A]\"\r\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]'\n... \t\nBody [@A].\n--- \t\nnocite: \"[@A]\"\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]'\r\n... \t\r\nBody [@A].\r\n--- \t\r\nnocite: \"[@A]\"\r\n---",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]'\nnocite: '[@B]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom:\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: # empty\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom:\n  child: value\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: [value]\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: {child: value}\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: &anchor value\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: *alias\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: !tag value\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: |\n  value\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: >\n  value\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: 'unterminated\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: \"bad\\q\"\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: 'line\nbreak'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: \"line\nbreak\"\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; prose]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[see @A]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; @*]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '-@*'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '@A,'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '@A @B'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: ' [@A]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[\\@A]'\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]' text\n--- \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]'\r\nnocite: '[@B]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom:\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: # empty\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom:\r\n  child: value\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: [value]\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: {child: value}\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: &anchor value\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: *alias\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: !tag value\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: |\r\n  value\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: >\r\n  value\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: 'unterminated\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: \"bad\\q\"\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: 'line\r\nbreak'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: \"line\r\nbreak\"\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; prose]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[see @A]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; @*]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '-@*'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '@A,'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '@A @B'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: ' [@A]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[\\@A]'\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]' text\r\n--- \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]'\nnocite: '[@B]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom:\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: # empty\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom:\n  child: value\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: [value]\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: {child: value}\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: &anchor value\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: *alias\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: !tag value\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: |\n  value\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: >\n  value\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: 'unterminated\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: \"bad\\q\"\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: 'line\nbreak'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\ncustom: \"line\nbreak\"\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; prose]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[see @A]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A; @*]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '-@*'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '@A,'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '@A @B'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: ' [@A]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[\\@A]'\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\nnocite: '[@A]' text\n... \t\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]'\r\nnocite: '[@B]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom:\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: # empty\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom:\r\n  child: value\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: [value]\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: {child: value}\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: &anchor value\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: *alias\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: !tag value\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: |\r\n  value\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: >\r\n  value\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: 'unterminated\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: \"bad\\q\"\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: 'line\r\nbreak'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\ncustom: \"line\r\nbreak\"\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; prose]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[see @A]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A; @*]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '-@*'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '@A,'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '@A @B'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: ' [@A]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[\\@A]'\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    },
+    {
+      "input": "---\r\nnocite: '[@A]' text\r\n... \t\r\nBody [@A].",
+      "code": "UNSUPPORTED_FRONTMATTER"
+    }
+  ]
+}

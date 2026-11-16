@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source": {
+    "format": "karakeep-api",
+    "namespace": "karakeep:offline-example:alice",
+    "user_id": "alice"
+  },
+  "assets": [
+    {
+      "contentAssetId": "saved-html-1",
+      "file": "body.html",
+      "sha256": "27a0438d535ca6a960b5365b26951e5d74624dd3c80aa533741652437f3191fb"
+    }
+  ]
+}

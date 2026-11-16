@@ -1,0 +1,15 @@
+{
+  "bookmarks": [
+    {
+      "title": "Markdown demonstration",
+      "tags": [
+        "weekend"
+      ],
+      "content": {
+        "type": "text",
+        "text": "## Weekend 中文\n\n- First item\n- Second item\n\n3. Third item\n4. Fourth item\n\n> A saved quotation.\n> Still the same paragraph.\n\n```python\nprint(\"<safe> & 中文\")\n\n# code, not a heading\n```\n\nA `code span`, *emphasis*, __strong text__ and [safe link](https://example.invalid/reading).\n\nRead \\*literal\\* and **bold**.\n\n[Read \\*literal\\*](https://example.invalid/notes) and **saved**.\n\n*Keep \\_underscores\\_ and \\<safe\\>*\n\n**Nested *emphasis* stays literal**\n\n[Unsafe link](<javascript:alert(1)>)\n\n<script>visible, inactive text</script>\n\n![Unsupported image](file:///private/image.png)\n"
+      }
+    }
+  ],
+  "lists": []
+}

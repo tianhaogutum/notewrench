@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "source": {
+    "format": "wallabag-api",
+    "namespace": "wallabag:offline-example:alice"
+  },
+  "pages": [
+    {
+      "file": "wallabag-1.json",
+      "namespace": "wallabag:offline-example:alice",
+      "page": 1
+    },
+    {
+      "file": "wallabag-2.json",
+      "namespace": "wallabag:offline-example:alice",
+      "page": 2
+    }
+  ]
+}

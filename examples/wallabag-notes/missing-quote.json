@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "缺失引文",
+    "url": "https://example.org/a",
+    "content": "<p>不可以猜造引文</p>",
+    "annotations": [
+      {
+        "id": 9,
+        "text": "只有注释",
+        "ranges": []
+      }
+    ]
+  }
+]

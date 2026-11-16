@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "reference": "https://example.org/red.png",
+      "file": "red.png",
+      "sha256": "becf0cf30d6978325d9ccdea315923e2dbbf7e591c2857b92b5f82e41957bb98"
+    },
+    {
+      "reference": "local-red.png",
+      "file": "red.png",
+      "sha256": "becf0cf30d6978325d9ccdea315923e2dbbf7e591c2857b92b5f82e41957bb98"
+    }
+  ]
+}

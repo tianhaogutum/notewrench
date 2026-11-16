@@ -1,0 +1,522 @@
+{
+  "old": [
+    {
+      "id": "A",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "B",
+      "DOI": "10.123/b"
+    }
+  ],
+  "new": [
+    {
+      "id": "B",
+      "DOI": "10.123/a"
+    },
+    {
+      "id": "Longer",
+      "DOI": "10.123/b"
+    }
+  ],
+  "input": "﻿---\r\ntitle: \"中文 🐝 [@A], @unknown\"\r\ncustom: 'It''s @A, @unknown'\r\nnocite: \" \t@A , -@B, @A\t\" # @unknown [@A]\r\n...\r\nBody [@B]. Code `[@A]`.",
+  "expected": "﻿---\r\ntitle: \"中文 🐝 [@A], @unknown\"\r\ncustom: 'It''s @A, @unknown'\r\nnocite: \" \t@B , -@Longer, @B\t\" # @unknown [@A]\r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "reviewInput": "﻿---\r\nnocite: '@A, -@unknown, @B'\r\ncustom: \"[@unknown]\"\r\n---",
+  "reviewExpected": "﻿---\r\nnocite: '@B, -@unknown, @Longer'\r\ncustom: \"[@unknown]\"\r\n---",
+  "whitespaceInput": "﻿---\r\ntitle: \"中文 🐝 [@A], @unknown\"\t # \"@B\"\r\ncustom: 'It''s @A, @unknown' \t \t\r\nnocite: \" \t@A , -@B, @A\t\"\t # '@unknown' [@A]\r\n...\r\nBody [@B]. Code `[@A]`.",
+  "whitespaceExpected": "﻿---\r\ntitle: \"中文 🐝 [@A], @unknown\"\t # \"@B\"\r\ncustom: 'It''s @A, @unknown' \t \t\r\nnocite: \" \t@B , -@Longer, @B\t\"\t # '@unknown' [@A]\r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "whitespaceReviewInput": "﻿---\r\nnocite: '@A, -@unknown, @B' \t# \"@A\" [@unknown]\r\ncustom: \"[@unknown]\"\t\r\n---",
+  "whitespaceReviewExpected": "﻿---\r\nnocite: '@B, -@unknown, @Longer' \t# \"@A\" [@unknown]\r\ncustom: \"[@unknown]\"\t\r\n---",
+  "separatorInput": "﻿---\r\ntitle:\t\"中文 🐝 [@A], @unknown\"\t # \"@B\"\r\ncustom: \t 'It''s @A, @unknown' \t\r\nnocite:\t \t\" \t@A , -@B, @A\t\"\t # '@unknown' [@A]\r\n...\r\nBody [@B]. Code `[@A]`.",
+  "separatorExpected": "﻿---\r\ntitle:\t\"中文 🐝 [@A], @unknown\"\t # \"@B\"\r\ncustom: \t 'It''s @A, @unknown' \t\r\nnocite:\t \t\" \t@B , -@Longer, @B\t\"\t # '@unknown' [@A]\r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "separatorReviewInput": "﻿---\r\nnocite:\t'@A, -@unknown, @B' \t# \"@A\" [@unknown]\r\ncustom:\t \"[@unknown]\"\t\r\n---",
+  "separatorReviewExpected": "﻿---\r\nnocite:\t'@B, -@unknown, @Longer' \t# \"@A\" [@unknown]\r\ncustom:\t \"[@unknown]\"\t\r\n---",
+  "separatorInvalidFields": [
+    "nocite:\t",
+    "nocite: \t ",
+    "nocite:\t# empty",
+    "nocite:\t@A",
+    "nocite:\t'@A, @*'",
+    "nocite:\t'@A,'",
+    "nocite:\t'@A,, @B'",
+    "nocite:\t'@A @B'",
+    "nocite:\t\"@A, \\u0040B\"",
+    "nocite:\t'@A' trailing",
+    "nocite:\t'unterminated",
+    "nocite:\t\"@A\"\ncustom:\t\"\\q\"",
+    "nocite:\t'@A'\ncustom:\t'unterminated",
+    "nocite:\t'@A'\ncustom:\t",
+    "nocite:\t'@A'\ncustom: \t # empty",
+    "nocite:\t'@A'\ncustom:\t[value]",
+    "nocite:\t'@A'\ncustom:\t{key: value}",
+    "nocite:\t'@A'\ncustom:\tchild: value",
+    "nocite:\t'@A'\ncustom:\t\n  child: value",
+    "nocite:\t'@A'\ncustom:\t|\n  value",
+    "nocite:\t'@A'\nnocite:\t'@B'",
+    "nocite:\t&alias \"@A\"",
+    "nocite:\t'@A'\ncustom:\t*alias",
+    "nocite:\t'@A'\ncustom:\t!tag value",
+    "nocite:\t'@A'\ncustom:\t\"value\" trailing",
+    "nocite:'@A'",
+    "nocite: '@A'",
+    "nocite:\u000b'@A'"
+  ],
+  "commentInput": "﻿---\r\ntitle:\t中文 🐝 Study # [@unknown] {meta: \"unterminated ' \\q\r\ncustom: \t Study#hash\t # } [@A] : ' \"\r\nnocite:\t \t\" \t@A , -@B, @A\t\"\t # @unknown\r\n...\r\nBody [@B]. Code `[@A]`.",
+  "commentExpected": "﻿---\r\ntitle:\t中文 🐝 Study # [@unknown] {meta: \"unterminated ' \\q\r\ncustom: \t Study#hash\t # } [@A] : ' \"\r\nnocite:\t \t\" \t@B , -@Longer, @B\t\"\t # @unknown\r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "commentReviewInput": "﻿---\r\nnocite:\t'@A, -@unknown, @B' \t# \"@A\" [@unknown]\r\ncustom:\t中文 🐝 Study \t# [@unknown] {meta: \"unterminated ' \\q\r\n---",
+  "commentReviewExpected": "﻿---\r\nnocite:\t'@B, -@unknown, @Longer' \t# \"@A\" [@unknown]\r\ncustom:\t中文 🐝 Study \t# [@unknown] {meta: \"unterminated ' \\q\r\n---",
+  "commentInvalidFields": [
+    "custom:\t# [@unknown]",
+    "custom: \t # {key: value}",
+    "custom:\t[value] # opaque",
+    "custom:\t{key: value} # opaque",
+    "custom:\tchild: value # opaque",
+    "custom:\tchild: # opaque",
+    "custom:\tchild:\t# opaque",
+    "custom:\tvalue#hash[@unknown] # opaque",
+    "custom:\tvalue#hash{key: value} # opaque",
+    "custom:\tvalue # [@unknown]",
+    "custom:\tvalue\u000b# [@unknown]",
+    "custom:\t| # opaque\n  value",
+    "custom:\t> # opaque\n  value",
+    "custom:\t&anchor value # opaque",
+    "custom:\t*alias # opaque",
+    "custom:\t!tag value # opaque",
+    "custom:\t\n  child: value # opaque",
+    "custom:\tvalue # opaque\ncustom:\tother # opaque",
+    "custom:\tvalue # opaque\n  continuation",
+    "custom:\t\"unterminated # [@unknown]",
+    "custom:\t'unterminated # [@unknown]",
+    "custom:\t\"value\" trailing # opaque",
+    "custom:\t\"\\q\" # opaque",
+    "custom:\tvalue # opaque\nnocite:\t@A # [@unknown]",
+    "custom:\tvalue # opaque\nnocite:\t'' # [@unknown]",
+    "custom:\tvalue # opaque\nnocite:\t'@A,' # [@unknown]",
+    "custom:\tvalue # opaque\nnocite:\t'@A' trailing # opaque",
+    "custom:\tvalue # opaque\nnocite:\t\"\\u0040A\" # [@unknown]"
+  ],
+  "unicodeCommentInput": "﻿---\r\n# standalone [@unknown] {key: \" ' \\q end\r\nplain:\t中文 🐝 Study#hash \t# note [@unknown] {key: \" ' \\q end\r\nsingle:\t'Study # It''s [@unknown]' # note [@unknown] \" end\r\ndouble:\t\"Study # [@unknown]\"\t# note [@unknown] ' end\r\nnocite:\t\" \t@A , -@B, @A\t\" # note [@unknown] \r\n...\r\nBody [@B]. Code `[@A]`.",
+  "unicodeCommentExpected": "﻿---\r\n# standalone [@unknown] {key: \" ' \\q end\r\nplain:\t中文 🐝 Study#hash \t# note [@unknown] {key: \" ' \\q end\r\nsingle:\t'Study # It''s [@unknown]' # note [@unknown] \" end\r\ndouble:\t\"Study # [@unknown]\"\t# note [@unknown] ' end\r\nnocite:\t\" \t@B , -@Longer, @B\t\" # note [@unknown] \r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "unicodeCommentReviewInput": "﻿---\r\ntitle:\t中文 🐝 Study # note [@commentOnly] \r\nnocite:\t'@A, -@unknown, @B' # note [@unknown] \r\n# standalone [@unknown] {key: \" ' \\q end\r\nplain:\t中文 🐝 Study#hash \t# note [@unknown] {key: \" ' \\q end\r\nsingle:\t'Study # It''s [@unknown]' # note [@unknown] \" end\r\ndouble:\t\"Study # [@unknown]\"\t# note [@unknown] ' end\r\n---",
+  "unicodeCommentReviewExpected": "﻿---\r\ntitle:\t中文 🐝 Study # note [@commentOnly] \r\nnocite:\t'@B, -@unknown, @Longer' # note [@unknown] \r\n# standalone [@unknown] {key: \" ' \\q end\r\nplain:\t中文 🐝 Study#hash \t# note [@unknown] {key: \" ' \\q end\r\nsingle:\t'Study # It''s [@unknown]' # note [@unknown] \" end\r\ndouble:\t\"Study # [@unknown]\"\t# note [@unknown] ' end\r\n---",
+  "unicodeCommentInvalidFields": [
+    "custom:\t# note [@unknown] {key: \" ' \\q",
+    "custom:\t # note [@unknown] {key: \" ' \\q",
+    "custom:\tchild: # note [@unknown] {key: \" ' \\q",
+    "custom:\t[value] # note [@unknown] {key: \" ' \\q",
+    "custom:\t{key: value} # note [@unknown] {key: \" ' \\q",
+    "custom:\t*alias # note [@unknown] {key: \" ' \\q",
+    "custom:\t&anchor value # note [@unknown] {key: \" ' \\q",
+    "custom:\t!tag value # note [@unknown] {key: \" ' \\q",
+    "custom:\t| # note [@unknown] {key: \" ' \\q\n  continued",
+    "custom:\tStudy # note [@unknown] {key: \" ' \\q\n  continued",
+    "custom:\tStudy # note [@unknown] {key: \" ' \\q\ncustom: value",
+    "custom: Study # comment",
+    "custom:\tStudy # [@unknown]",
+    "custom:\tStudy# [@unknown]",
+    "custom:\t\"Study\" # comment",
+    "custom:\t\"Study\" trailing # note [@unknown] {key: \" ' \\q",
+    "custom:\t\"\\q\" # note [@unknown] {key: \" ' \\q",
+    "custom:\t\"unterminated # note [@unknown] {key: \" ' \\q",
+    "custom:\t'unterminated # note [@unknown] {key: \" ' \\q",
+    "nocite:\t@A # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A,' # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A, @*' # note [@unknown] {key: \" ' \\q",
+    "nocite:\t\"@A, \\u0040B\" # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A , @B' # comment",
+    "nocite:\t'@A, @B' # note [@unknown] {key: \" ' \\q\nnocite: '@A'",
+    "custom:\t# note [@unknown] {key: \" ' \\q",
+    "custom:\t # note [@unknown] {key: \" ' \\q",
+    "custom:\tchild: # note [@unknown] {key: \" ' \\q",
+    "custom:\t[value] # note [@unknown] {key: \" ' \\q",
+    "custom:\t{key: value} # note [@unknown] {key: \" ' \\q",
+    "custom:\t*alias # note [@unknown] {key: \" ' \\q",
+    "custom:\t&anchor value # note [@unknown] {key: \" ' \\q",
+    "custom:\t!tag value # note [@unknown] {key: \" ' \\q",
+    "custom:\t| # note [@unknown] {key: \" ' \\q\n  continued",
+    "custom:\tStudy # note [@unknown] {key: \" ' \\q\n  continued",
+    "custom:\tStudy # note [@unknown] {key: \" ' \\q\ncustom: value",
+    "custom: Study # comment",
+    "custom:\tStudy # [@unknown]",
+    "custom:\tStudy# [@unknown]",
+    "custom:\t\"Study\" # comment",
+    "custom:\t\"Study\" trailing # note [@unknown] {key: \" ' \\q",
+    "custom:\t\"\\q\" # note [@unknown] {key: \" ' \\q",
+    "custom:\t\"unterminated # note [@unknown] {key: \" ' \\q",
+    "custom:\t'unterminated # note [@unknown] {key: \" ' \\q",
+    "nocite:\t@A # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A,' # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A, @*' # note [@unknown] {key: \" ' \\q",
+    "nocite:\t\"@A, \\u0040B\" # note [@unknown] {key: \" ' \\q",
+    "nocite:\t'@A , @B' # comment",
+    "nocite:\t'@A, @B' # note [@unknown] {key: \" ' \\q\nnocite: '@A'"
+  ],
+  "unicodeQuotedInput": "﻿---\r\nsingle:\t'中文 🐝 It''s [@unknown] # literal end' \t# comment\r\ndouble:\t\"中文 🐝 Study [@unknown] # literal \\\"quoted\\\" \\u0040unknown\"\t\r\nnocite:\t\" \t@A , -@B, @A\t\" # opaque [@unknown] \r\n...\r\nBody [@B]. Code `[@A]`.",
+  "unicodeQuotedExpected": "﻿---\r\nsingle:\t'中文 🐝 It''s [@unknown] # literal end' \t# comment\r\ndouble:\t\"中文 🐝 Study [@unknown] # literal \\\"quoted\\\" \\u0040unknown\"\t\r\nnocite:\t\" \t@B , -@Longer, @B\t\" # opaque [@unknown] \r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "unicodeQuotedReviewInput": "﻿---\r\nsingle:\t'中文 🐝 It''s [@unknown] # literal end' \t# comment\r\nnocite:\t'@A, -@unknown, @B'\r\ndouble:\t\"中文 🐝 Study [@unknown] # literal \\\"quoted\\\" \\u0040unknown\"\t\r\n---",
+  "unicodeQuotedReviewExpected": "﻿---\r\nsingle:\t'中文 🐝 It''s [@unknown] # literal end' \t# comment\r\nnocite:\t'@B, -@unknown, @Longer'\r\ndouble:\t\"中文 🐝 Study [@unknown] # literal \\\"quoted\\\" \\u0040unknown\"\t\r\n---",
+  "unicodeQuotedInvalidFields": [
+    "custom:\t'Study [@unknown]'\ncustom: duplicate",
+    "custom:\t'Study [@unknown]' trailing",
+    "custom: 'Study'",
+    "custom: 'Study' # comment",
+    "custom: 'Study \ncontinued'",
+    "custom: 'Study \r\ncontinued'",
+    "custom: 'Study ",
+    "custom: 'Study ''",
+    "nocite: '@A , @B'",
+    "nocite: '@A, @B'",
+    "nocite: '[ @A; @B]'",
+    "nocite: '[@A; @B]'",
+    "nocite: '@* '",
+    "nocite: '@A # @B'",
+    "custom:\t\"Study [@unknown]\"\ncustom: duplicate",
+    "custom:\t\"Study [@unknown]\" trailing",
+    "custom: \"Study\"",
+    "custom: \"Study\" # comment",
+    "custom: \"Study \ncontinued\"",
+    "custom: \"Study \r\ncontinued\"",
+    "custom: \"Study ",
+    "custom: \"Study \"\"",
+    "nocite: \"@A , @B\"",
+    "nocite: \"@A, @B\"",
+    "nocite: \"[ @A; @B]\"",
+    "nocite: \"[@A; @B]\"",
+    "nocite: \"@* \"",
+    "nocite: \"@A # @B\"",
+    "custom: \"Study \\q\"",
+    "custom: \"Study\\ end\"",
+    "custom:\t'Study [@unknown]'\ncustom: duplicate",
+    "custom:\t'Study [@unknown]' trailing",
+    "custom: 'Study'",
+    "custom: 'Study' # comment",
+    "custom: 'Study \ncontinued'",
+    "custom: 'Study \r\ncontinued'",
+    "custom: 'Study ",
+    "custom: 'Study ''",
+    "nocite: '@A , @B'",
+    "nocite: '@A, @B'",
+    "nocite: '[ @A; @B]'",
+    "nocite: '[@A; @B]'",
+    "nocite: '@* '",
+    "nocite: '@A # @B'",
+    "custom:\t\"Study [@unknown]\"\ncustom: duplicate",
+    "custom:\t\"Study [@unknown]\" trailing",
+    "custom: \"Study\"",
+    "custom: \"Study\" # comment",
+    "custom: \"Study \ncontinued\"",
+    "custom: \"Study \r\ncontinued\"",
+    "custom: \"Study ",
+    "custom: \"Study \"\"",
+    "nocite: \"@A , @B\"",
+    "nocite: \"@A, @B\"",
+    "nocite: \"[ @A; @B]\"",
+    "nocite: \"[@A; @B]\"",
+    "nocite: \"@* \"",
+    "nocite: \"@A # @B\"",
+    "custom: \"Study \\q\"",
+    "custom: \"Study\\ end\""
+  ],
+  "unicodePlainInput": "﻿---\r\nplain:\t中文 🐝 Study Notes# token \t# [@unknown] {child: value} \" ' opaque\r\nother:\t End#token \t# [@unknown] opaque\r\nnocite:\t\" \t@A , -@B, @A\t\" # opaque [@unknown] \r\n...\r\nBody [@B]. Code `[@A]`.",
+  "unicodePlainExpected": "﻿---\r\nplain:\t中文 🐝 Study Notes# token \t# [@unknown] {child: value} \" ' opaque\r\nother:\t End#token \t# [@unknown] opaque\r\nnocite:\t\" \t@B , -@Longer, @B\t\" # opaque [@unknown] \r\n...\r\nBody [@Longer]. Code `[@A]`.",
+  "unicodePlainReviewInput": "﻿---\r\nplain:\t中文 🐝 Study Notes# token \t# [@unknown] {child: value} \" ' opaque\r\nnocite:\t'@A, -@unknown, @B'\r\nother:\t End#token \t# [@unknown] opaque\r\n---",
+  "unicodePlainReviewExpected": "﻿---\r\nplain:\t中文 🐝 Study Notes# token \t# [@unknown] {child: value} \" ' opaque\r\nnocite:\t'@B, -@unknown, @Longer'\r\nother:\t End#token \t# [@unknown] opaque\r\n---",
+  "unicodePlainInvalidFields": [
+    "custom:\tchild: value  # [@unknown]",
+    "custom:\t[value]  # [@unknown]",
+    "custom:\t{key: value}  # [@unknown]",
+    "custom:\t*alias  # [@unknown]",
+    "custom:\t&anchor value  # [@unknown]",
+    "custom:\t!tag value  # [@unknown]",
+    "custom:\t|  # [@unknown]",
+    "custom:\t>  # [@unknown]",
+    "custom:\t- item  # [@unknown]",
+    "custom:\t? key  # [@unknown]",
+    "custom:\t%directive  # [@unknown]",
+    "custom:\t@A  # [@unknown]",
+    "custom:\tStudy # [@unknown]",
+    "custom:\tStudy# {child: value}",
+    "custom:\tStudy #child: value",
+    "custom:\tStudy child: # opaque",
+    "custom: Study",
+    "custom: \tStudy",
+    "custom:\t# comment ",
+    "custom:\t",
+    "custom:\tStudy \n  continued",
+    "custom:\tStudy \r\n  continued",
+    "custom:\tStudy \ncustom: duplicate",
+    "nocite:\t@A  # comment",
+    "nocite:\t'@A,  @B'",
+    "custom:\tchild: value  # [@unknown]",
+    "custom:\t[value]  # [@unknown]",
+    "custom:\t{key: value}  # [@unknown]",
+    "custom:\t*alias  # [@unknown]",
+    "custom:\t&anchor value  # [@unknown]",
+    "custom:\t!tag value  # [@unknown]",
+    "custom:\t|  # [@unknown]",
+    "custom:\t>  # [@unknown]",
+    "custom:\t- item  # [@unknown]",
+    "custom:\t? key  # [@unknown]",
+    "custom:\t%directive  # [@unknown]",
+    "custom:\t@A  # [@unknown]",
+    "custom:\tStudy # [@unknown]",
+    "custom:\tStudy# {child: value}",
+    "custom:\tStudy #child: value",
+    "custom:\tStudy child: # opaque",
+    "custom: Study",
+    "custom: \tStudy",
+    "custom:\t# comment ",
+    "custom:\t",
+    "custom:\tStudy \n  continued",
+    "custom:\tStudy \r\n  continued",
+    "custom:\tStudy \ncustom: duplicate",
+    "nocite:\t@A  # comment",
+    "nocite:\t'@A,  @B'"
+  ],
+  "wildcardInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t@*\t ' \t# [@unknown] @* \r\n...\r\nBody [@A; @B]. Code `[@unknown]`.",
+  "wildcardExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t@*\t ' \t# [@unknown] @* \r\n...\r\nBody [@B; @Longer]. Code `[@unknown]`.",
+  "wildcardDoubleInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t@*\t \" \t# [@unknown] @* \r\n...\r\nBody [@A; @B]. Code `[@unknown]`.",
+  "wildcardDoubleExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t@*\t \" \t# [@unknown] @* \r\n...\r\nBody [@B; @Longer]. Code `[@unknown]`.",
+  "wildcardReviewInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t@*\t \" \t# [@unknown] @* \r\n...\r\nBody [@A; -@unknown; @B]. Code `[@unknown]`.",
+  "wildcardReviewExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t@*\t \" \t# [@unknown] @* \r\n...\r\nBody [@B; -@unknown; @Longer]. Code `[@unknown]`.",
+  "wildcardInvalidFields": [
+    "nocite: ' \t @*\t '",
+    "nocite: ' \t@* \t '",
+    "nocite: ' \t @*\t '",
+    "nocite: ' \t@* \t '",
+    "nocite: ' \t @*\t '",
+    "nocite: ' \t@* \t '",
+    "nocite: ' \t @*\t '",
+    "nocite: ' \t@* \t '",
+    "nocite: ' \t﻿@*\t '",
+    "nocite: ' \t@*﻿\t '",
+    "nocite: ' \t\u000b@*\t '",
+    "nocite: ' \t@*\u000b\t '",
+    "nocite: ' \t\f@*\t '",
+    "nocite: ' \t@*\f\t '",
+    "nocite: ' \t@*\t '",
+    "nocite: ' \t@*\t '",
+    "nocite: ' \t@*, @A\t '",
+    "nocite: ' \t@A, @*\t '",
+    "nocite: ' \t@*; @A\t '",
+    "nocite: ' \t[@*]\t '",
+    "nocite: ' \t[@A; @*]\t '",
+    "nocite: ' \t-@*\t '",
+    "nocite: ' \t@* @A\t '",
+    "nocite: ' \t@**\t '",
+    "nocite: ' \t@@*\t '",
+    "nocite: ' \t@ *\t '",
+    "nocite: ' \t@*# comment\t '",
+    "nocite: ' \t\\@*\t '",
+    "nocite: ' \t\\u0040*\t '",
+    "nocite: ' \t@\\u002a\t '",
+    "nocite: ' \t\\t@*\t '",
+    "nocite: ' \t''@*''\t '",
+    "nocite: ' \t@*\n \t '",
+    "nocite: ' \t@*\r\n \t '",
+    "nocite: ' \t@*\t '\ttrailing",
+    "nocite: ' \t@*\t ' # no suffix separator",
+    "nocite: ' \t@*\t '\ncustom:\n  child: value",
+    "nocite: ' \t@*\t '\ncustom: [value]",
+    "nocite: ' \t@*\t '\ncustom: &alias value",
+    "nocite: ' \t@*\t '\ncustom: *alias",
+    "nocite: ' \t@*\t '\ncustom: !tag value",
+    "nocite: ' \t@*\t '\ncustom: |\n  value",
+    "nocite: ' \t@*\t '\ncustom: # empty",
+    "nocite: ' \t@*\t '\ncustom: \"\\q\"",
+    "nocite: ' \t@*\t '\ncustom: \"unterminated",
+    "nocite: ' \t@*\t '\nnocite: '@A'",
+    "nocite: \" \t @*\t \"",
+    "nocite: \" \t@* \t \"",
+    "nocite: \" \t @*\t \"",
+    "nocite: \" \t@* \t \"",
+    "nocite: \" \t @*\t \"",
+    "nocite: \" \t@* \t \"",
+    "nocite: \" \t @*\t \"",
+    "nocite: \" \t@* \t \"",
+    "nocite: \" \t﻿@*\t \"",
+    "nocite: \" \t@*﻿\t \"",
+    "nocite: \" \t\u000b@*\t \"",
+    "nocite: \" \t@*\u000b\t \"",
+    "nocite: \" \t\f@*\t \"",
+    "nocite: \" \t@*\f\t \"",
+    "nocite: \" \t@*\t \"",
+    "nocite: \" \t@*\t \"",
+    "nocite: \" \t@*, @A\t \"",
+    "nocite: \" \t@A, @*\t \"",
+    "nocite: \" \t@*; @A\t \"",
+    "nocite: \" \t[@*]\t \"",
+    "nocite: \" \t[@A; @*]\t \"",
+    "nocite: \" \t-@*\t \"",
+    "nocite: \" \t@* @A\t \"",
+    "nocite: \" \t@**\t \"",
+    "nocite: \" \t@@*\t \"",
+    "nocite: \" \t@ *\t \"",
+    "nocite: \" \t@*# comment\t \"",
+    "nocite: \" \t\\@*\t \"",
+    "nocite: \" \t\\u0040*\t \"",
+    "nocite: \" \t@\\u002a\t \"",
+    "nocite: \" \t\\t@*\t \"",
+    "nocite: \" \t''@*''\t \"",
+    "nocite: \" \t@*\n \t \"",
+    "nocite: \" \t@*\r\n \t \"",
+    "nocite: \" \t@*\t \"\ttrailing",
+    "nocite: \" \t@*\t \" # no suffix separator",
+    "nocite: \" \t@*\t \"\ncustom:\n  child: value",
+    "nocite: \" \t@*\t \"\ncustom: [value]",
+    "nocite: \" \t@*\t \"\ncustom: &alias value",
+    "nocite: \" \t@*\t \"\ncustom: *alias",
+    "nocite: \" \t@*\t \"\ncustom: !tag value",
+    "nocite: \" \t@*\t \"\ncustom: |\n  value",
+    "nocite: \" \t@*\t \"\ncustom: # empty",
+    "nocite: \" \t@*\t \"\ncustom: \"\\q\"",
+    "nocite: \" \t@*\t \"\ncustom: \"unterminated",
+    "nocite: \" \t@*\t \"\nnocite: '@A'",
+    "nocite: \t@*",
+    "nocite: [' @* ']",
+    "nocite: &alias ' @* '",
+    "nocite: ' \t@*\t ",
+    "nocite: \" \t@*\t "
+  ],
+  "bracketPaddingSingleInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ \t@A ; -@B; @A ]\t ' \t# [@unknown] @* \r\n...\r\nBody [@B]. Code `[@unknown]`.",
+  "bracketPaddingSingleExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ \t@B ; -@Longer; @B ]\t ' \t# [@unknown] @* \r\n...\r\nBody [@Longer]. Code `[@unknown]`.",
+  "bracketPaddingSingleReviewInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ \t@A ; -@unknown; @B ]\t ' \t# [@unknown] @* \r\n...\r\nBody [@B]. Code `[@unknown]`.",
+  "bracketPaddingSingleReviewExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t' \t[ \t@B ; -@unknown; @Longer ]\t ' \t# [@unknown] @* \r\n...\r\nBody [@Longer]. Code `[@unknown]`.",
+  "bracketPaddingDoubleInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ \t@A ; -@B; @A ]\t \" \t# [@unknown] @* \r\n...\r\nBody [@B]. Code `[@unknown]`.",
+  "bracketPaddingDoubleExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ \t@B ; -@Longer; @B ]\t \" \t# [@unknown] @* \r\n...\r\nBody [@Longer]. Code `[@unknown]`.",
+  "bracketPaddingDoubleReviewInput": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ \t@A ; -@unknown; @B ]\t \" \t# [@unknown] @* \r\n...\r\nBody [@B]. Code `[@unknown]`.",
+  "bracketPaddingDoubleReviewExpected": "﻿---\r\ntitle:\t中文 🐝 Study Notes # [@unknown] opaque\r\nnocite:\t\" \t[ \t@B ; -@unknown; @Longer ]\t \" \t# [@unknown] @* \r\n...\r\nBody [@Longer]. Code `[@unknown]`.",
+  "bracketPaddingInvalidFields": [
+    "nocite:\t' [@A; -@B]'",
+    "nocite:\t'[@A; -@B] '",
+    "nocite:\t' \t [@A; -@B]\t '",
+    "nocite:\t' [@A; -@B]'",
+    "nocite:\t'[@A; -@B] '",
+    "nocite:\t' \t [@A; -@B]\t '",
+    "nocite:\t' [@A; -@B]'",
+    "nocite:\t'[@A; -@B] '",
+    "nocite:\t' \t [@A; -@B]\t '",
+    "nocite:\t' [@A; -@B]'",
+    "nocite:\t'[@A; -@B] '",
+    "nocite:\t' \t [@A; -@B]\t '",
+    "nocite:\t'﻿[@A; -@B]'",
+    "nocite:\t'[@A; -@B]﻿'",
+    "nocite:\t' \t﻿[@A; -@B]\t '",
+    "nocite:\t'\u000b[@A; -@B]'",
+    "nocite:\t'[@A; -@B]\u000b'",
+    "nocite:\t' \t\u000b[@A; -@B]\t '",
+    "nocite:\t'\f[@A; -@B]'",
+    "nocite:\t'[@A; -@B]\f'",
+    "nocite:\t' \t\f[@A; -@B]\t '",
+    "nocite:\t'[@A; -@B]'",
+    "nocite:\t'[@A; -@B]'",
+    "nocite:\t' \t[@A; -@B]\t '",
+    "nocite:\t' \t[see @A; -@B]\t '",
+    "nocite:\t' \t[@A, p. 2; -@B]\t '",
+    "nocite:\t' \t[@A; prose]\t '",
+    "nocite:\t' \t[@A; @B, @unknown]\t '",
+    "nocite:\t' \t[@A; @B--part]\t '",
+    "nocite:\t' \t[@A; @B.]\t '",
+    "nocite:\t' \t[@A; @Bé]\t '",
+    "nocite:\t' \t[@A; @{B}]\t '",
+    "nocite:\t' \t[@A; [@B]]\t '",
+    "nocite:\t' \t[@A;; @B]\t '",
+    "nocite:\t' \t[@A;]\t '",
+    "nocite:\t' \t[]\t '",
+    "nocite:\t' \t[@A, @B]\t '",
+    "nocite:\t' \t[@A @B]\t '",
+    "nocite:\t' \t[@A; - @B]\t '",
+    "nocite:\t' \t[@A; @B\t '",
+    "nocite:\t' \t@A; @B]\t '",
+    "nocite:\t' \t[@A] [@B]\t '",
+    "nocite:\t'x [@A] '",
+    "nocite:\t' [@A] x'",
+    "nocite:\t' [@A], @B '",
+    "nocite:\t' [@A]\n '",
+    "nocite:\t' [@A]\r\n '",
+    "nocite:\t' [@A;\n @B] '",
+    "nocite:\t' [@*] '",
+    "nocite:\t' [@A; @*] '",
+    "nocite:\t' [@*; @A] '",
+    "nocite:\t' [-@*] '",
+    "nocite:\t' [@**] '",
+    "nocite:\t' [@A; @**] '",
+    "nocite:\t' [\\@A; @B] '",
+    "nocite:\t' [@A; \\u0040B] '",
+    "nocite:\t' [@A; @\\u0042] '",
+    "nocite:\t' [@A; ''@B''] '",
+    "nocite:\t\" [@A; -@B]\"",
+    "nocite:\t\"[@A; -@B] \"",
+    "nocite:\t\" \t [@A; -@B]\t \"",
+    "nocite:\t\" [@A; -@B]\"",
+    "nocite:\t\"[@A; -@B] \"",
+    "nocite:\t\" \t [@A; -@B]\t \"",
+    "nocite:\t\" [@A; -@B]\"",
+    "nocite:\t\"[@A; -@B] \"",
+    "nocite:\t\" \t [@A; -@B]\t \"",
+    "nocite:\t\" [@A; -@B]\"",
+    "nocite:\t\"[@A; -@B] \"",
+    "nocite:\t\" \t [@A; -@B]\t \"",
+    "nocite:\t\"﻿[@A; -@B]\"",
+    "nocite:\t\"[@A; -@B]﻿\"",
+    "nocite:\t\" \t﻿[@A; -@B]\t \"",
+    "nocite:\t\"\u000b[@A; -@B]\"",
+    "nocite:\t\"[@A; -@B]\u000b\"",
+    "nocite:\t\" \t\u000b[@A; -@B]\t \"",
+    "nocite:\t\"\f[@A; -@B]\"",
+    "nocite:\t\"[@A; -@B]\f\"",
+    "nocite:\t\" \t\f[@A; -@B]\t \"",
+    "nocite:\t\"[@A; -@B]\"",
+    "nocite:\t\"[@A; -@B]\"",
+    "nocite:\t\" \t[@A; -@B]\t \"",
+    "nocite:\t\" \t[see @A; -@B]\t \"",
+    "nocite:\t\" \t[@A, p. 2; -@B]\t \"",
+    "nocite:\t\" \t[@A; prose]\t \"",
+    "nocite:\t\" \t[@A; @B, @unknown]\t \"",
+    "nocite:\t\" \t[@A; @B--part]\t \"",
+    "nocite:\t\" \t[@A; @B.]\t \"",
+    "nocite:\t\" \t[@A; @Bé]\t \"",
+    "nocite:\t\" \t[@A; @{B}]\t \"",
+    "nocite:\t\" \t[@A; [@B]]\t \"",
+    "nocite:\t\" \t[@A;; @B]\t \"",
+    "nocite:\t\" \t[@A;]\t \"",
+    "nocite:\t\" \t[]\t \"",
+    "nocite:\t\" \t[@A, @B]\t \"",
+    "nocite:\t\" \t[@A @B]\t \"",
+    "nocite:\t\" \t[@A; - @B]\t \"",
+    "nocite:\t\" \t[@A; @B\t \"",
+    "nocite:\t\" \t@A; @B]\t \"",
+    "nocite:\t\" \t[@A] [@B]\t \"",
+    "nocite:\t\"x [@A] \"",
+    "nocite:\t\" [@A] x\"",
+    "nocite:\t\" [@A], @B \"",
+    "nocite:\t\" [@A]\n \"",
+    "nocite:\t\" [@A]\r\n \"",
+    "nocite:\t\" [@A;\n @B] \"",
+    "nocite:\t\" [@*] \"",
+    "nocite:\t\" [@A; @*] \"",
+    "nocite:\t\" [@*; @A] \"",
+    "nocite:\t\" [-@*] \"",
+    "nocite:\t\" [@**] \"",
+    "nocite:\t\" [@A; @**] \"",
+    "nocite:\t\" [\\@A; @B] \"",
+    "nocite:\t\" [@A; \\u0040B] \"",
+    "nocite:\t\" [@A; @\\u0042] \"",
+    "nocite:\t\" [@A; ''@B''] \"",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t# empty",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t[value]",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t{child: value}",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t&alias value",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t*alias",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t!tag value",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t|\n  value",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\tvalue\n  child: value",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\tchild: value",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t\"unterminated",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t'unterminated",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\t\"\\q\"",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\nnocite:\t'@A'",
+    "nocite:\t' \t[@A; -@B]\t ' # opaque\ncustom:\tvalue\ncustom:\tother"
+  ]
+}

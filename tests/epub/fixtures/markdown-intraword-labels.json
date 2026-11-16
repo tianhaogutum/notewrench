@@ -1,0 +1,390 @@
+{
+  "contract": "Original contracts. Only complete raw underscore runs between immediate source characters satisfying Python str.isalnum() are plain label text (Unicode letters and numbers, including decimal/superscript/Roman/fraction numerics); any run width. No normalization or entity/escape decoding before recognition. Combining marks, joiners, punctuation, whitespace, boundaries and escape/entity spellings do not qualify. Preserve all 32 ASCII escapes, bracket/backslash parity, soft breaks, source/entity safety, hard-break and nested/malformed atomic fallback, opaque destinations/URI filtering. Ordinary intraword underscores are also plain text; emphasis interiors remain literal.",
+  "rendered": [
+    {
+      "source": "[read_notes](https://example.invalid/notes) and **saved**.",
+      "html": "<p><a href=\"https://example.invalid/notes\">read_notes</a> and <strong>saved</strong>.</p>"
+    },
+    {
+      "source": "[read__notes](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">read__notes</a></p>"
+    },
+    {
+      "source": "[read___notes](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">read___notes</a></p>"
+    },
+    {
+      "source": "[a________b](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a________b</a></p>"
+    },
+    {
+      "source": "[a_b_c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b_c__d</a></p>"
+    },
+    {
+      "source": "[1_2](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">1_2</a></p>"
+    },
+    {
+      "source": "[12__34](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">12__34</a></p>"
+    },
+    {
+      "source": "[é_ñ](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">é_ñ</a></p>"
+    },
+    {
+      "source": "[中文__笔记](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">中文__笔记</a></p>"
+    },
+    {
+      "source": "[字_٣](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">字_٣</a></p>"
+    },
+    {
+      "source": "[٣__४](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">٣__४</a></p>"
+    },
+    {
+      "source": "[𝟘_𝟙](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">𝟘_𝟙</a></p>"
+    },
+    {
+      "source": "[α_Ж](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">α_Ж</a></p>"
+    },
+    {
+      "source": "[²_³](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">²_³</a></p>"
+    },
+    {
+      "source": "[Ⅳ_Ⅴ](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">Ⅳ_Ⅴ</a></p>"
+    },
+    {
+      "source": "[½_¼](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">½_¼</a></p>"
+    },
+    {
+      "source": "[a_b\nc__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\nc__d</a></p>"
+    },
+    {
+      "source": "[a_b\r\nc__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\nc__d</a></p>"
+    },
+    {
+      "source": "[a_b\rc__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\nc__d</a></p>"
+    },
+    {
+      "source": "[\na_b](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">\na_b</a></p>"
+    },
+    {
+      "source": "[a_b\n](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\n</a></p>"
+    },
+    {
+      "source": "[a_b \\*stars\\*](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b *stars*</a></p>"
+    },
+    {
+      "source": "[a_b \\_edges\\_](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b _edges_</a></p>"
+    },
+    {
+      "source": "[a_b \\]tail](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ]tail</a></p>"
+    },
+    {
+      "source": "[a_b\\\\](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\\</a></p>"
+    },
+    {
+      "source": "[a_b\\\\\\]tail](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\\]tail</a></p>"
+    },
+    {
+      "source": "[a_b\\q](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\\q</a></p>"
+    },
+    {
+      "source": "[a_b\\\\\nc_d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b\\\nc_d</a></p>"
+    },
+    {
+      "source": "[a_b &amp; c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &amp; c__d</a></p>"
+    },
+    {
+      "source": "[a_b &#95; &#42; &#91; &#93; &#96;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b _ * [ ] `</a></p>"
+    },
+    {
+      "source": "[a&#95;b](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b</a></p>"
+    },
+    {
+      "source": "[&#97;&#95;&#98;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b</a></p>"
+    },
+    {
+      "source": "[a_b &lt;script&gt;x&lt;/script&gt;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &lt;script&gt;x&lt;/script&gt;</a></p>"
+    },
+    {
+      "source": "[a_b \\<script\\>x\\</script\\>](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &lt;script&gt;x&lt;/script&gt;</a></p>"
+    },
+    {
+      "source": "[a_b \\&amp; &amp;](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &amp;amp; &amp;</a></p>"
+    },
+    {
+      "source": "[a_b \\! c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ! c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\\" c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &quot; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\# c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b # c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\$ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b $ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\% c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b % c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\& c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &amp; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\' c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &#x27; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\( c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ( c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\) c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ) c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\* c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b * c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\+ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b + c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\, c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b , c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\- c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b - c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\. c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b . c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\/ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b / c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\: c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b : c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\; c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\< c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &lt; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\= c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b = c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\> c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b &gt; c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\? c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ? c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\@ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b @ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\[ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b [ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\\\ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b \\ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\] c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ] c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\^ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ^ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\_ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b _ c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\` c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ` c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\{ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b { c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\| c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b | c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\} c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b } c__d</a></p>"
+    },
+    {
+      "source": "[a_b \\~ c__d](https://example.invalid/notes)",
+      "html": "<p><a href=\"https://example.invalid/notes\">a_b ~ c__d</a></p>"
+    },
+    {
+      "source": "[a_b](https://example.invalid/a_b*c?x=1&amp;y=2)",
+      "html": "<p><a href=\"https://example.invalid/a_b*c?x=1&amp;y=2\">a_b</a></p>"
+    },
+    {
+      "source": "[a_b](<https://example.invalid/a_b>)",
+      "html": "<p><a href=\"https://example.invalid/a_b\">a_b</a></p>"
+    },
+    {
+      "source": "[a_b](jav&#x61;script:evil)",
+      "html": "<p><a>a_b</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "javascript:evil"
+        }
+      ]
+    },
+    {
+      "source": "[a_b](file:///etc/passwd)",
+      "html": "<p><a>a_b</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "file:///etc/passwd"
+        }
+      ]
+    },
+    {
+      "source": "[a_b](https://example.invalid/a\\_b)",
+      "html": "<p><a>a_b</a></p>",
+      "events": [
+        {
+          "code": "removed_unsafe_uri",
+          "element": "a",
+          "attribute": "href",
+          "value": "https://example.invalid/a\\_b"
+        }
+      ]
+    },
+    {
+      "source": "[a_b](#absent)",
+      "html": "<p><a>a_b</a></p>",
+      "events": [
+        {
+          "code": "removed_broken_fragment",
+          "value": "#absent"
+        }
+      ]
+    },
+    {
+      "source": "read_notes and **saved**.",
+      "html": "<p>read_notes and <strong>saved</strong>.</p>"
+    }
+  ],
+  "literal": [
+    "**before** &amp; [_word_](https://example.invalid/notes)",
+    "**before** &amp; [__word__](https://example.invalid/notes)",
+    "**before** &amp; [_a](https://example.invalid/notes)",
+    "**before** &amp; [a_](https://example.invalid/notes)",
+    "**before** &amp; [___](https://example.invalid/notes)",
+    "**before** &amp; [a___](https://example.invalid/notes)",
+    "**before** &amp; [___b](https://example.invalid/notes)",
+    "**before** &amp; [a_ b](https://example.invalid/notes)",
+    "**before** &amp; [a _b](https://example.invalid/notes)",
+    "**before** &amp; [a_!b](https://example.invalid/notes)",
+    "**before** &amp; [a!_b](https://example.invalid/notes)",
+    "**before** &amp; [a_。字](https://example.invalid/notes)",
+    "**before** &amp; [a。_字](https://example.invalid/notes)",
+    "**before** &amp; [a_\nb](https://example.invalid/notes)",
+    "**before** &amp; [a\n_b](https://example.invalid/notes)",
+    "**before** &amp; [a_\tb](https://example.invalid/notes)",
+    "**before** &amp; [a\t_b](https://example.invalid/notes)",
+    "**before** &amp; [a_ b](https://example.invalid/notes)",
+    "**before** &amp; [a _b](https://example.invalid/notes)",
+    "**before** &amp; [a_́b](https://example.invalid/notes)",
+    "**before** &amp; [á_b](https://example.invalid/notes)",
+    "**before** &amp; [a_🙂b](https://example.invalid/notes)",
+    "**before** &amp; [a🙂_b](https://example.invalid/notes)",
+    "**before** &amp; [a_‍b](https://example.invalid/notes)",
+    "**before** &amp; [a‍_b](https://example.invalid/notes)",
+    "**before** &amp; [a*_b](https://example.invalid/notes)",
+    "**before** &amp; [a_b*](https://example.invalid/notes)",
+    "**before** &amp; [a__b_c_](https://example.invalid/notes)",
+    "**before** &amp; [a\\__b](https://example.invalid/notes)",
+    "**before** &amp; [a_\\_b](https://example.invalid/notes)",
+    "**before** &amp; [&#97;_b](https://example.invalid/notes)",
+    "**before** &amp; [a_&#98;](https://example.invalid/notes)",
+    "**before** &amp; [a&#95;_b](https://example.invalid/notes)",
+    "**before** &amp; [a_&#95;b](https://example.invalid/notes)",
+    "**before** &amp; [a\\&lowbar;_b](https://example.invalid/notes)",
+    "**before** &amp; [a_b [nested]](https://example.invalid/notes)",
+    "**before** &amp; [a_b `code`](https://example.invalid/notes)",
+    "**before** &amp; [a_b *em*](https://example.invalid/notes)",
+    "**before** &amp; [a_b <i>x</i>](https://example.invalid/notes)",
+    "**before** &amp; [a_b\n<raw>](https://example.invalid/notes)",
+    "**before** &amp; [a_b\\\nc_d](https://example.invalid/notes)",
+    "**before** &amp; [a_b  \nc_d](https://example.invalid/notes)",
+    "**before** &amp; [a_b\\\\\\\nc_d](https://example.invalid/notes)",
+    "**before** &amp; [a_b] (url)",
+    "**before** &amp; [a_b][ref]",
+    "**before** &amp; [a_b](https://example.invalid \"title\")",
+    "**before** &amp; [a_b](url(with-parens))",
+    "**before** &amp; [a_b](<https://example.invalid)",
+    "**before** &amp; [a_b](https://example.invalid",
+    "**before** &amp; [a_b](https://example.invalid/\nnext)",
+    "**before** &amp; **[a_b](https://example.invalid/notes)**",
+    "[a_b](https://example.invalid/notes) and **unclosed",
+    "[a_b](https://example.invalid/notes) ![image](url)",
+    "[a_b](https://example.invalid/notes) <raw>",
+    "[a_b](https://example.invalid/notes)\\\nnext",
+    "[a_b](https://example.invalid/notes)  \nnext",
+    "**read_notes**"
+  ]
+}

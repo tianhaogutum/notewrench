@@ -1,0 +1,8 @@
+# Joplin fixtures intentionally contain mixed CRLF/LF and empty "key: " values.
+# Preserve exact input bytes; only these fixtures allow end-of-line whitespace.
+examples/joplin-dupes/raw/*.md -text whitespace=cr-at-eol,-blank-at-eol
+examples/joplin-dupes/synthetic.jex -text
+examples/joplin-logseq/synthetic.jex -text
+# Binary fixtures (SQLite snapshots, images): never normalize.
+*.sqlite binary
+*.jex binary

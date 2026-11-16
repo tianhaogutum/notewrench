@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "reference": "https://saved.invalid/landscape.jpeg",
+      "file": "landscape.jpg",
+      "sha256": "d2f66f7d68939c9fe2a54536dc8daf286b2f68106d396bfe7d5ab5d506212076"
+    },
+    {
+      "reference": "local-photo",
+      "file": "landscape.jpg",
+      "sha256": "d2f66f7d68939c9fe2a54536dc8daf286b2f68106d396bfe7d5ab5d506212076"
+    }
+  ]
+}
