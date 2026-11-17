@@ -1,7 +1,8 @@
 """``notewrench doctor``: one read-only health check across PKM exports and libraries.
 
 Detects what each given path is (Zotero snapshot + storage, Joplin JEX/raw export,
-Calibre library, Karakeep/Wallabag export, CSL-JSON bibliography + Markdown) and runs
+Calibre library, Karakeep/Wallabag export, browser/linkding bookmark HTML, CSL-JSON
+bibliography + Markdown) and runs
 the existing read-only analyses of the other notewrench commands on it. Nothing is
 written. AGPL-3.0-only.
 """

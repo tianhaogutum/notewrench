@@ -8,6 +8,11 @@ exact URL**, then edits only supported Pandoc bracket citation key spans. The de
 is a read-only JSON plan with the mapping, conflicts, unresolved keys and unified diffs;
 output copies always go to a new directory, never over your sources.
 
+**Which command?** Use `citekeys` when your bibliography is a CSL-JSON export and you
+want rewritten copies of the Markdown files. If you keep BibTeX/BibLaTeX exports or
+Better BibTeX JSON snapshots with stable item IDs and want a read-only review bundle and
+a unified patch to apply yourself, use [`notewrench bibtex-keys`](bibtex-keys.md) instead.
+
 Formerly the standalone `citekey-rekey` tool (Node.js); this is a byte-compatible
 Python port (see [Compatibility with citekey-rekey](#compatibility-with-citekey-rekey)).
 Python 3.11+, standard library only. No Zotero installation, account, network, Pandoc

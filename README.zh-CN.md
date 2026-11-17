@@ -7,7 +7,7 @@
 
 <p align="center">
   <strong>给 Zotero、Joplin、Calibre、Logseq 和 Wallabag 资料库去重、体检、迁移：全程离线，一个文件都不删。</strong><br>
-  只依赖 Python 标准库的命令行工具。<code>notewrench doctor</code> 一次只读扫描全部资料，并告诉你每个问题该用哪条命令修。
+  一个命令行工具，核心命令只依赖 Python 标准库。<code>notewrench doctor</code> 一次只读扫描全部资料，并告诉你每个问题该用哪条命令修。
 </p>
 
 <p align="center">
@@ -57,11 +57,14 @@ uvx notewrench doctor examples/doctor
 
 | 应用 | notewrench 读取 | `doctor` 报告 | 修复或迁移用 |
 | --- | --- | --- | --- |
-| **Zotero** | 已关闭的 `zotero.sqlite` 副本 + `storage/`；CSL-JSON 导出 | 缺失的附件文件、字节完全相同的重复文件、孤立的 storage 文件夹（Linux） | `zotero-attachments`、`zotero-logseq` |
+| **Zotero** | 已关闭的 `zotero.sqlite` 副本 + `storage/`；CSL-JSON、Better BibTeX JSON 和 Zotero RDF 导出 | 缺失的附件文件、字节完全相同的重复文件、孤立的 storage 文件夹（Linux） | `zotero-attachments`、`zotero-dupes`、`zotero-logseq` |
 | **Joplin** | JEX 导出和 RAW 导出文件夹 | 完全重复的笔记、多份导出之间的 ID 冲突、无法比对的笔记 | `joplin-dupes`、`joplin-logseq` |
 | **Calibre** | 已关闭的书库（`metadata.db`） | 重复图书（ISBN、规范化书名和作者）、无效 ISBN、缺作者 | `calibre-dupes` |
 | **Karakeep / Wallabag** | Karakeep JSON 和 Wallabag v2 导出 | 单份导出内及多份导出之间的重复书签、无效记录 | `links`、`archive`、`epub`、`wallabag-notes` |
-| **Pandoc / Better BibTeX** | CSL-JSON 文献库 + Markdown | 不在任何文献库中的 citekey、两次导出之间被改名的 key、不支持的引用写法 | `citekeys` |
+| **浏览器 / linkding** | Netscape HTML 书签导出（Firefox、Chrome、Safari、linkding） | 单份导出内及多份导出之间的重复书签、笔记或标签不一致的重复组（需 `browser-bookmarks` extra） | `browser-bookmarks` |
+| **网页存档** | 你已保存的 SingleFile、ArchiveBox、nb、WARC 和 MHTML 副本 | | `relink` |
+| **Pandoc / Better BibTeX** | CSL-JSON、BibTeX/BibLaTeX 和 Better BibTeX JSON 文献库 + Markdown | 不在任何文献库中的 citekey、两次 CSL-JSON 导出之间被改名的 key、不支持的引用写法 | `citekeys`、`bibtex-keys` |
+| **Anki** | “纯文本笔记”导出（课程旧版与新版 + 学生的牌组） | | `anki-merge` |
 | **Logseq** | 已有的 Markdown 图谱（作为目标） | | `zotero-logseq`、`joplin-logseq`、`wallabag-notes` |
 
 ## 全部命令
@@ -72,13 +75,20 @@ uvx notewrench doctor examples/doctor
 | **迁移与同步笔记** | `zotero-logseq` | 把 Zotero CSL-JSON 导出同步成 Logseq 页面；书目更新不会碰你自己写的笔记 | [zotero-logseq](docs/zotero-logseq.md) |
 | | `joplin-logseq` | 把 Joplin JEX 导出转换成新的 Logseq Markdown 图谱，附审计/损失报告 | [joplin-logseq](docs/joplin-logseq.md) |
 | | `wallabag-notes` | 把 Wallabag 高亮和批注导出为 Markdown、Logseq 块和 CSV，之后可持续更新 | [wallabag-notes](docs/wallabag-notes.md) |
+| | `anki-merge` ¹ | 预检 Anki 课程更新：按课程 ID 合并旧版教师、新版教师和学生的笔记文本导出，冲突留待审核 | [anki-merge](docs/anki-merge.md) |
 | **稍后读归档** | `archive` | 把 Wallabag/Karakeep 缓存的文章救成静态 HTML 归档；把 Karakeep 导出转成 Wallabag JSON | [archive](docs/archive.md) |
 | | `epub` | 把 Wallabag/Karakeep 缓存的文章打包成经过校验的 EPUB 3，附来源报告 | [epub](docs/epub.md) |
+| | `relink` ¹ | 为 Markdown 引用找到你本地已有的网页存档副本（SingleFile、ArchiveBox、nb、WARC、MHTML），只为你选中的链接生成补丁 | [relink](docs/relink.md) |
 | **查重** | `links` | 在 Karakeep 和 Wallabag 导出之间找重复书签，并生成待审核的合并计划 | [links](docs/links.md) |
+| | `browser-bookmarks` ¹ | 在浏览器与 linkding 的 HTML 书签导出之间查重，逐组决定合并或全部保留，生成可导入的单个文件，并保留每条笔记和标签的凭据 | [browser-bookmarks](docs/browser-bookmarks.md) |
 | | `joplin-dupes` | 审查 Joplin 导出中的重复笔记，按你批准的决定写出去重后的新 JEX | [joplin-dupes](docs/joplin-dupes.md) |
 | | `calibre-dupes` | 在一个或两个 Calibre 书库中找重复图书，并规划保留哪些格式 | [calibre-dupes](docs/calibre-dupes.md) |
+| | `zotero-dupes` ¹ | 比对个人 Zotero 文库与群组文库的导出，逐对审查重复条目，只导出你确认的对应关系 | [zotero-dupes](docs/zotero-dupes.md) |
 | **引用与附件** | `citekeys` | CSL-JSON 里的 key 变了之后，按 DOI 或 URL 改写 Markdown 中的 Pandoc citekey | [citekeys](docs/citekeys.md) |
+| | `bibtex-keys` ¹ | 按稳定条目 ID 比对两份 BibTeX/BibLaTeX 或 Better BibTeX JSON 快照，预览引用键变更对笔记目录的影响，生成审查包和由你自行应用的补丁 | [bibtex-keys](docs/bibtex-keys.md) |
 | | `zotero-attachments` | 审计 Zotero 快照中重复、缺失和孤立的附件文件，并对比两次审计 | [zotero-attachments](docs/zotero-attachments.md) |
+
+¹ 依赖第三方库：先安装同名的 extra，例如 `pip install 'notewrench[relink]'`。未安装时命令会打印这条提示。
 
 `notewrench <命令> --help` 列出全部选项。每个命令在 `examples/<命令>/` 下都有可直接运行的合成输入，下面的命令需在克隆的仓库里运行。
 
@@ -90,6 +100,8 @@ uvx notewrench doctor examples/doctor
 notewrench zotero-logseq examples/zotero-logseq/library.json --graph ./my-graph --dry-run
 notewrench joplin-logseq examples/joplin-logseq/synthetic.jex my-new-logseq-graph   # 新图谱 + report.json
 notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output notes
+notewrench anki-merge examples/anki-merge/old.txt examples/anki-merge/new.txt examples/anki-merge/student.txt \
+  --id CourseID --fields Front Back CourseID --student-fields Front Back CourseID Personal --out anki-review
 ```
 
 ### 稍后读归档
@@ -98,21 +110,29 @@ notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output note
 notewrench archive rescue examples/archive/wallabag-v2.json -o archive               # Linux
 notewrench epub build examples/epub/wallabag.json --title "Weekend reading" -o reading.epub --report report.json
 notewrench epub validate reading.epub
+mkdir -p relink-demo && cp examples/relink/note.md relink-demo/
+notewrench relink index examples/relink/archive --db relink-demo/archive.sqlite
+notewrench relink scan relink-demo/note.md --db relink-demo/archive.sqlite --out relink-demo/plan.json --review relink-demo/review.md
 ```
 
 ### 查重
 
 ```sh
 notewrench links --out review examples/links/karakeep.json examples/links/wallabag-v2.json
+notewrench browser-bookmarks scan --html examples/browser-bookmarks/firefox.html examples/browser-bookmarks/chrome.html \
+  --linkding examples/browser-bookmarks/linkding.html --out .demo/bookmarks/review
 notewrench joplin-dupes examples/joplin-dupes/synthetic.jex --format markdown
 python3 examples/calibre-dupes/synthetic.py sample .demo
 notewrench calibre-dupes .demo/library-a .demo/library-b -o .demo/clusters.json
+notewrench zotero-dupes compare --library personal=examples/zotero-dupes/personal.json \
+  --library group=examples/zotero-dupes/group.json --output zotero-review
 ```
 
 ### 引用与附件
 
 ```sh
 notewrench citekeys --old examples/citekeys/old.json --new examples/citekeys/new.json examples/citekeys/paper.md
+notewrench bibtex-keys plan examples/bibtex-keys/old.bib examples/bibtex-keys/new.bib examples/bibtex-keys/notes --out bibtex-review
 notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/zotero.sqlite \
   --storage examples/zotero-attachments/synthetic/storage --format markdown            # Linux
 ```
@@ -120,7 +140,7 @@ notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/z
 ## 安全性
 
 - **离线、无需账号、没有遥测。** 没有任何命令会联网或调用应用 API，所有操作都针对你导出或复制出来的文件。
-- **默认只读。** `doctor`、`zotero-attachments` 和 `calibre-dupes` 只读不写；`joplin-dupes` 和 `citekeys`（默认 `--dry-run`）只打印审查结果；`links --dry-run`、`zotero-logseq --dry-run`、`joplin-logseq --dry-run` 和 `wallabag-notes --dry-run` 只展示将要写入的内容。
+- **默认只读。** `doctor`、`zotero-attachments` 和 `calibre-dupes` 只读不写；`joplin-dupes` 和 `citekeys`（默认 `--dry-run`）只打印审查结果；`links --dry-run`、`zotero-logseq --dry-run`、`joplin-logseq --dry-run` 和 `wallabag-notes --dry-run` 只展示将要写入的内容。`relink` 和 `bibtex-keys` 生成补丁，由你审查后用 `git apply` 应用；`anki-merge`、`browser-bookmarks` 和 `zotero-dupes` 写出审查包，只有你确认的条目才会进入导入文件。
 - **从不修改正在使用的应用数据库。** 不会写入 `zotero.sqlite`、Calibre 的 `metadata.db` 或 Joplin 的配置目录。Zotero 和 Calibre 的读取器以只读方式打开数据库；如果旁边有 `-wal`/`-journal` 文件就直接拒绝。请先关闭应用，或者用副本。
 - **写新文件，不覆盖。** 输出总是写到新文件或新目录，已存在的路径会被拒绝。重复项只有在你于决定文件中批准后才会合并：`joplin-dupes` 写出一个供你导入的 *新* JEX，`links --wallabag-export` 写出一个 *新* 的 Wallabag 导出。
 - **你自己的笔记归你。** `zotero-logseq` 只改写每个 Logseq 页面里它自己管理、带哈希校验的区域，从不删除页面；`wallabag-notes --update` 只改写它管理的文件，发现你改过就拒绝。
@@ -133,15 +153,17 @@ notewrench 处理的是导出文件和已关闭的副本，在应用之外运行
 | 你在用 | 它能做 | notewrench 补上的 |
 | --- | --- | --- |
 | Zotero 的 **重复条目** 面板 | 在运行中的应用里按元数据合并重复 *条目* | `zotero-attachments` 审计的是 *文件*：字节相同的附件、缺失文件和孤立的 `storage/` 文件夹，基于已关闭的副本，输出 JSON 证据，并支持前后对比 |
-| **Better BibTeX** | 生成稳定的 citekey，自动更新 CSL-JSON/BibTeX 导出 | key 变了之后，`citekeys` 按 DOI 或 URL 改写 Markdown 里已有的 `[@key]` 引用；`doctor` 找出不在任何导出里的 citekey |
+| Zotero **群组文库** | 共享文库，每个文库都有自己的条目副本 | `zotero-dupes` 比对个人文库与群组文库的导出（Zotero 的重复检测不跨文库），只导出你确认的配对 |
+| **Better BibTeX** | 生成稳定的 citekey，自动更新 CSL-JSON/BibTeX 导出 | key 变了之后，`citekeys` 按 DOI 或 URL 改写 Markdown 里已有的 `[@key]` 引用；`bibtex-keys` 根据两份 BibTeX 或 BBT JSON 快照把 key 变更预览成补丁；`doctor` 找出不在任何导出里的 citekey |
 | Calibre 的 **Find Duplicates** 插件 | 在 Calibre 内交互式查重，也能与另一个书库比对 | `calibre-dupes` 可脚本化、对已关闭的书库只读，带 ISBN 校验位检查、证据等级，以及保留哪些格式的 JSON 计划；合并仍在 Calibre 里完成 |
 | Joplin 的 **导入/导出**（JEX、RAW、Markdown） | 把笔记导入导出 Joplin | `joplin-dupes` 在重新导入之前按内容和附件字节比对多份导出；`joplin-logseq` 把 JEX 转成 Logseq 图谱并附损失报告 |
 | **Logseq** 导入器和 Zotero 集成 | 导入 Roam JSON、OPML 和 Logseq 自身格式；Zotero 集成走 Zotero Web API | 从 Joplin JEX、Zotero CSL-JSON 和 Wallabag 导出离线转换，重新同步时保留你自己的笔记 |
 | **Karakeep / Wallabag** 导出 | 书签和缓存文章的 JSON（以及其他格式） | 跨两个应用查重并规范化跟踪参数，还能用缓存副本生成 HTML 归档和经过校验的 EPUB |
+| **linkding** 和浏览器导入 | 导入 Netscape HTML 书签；linkding 在同一次导入中跳过重复 URL，第二份的笔记和标签随之丢失 | `browser-bookmarks` 要求你先逐组决定，并把每条原始笔记、标签和源文件保留为凭据 |
 
 ## 平台支持
 
-Linux 和 macOS 上的 Python 3.11 到 3.14，只用标准库（没有第三方依赖）。**不支持 Windows。** 有两部分需要 Linux：`notewrench archive` 的发布与校验，以及 `zotero-attachments` 审计（`zotero-attachments compare` 在 macOS 上也能用）。在 macOS 上，`doctor` 会把 Zotero 检查标为 `SKIPPED`，其余照常运行。不少命令拒绝经由符号链接到达的路径，而 macOS 的 `/tmp` 就是符号链接，请改用家目录下的文件夹。
+Linux 和 macOS 上的 Python 3.11 到 3.14。核心命令只用标准库；`anki-merge`、`relink`、`browser-bookmarks`、`zotero-dupes` 和 `bibtex-keys` 需要同名的可选 extra（`pip install 'notewrench[<命令>]'`，或 `uvx --from 'notewrench[relink]' notewrench relink ...`）。**不支持 Windows。** 有两部分需要 Linux：`notewrench archive` 的发布与校验，以及 `zotero-attachments` 审计（`zotero-attachments compare` 在 macOS 上也能用）。在 macOS 上，`doctor` 会把 Zotero 检查标为 `SKIPPED`，其余照常运行。不少命令拒绝经由符号链接到达的路径，而 macOS 的 `/tmp` 就是符号链接，请改用家目录下的文件夹。
 
 notewrench 是独立项目，与 Zotero、Better BibTeX、Joplin、Logseq、Calibre、Wallabag 和 Karakeep 均无关联。互操作参考与致谢见 [THIRD_PARTY.md](THIRD_PARTY.md)。
 

@@ -19,6 +19,11 @@ SUBCOMMANDS = {
     "calibre-dupes": [],
     "citekeys": [],
     "zotero-attachments": ["compare"],
+    "anki-merge": [],
+    "relink": ["index", "scan", "patch", "doctor"],
+    "browser-bookmarks": ["scan", "status", "show", "review", "compat", "render", "decide", "apply", "verify"],
+    "zotero-dupes": ["compare", "finalize", "inspect", "carry-decisions", "schema"],
+    "bibtex-keys": ["plan", "verify"],
 }
 # Single-module subpackages: `python -m notewrench.<subpackage>` must route through the dispatcher.
 SUBPACKAGES = {
@@ -28,7 +33,13 @@ SUBPACKAGES = {
     "links": "notewrench.linkdedupe", "joplin-dupes": "notewrench.joplindupes",
     "calibre-dupes": "notewrench.calibredupes", "citekeys": "notewrench.citekeys",
     "zotero-attachments": "notewrench.zoteroattachments",
+    "anki-merge": "notewrench.ankimerge", "relink": "notewrench.relink",
+    "browser-bookmarks": "notewrench.browserbookmarks", "zotero-dupes": "notewrench.zoterodupes",
+    "bibtex-keys": "notewrench.bibtexkeys",
 }
+# Commands that wrap third-party libraries, with the optional extra that provides them.
+EXTRAS = {"anki-merge": "anki-merge", "relink": "relink", "browser-bookmarks": "browser-bookmarks",
+          "zotero-dupes": "zotero-dupes", "bibtex-keys": "bibtex-keys"}
 ALL_HELP = [(name, None) for name in SUBCOMMANDS] + [(name, sub) for name, subs in SUBCOMMANDS.items() for sub in subs]
 
 
@@ -67,10 +78,10 @@ def test_command_table_shape():
     groups = {group: [c.name for c in cli.COMMANDS if c.group == group] for group in cli.GROUPS}
     assert groups == {
         "Check": ["doctor"],
-        "Migrate & sync notes": ["zotero-logseq", "joplin-logseq", "wallabag-notes"],
-        "Read-later archives": ["archive", "epub"],
-        "Duplicates": ["links", "joplin-dupes", "calibre-dupes"],
-        "Citations & attachments": ["citekeys", "zotero-attachments"],
+        "Migrate & sync notes": ["zotero-logseq", "joplin-logseq", "wallabag-notes", "anki-merge"],
+        "Read-later archives": ["archive", "epub", "relink"],
+        "Duplicates": ["links", "browser-bookmarks", "joplin-dupes", "calibre-dupes", "zotero-dupes"],
+        "Citations & attachments": ["citekeys", "bibtex-keys", "zotero-attachments"],
     }
     # The health check is the entry point: listed first, in its own group.
     assert cli.GROUPS[0] == "Check" and cli.COMMANDS[0].name == "doctor"
@@ -81,6 +92,9 @@ def test_command_table_shape():
     # calibre-dupes kept its standalone name and doctor is new; every other command has a former name.
     assert set(cli.LEGACY.values()) == set(cli.BY_NAME) - {"calibre-dupes", "doctor"}
     assert not set(cli.LEGACY) & set(cli.BY_NAME)
+    assert {c.name: c.extra for c in cli.COMMANDS if c.extra} == EXTRAS
+    assert all(c.requires for c in cli.COMMANDS if c.extra)
+    assert not any(c.requires for c in cli.COMMANDS if not c.extra)
 
 
 def test_subcommand_table_covers_every_command():
@@ -200,3 +214,40 @@ def test_every_command_and_subcommand_help_exits_0(command, sub, flag, capsys):
     assert "usage" in out.lower(), (argv, out)
     if sub:
         assert f"notewrench {command} {sub}" in out, (argv, out)
+
+
+def _without_extra(monkeypatch, name):
+    command = cli.BY_NAME[name]
+    absent = set(command.requires)
+    real = cli._present
+    monkeypatch.setattr(cli, "_present", lambda module: module not in absent and real(module))
+    return command
+
+
+@pytest.mark.parametrize("tool", sorted(EXTRAS))
+def test_missing_extra_prints_install_hint(tool, monkeypatch, capsys):
+    require(tool)
+    _without_extra(monkeypatch, tool)
+    code, out, err = _main([tool, "some-input"], capsys)
+    assert code == 2 and out == ""
+    assert f"pip install 'notewrench[{EXTRAS[tool]}]'" in err and "Traceback" not in err
+    assert f"(needs notewrench[{EXTRAS[tool]}])" in cli.overview()
+
+
+@pytest.mark.parametrize("tool", sorted(EXTRAS))
+def test_help_and_version_work_without_extra(tool, monkeypatch, capsys):
+    require(tool)
+    _without_extra(monkeypatch, tool)
+    code, out, err = _main([tool, "--help"], capsys)
+    assert code == 0 and f"usage: notewrench {tool}" in out, err
+    code, out, err = _main([tool, "--version"], capsys)
+    assert code == 0 and out.startswith(f"notewrench {tool} "), err
+
+
+def test_relink_doctor_runs_without_extra(monkeypatch):
+    command = _without_extra(monkeypatch, "relink")
+    assert command.runs_without_extra == ("doctor",)
+    seen = []
+    monkeypatch.setattr(cli.importlib, "import_module",
+                        lambda name: type("M", (), {"main": staticmethod(lambda argv: seen.append(argv) or 0)}))
+    assert cli.main(["relink", "doctor"]) == 0 and seen == [["doctor"]]

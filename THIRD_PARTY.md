@@ -1,7 +1,7 @@
 # Third-party sources and attribution
 
 notewrench is licensed under the GNU Affero General Public License, version 3 only
-(AGPL-3.0-only; see [LICENSE](LICENSE)). The commands below were previously separate
+(AGPL-3.0-only; see [LICENSE](LICENSE)). The first ten commands below were previously separate
 AGPL-3.0-only projects by the same authors; their notices are preserved below, one section
 per command, with paths updated to this repository's layout. `notewrench links` and
 `notewrench citekeys` were first written for Node.js and ported to Python by those same
@@ -10,18 +10,34 @@ version 3 text, Copyright (C) 2007 Free Software Foundation, Inc., reproduced fr
 <https://www.gnu.org/licenses/agpl-3.0.txt> under its verbatim-copying notice. The original
 work is offered under version 3 **only**, not "or later".
 
+Five later commands (`anki-merge`, `relink`, `browser-bookmarks`, `zotero-dupes` and
+`bibtex-keys`) were separate projects under the **MIT License**. Their files keep that
+license and notice (each source file carries `SPDX-License-Identifier: MIT` and the
+original copyright line; full texts in [`licenses/`](licenses/)). MIT code may be
+distributed as part of this AGPL-3.0-only work; those files on their own remain
+available under MIT.
+
 Product names identify interoperable formats only; notewrench is not affiliated with or
 endorsed by Zotero, Joplin, Logseq, Wallabag, Karakeep, Calibre, Pandoc or any other project
 named here.
 
 ## At a glance
 
-- **No runtime dependencies.** Every command uses only the Python standard library
-  (Python 3.11+, installed separately under the Python Software Foundation License).
-  The wheel contains only the `notewrench` package and these project notices.
-- **No third-party source code, documentation prose, articles or models are vendored.**
-  Upstream projects were consulted as format and behavior references only; the readers and
-  writers are original implementations.
+- **No required runtime dependencies.** The core commands use only the Python standard
+  library (Python 3.11+, installed separately under the Python Software Foundation
+  License). `anki-merge`, `relink`, `browser-bookmarks`, `zotero-dupes` and `bibtex-keys`
+  are thin adapters over third-party libraries that are installed from PyPI with the
+  optional extra of the same name (`pip install 'notewrench[<command>]'`); they are not
+  bundled. Each package and its license is listed in that command's section below. The
+  wheel contains only the `notewrench` package and these project notices.
+- **One piece of vendored third-party code:** `notewrench browser-bookmarks` includes an
+  adapted copy of linkding's Netscape-HTML exporter and a few unmodified linkding helper
+  functions (MIT, Copyright (c) 2019 Sascha Ißbrücker,
+  [text](licenses/linkding-MIT.txt)); see
+  [its section](#notewrench-browser-bookmarks-formerly-bookmark-receipts). Otherwise no
+  third-party source code, documentation prose, articles or models are vendored:
+  upstream projects were consulted as format and behavior references only, and the
+  readers and writers are original implementations.
 - **One bundled data table:** `src/notewrench/linkdedupe/_idna_data.py` (UTS #46 IDNA
   mapping and Joining_Type data, Unicode 17.0.0), used by `notewrench links` to map
   Unicode host names like the WHATWG URL Standard does. It is derived from the Unicode
@@ -31,10 +47,16 @@ named here.
   [`notewrench links`](#notewrench-links-formerly-linkdedupe) below. Both license texts
   ship in the wheel and sdist.
 - **Examples and test fixtures are original synthetic data** authored for these tools
-  (reserved example domains, invented IDs, dates and text), under the root license.
-- Test-only dependency (`test` extra): [pytest](https://github.com/pytest-dev/pytest) (MIT)
+  (reserved example domains, invented IDs, dates and text), under the root license,
+  except where a command's section lists upstream fixtures: `relink`, `browser-bookmarks`,
+  `zotero-dupes` and `bibtex-keys` keep small unmodified upstream test files (Better
+  BibTeX, Zotero, linkding, Chromium, warcio, ArchiveBox, CommonMark, browser exports)
+  with their licenses beside them under `tests/`, and `anki-merge` ships genuine Anki
+  exports of invented course content. Tests and their fixtures are not in the wheel.
+- Test-only dependencies (`test` extra): [pytest](https://github.com/pytest-dev/pytest) (MIT)
   and its dependencies (iniconfig, pluggy: MIT; packaging: Apache-2.0 OR BSD-2-Clause;
-  Pygments: BSD-2-Clause). Build-only tools: [hatchling](https://github.com/pypa/hatch) (MIT)
+  Pygments: BSD-2-Clause), [Hypothesis](https://github.com/HypothesisWorks/hypothesis)
+  (MPL-2.0), and the packages of all five optional extras. Build-only tools: [hatchling](https://github.com/pypa/hatch) (MIT)
   and [hatch-fancy-pypi-readme](https://github.com/hynek/hatch-fancy-pypi-readme) (MIT).
 
 ## Contents
@@ -49,6 +71,11 @@ named here.
 - [`notewrench calibre-dupes` (formerly the standalone calibre-dupes)](#notewrench-calibre-dupes-formerly-the-standalone-calibre-dupes)
 - [`notewrench citekeys` (formerly citekey-rekey)](#notewrench-citekeys-formerly-citekey-rekey)
 - [`notewrench zotero-attachments` (formerly zotero-attach-audit)](#notewrench-zotero-attachments-formerly-zotero-attach-audit)
+- [`notewrench anki-merge` (formerly anki-course-merge)](#notewrench-anki-merge-formerly-anki-course-merge)
+- [`notewrench relink` (formerly archive-relink)](#notewrench-relink-formerly-archive-relink)
+- [`notewrench browser-bookmarks` (formerly bookmark-receipts)](#notewrench-browser-bookmarks-formerly-bookmark-receipts)
+- [`notewrench zotero-dupes` (formerly library-bridge)](#notewrench-zotero-dupes-formerly-library-bridge)
+- [`notewrench bibtex-keys` (formerly citekey-audit)](#notewrench-bibtex-keys-formerly-citekey-audit)
 
 ## `notewrench zotero-logseq` (formerly zotlog-sync)
 
@@ -354,3 +381,282 @@ Interoperability research only:
 
 Zotero's name remains its owner's trademark; this is an independent, unofficial
 interoperability tool.
+
+## `notewrench anki-merge` (formerly anki-course-merge)
+
+Original implementation (`src/notewrench/ankimerge/`), tests (`tests/ankimerge/`), sample
+exports and their generator (`examples/anki-merge/`): Copyright (c) 2026 Anki Course Merge
+contributors, under the **MIT License** ([text](licenses/anki-merge-MIT.txt)), not the
+AGPL-3.0-only license of the rest of notewrench. Every ported source file keeps an
+`SPDX-License-Identifier: MIT` header with that copyright line. The MIT terms permit
+inclusion in this AGPL-3.0-only distribution; the combined work is distributed under
+AGPL-3.0-only, and these files can still be reused under MIT on their own.
+
+Runtime dependency (optional `anki-merge` extra, installed from PyPI, not bundled):
+[csvdiff](https://github.com/larsyencken/csvdiff) (`>=0.3.3,<0.4`, see its package metadata
+for license terms), used unmodified as the keyed semantic field-diff engine via its public
+`diff_records` API. Test-only: [Hypothesis](https://github.com/HypothesisWorks/hypothesis)
+(MPL-2.0) for property tests, and optionally the headless [Anki](https://github.com/ankitects/anki)
+core (`anki` on PyPI, AGPL-3.0-or-later; not a dependency of any extra) for integration tests
+that export and import notes in disposable collections; those tests are skipped when it is
+not installed. No Anki source code is copied.
+
+Sample data: `examples/anki-merge/*.txt` and the `anki-2.1.54/`, `plain-text/`, `no-guid/` and
+`fields-only/` variants are genuine Anki note-text exports (Anki 26.9.4, and 2.1.54 for that
+variant) of invented, synthetic course content, generated with Anki's public
+`Collection.export_note_csv` API by `examples/anki-merge/make_examples.py`; no real profile or
+user data was read ([provenance](examples/anki-merge/PROVENANCE.md)). They are MIT-licensed
+like the code.
+
+Format and behavior references (consulted, not copied):
+
+| Project | Upstream license | Use here |
+| --- | --- | --- |
+| [Anki](https://github.com/ankitects/anki) and its [text import](https://docs.ankiweb.net/importing/text-files.html) / [export](https://docs.ankiweb.net/exporting.html) manuals; [CSV metadata source](https://github.com/ankitects/anki/blob/main/rslib/src/import_export/text/csv/metadata.rs) | AGPL-3.0-or-later | Text export headers (`#separator`, `#html`, `#guid column`, `#if matches`, `#match scope`, ...), GUID matching and import behavior; verified against the 2.1.66 and 26.9.4 backends |
+| [csvdiff](https://github.com/larsyencken/csvdiff) 0.3.3 | see upstream | Reused as the diff engine (above) |
+| [daff](https://github.com/paulfitz/daff) 1.4.2 | MIT | Evaluated for three-way CSV merging; not used (its deletion and conflict-marker policy does not fit unattended imports) |
+| [CrowdAnki](https://github.com/Stvad/CrowdAnki) | MIT | Personal-field protection approach reviewed; related workflow |
+| [Brain Brew](https://github.com/jeprecated/brain-brew) | see upstream | Related CSV ↔ CrowdAnki authoring pipeline; inputs can be fed to this command |
+| [Ki](https://github.com/langfield/ki), [ankidmpy](https://github.com/gitonthescene/ankidmpy), [csvdb](https://github.com/jeff-gorelick/csvdb) | see upstream | Related version-control/format tools; acknowledged only |
+| [Special Fields](https://ankiweb.net/shared/info/1102281552), [AnkiCollab](https://github.com/CravingCrates/AnkiCollab-Plugin), [AnkiHub](https://www.ankihub.net/faq) | see upstream | Related add-ons/services for protected fields and shared decks; acknowledged only |
+
+Anki, AnkiWeb, AnkiHub and the other names identify interoperable software only; notewrench is
+not affiliated with or endorsed by them.
+
+
+## `notewrench relink` (formerly archive-relink)
+
+Original implementation (`src/notewrench/relink/`), tests (`tests/relink/`), synthetic
+examples (`examples/relink/`), benchmark (`benchmarks/relink/`) and documentation
+(`docs/relink.md`): Copyright (c) 2026 archive-relink contributors, **MIT License**
+(full text: [licenses/relink-MIT.txt](licenses/relink-MIT.txt)). This differs from
+notewrench's AGPL-3.0-only license: the MIT notice is kept, and each source file carries
+`SPDX-License-Identifier: MIT` with the original copyright line. MIT code may be
+distributed as part of the AGPL-3.0-only whole; the files themselves remain available
+under MIT.
+
+Unlike the standard-library commands, `relink` is a thin adapter over third-party
+packages, installed with the optional extra `pip install 'notewrench[relink]'` (not
+bundled or vendored):
+
+| Package | License | Use |
+| --- | --- | --- |
+| [markdown-it-py](https://github.com/executablebooks/markdown-it-py) | MIT | CommonMark tokens and source maps; the upstream link, image, autolink and reference rules decide what is a citation, and a small span plugin records destination offsets |
+| [mdit-py-plugins](https://github.com/executablebooks/mdit-py-plugins) | MIT | Front-matter tokenization, so note metadata is never treated as a citation |
+| [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) (`beautifulsoup4`) | MIT | HTML parsing and text/metadata extraction from saved pages |
+| [warcio](https://github.com/webrecorder/warcio) | Apache-2.0 | Streaming WARC/WARC.GZ reading |
+| [idna](https://github.com/kjd/idna) | BSD-3-Clause | Non-transitional IDNA 2008/UTS 46 host names in URL keys |
+
+Their own dependencies (for example soupsieve, mdurl) come with their own licenses.
+SQLite FTS5 (public domain) and Python's `email` MIME parser are used from the standard
+library. No code from these packages is copied.
+
+Formats followed, as interoperability references only (no code copied):
+[SingleFile](https://github.com/gildas-lormeau/SingleFile) provenance comments
+(single-file-core 1.12.0, AGPL-3.0), [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox)
+snapshot indexes, JSONL and resource manifests (v0.7.2 and dev
+`7ee253e8205012e838f9f89e8b81dd97dbe2b182`, MIT), [nb](https://github.com/xwmx/nb)
+`.bookmark.md` files (7.25.6, AGPL-3.0), [buku](https://github.com/jarun/buku) Markdown
+exports (5.1, GPL-3.0), MHTML as written by UnMHT/Chromium, and
+[RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#name-location) Location
+semantics for redirect fragments. Related tools surveyed and acknowledged, not used:
+[archive-md-urls](https://github.com/sbaack/archive-md-urls) (remote Wayback rewriting;
+an inline-code replacement issue observed in 0.0.8 was documented locally, never
+submitted) and [lychee](https://github.com/lycheeverse/lychee) (link checking; its
+broken-URL list can feed `--only-urls`).
+
+Test fixtures in `tests/relink/fixtures/upstream/` are small upstream files kept for
+format compatibility, each with origin, commit and SHA-256 in
+[`tests/relink/fixtures/PROVENANCE.md`](tests/relink/fixtures/PROVENANCE.md). Their
+licenses are kept beside them and ship only in the sdist (tests are not in the wheel):
+
+| Fixture | Origin | License (file) |
+| --- | --- | --- |
+| `warcio-example.warc.gz` | warcio test data | Apache-2.0 (`WARCIO-LICENSE`) |
+| `archivebox-resources/` | ArchiveBox test fixtures | MIT, Copyright (c) 2020 Nick Sweeting (`ARCHIVEBOX-LICENSE`) |
+| `chromium-hello.mhtml`, `chromium-test.mht` | Chromium test data (serialized by UnMHT) | BSD-3-Clause, Copyright 2015 The Chromium Authors (`CHROMIUM-LICENSE`) |
+| `commonmark-0.31.2.json` | official CommonMark 0.31.2 spec examples | CC-BY-SA 4.0, Copyright (C) 2014-16 John MacFarlane (`COMMONMARK-LICENSE`) |
+| `nb-saved.bookmark.md`, `nb-example-com.bookmark.md` | generated with nb 7.25.6 (synthetic content / public example.com) | upstream serialization of synthetic or example-domain content |
+| `buku-export.md` | generated with buku 5.1 from synthetic bookmarks | upstream serialization of synthetic content |
+| `wget-example.warc.gz` | recorded with GNU Wget 1.25.0 from public example.com | example-domain page |
+
+`examples/relink/` (a note and three saved pages) is original synthetic data; the
+SingleFile sample reproduces only the provenance-comment layout read from
+single-file-core.
+
+
+## `notewrench browser-bookmarks` (formerly bookmark-receipts)
+
+Original implementation (`src/notewrench/browserbookmarks/`), tests
+(`tests/browserbookmarks/`) and benchmark (`benchmarks/browser-bookmarks/`): Copyright (c)
+2026 bookmark-receipts contributors, **MIT License**
+([licenses/browser-bookmarks-MIT.txt](licenses/browser-bookmarks-MIT.txt)). This command
+keeps its MIT notice (every source file carries `SPDX-License-Identifier: MIT`); MIT is
+compatible with, and distributed here under the terms of, notewrench's AGPL-3.0-only
+license for the combined work.
+
+**Vendored linkding code (MIT).** Copyright (c) 2019 Sascha Ißbrücker, MIT License
+([licenses/linkding-MIT.txt](licenses/linkding-MIT.txt)):
+
+- `src/notewrench/browserbookmarks/_linkding_exporter.py` is adapted from linkding's
+  `bookmarks/services/exporter.py` at commit `27b7303baf41bb28babc610ac8eaa486e1ddfab5`.
+  Changes: the Django model dependency is removed, the `HREF` attribute is HTML-escaped,
+  and raw date/state attributes plus a `DATA-RECEIPT` ID may be overridden for browser
+  exports that lack linkding's model fields.
+- `src/notewrench/browserbookmarks/_linkding_rules.py` contains unmodified pure function
+  bodies (URL normalization, tag parsing, timestamp parsing) extracted from linkding
+  v1.47.0 (`24b5ad6`, `bookmarks/utils.py` and `bookmarks/models.py`), used only for the
+  destination compatibility check and timestamp comparison.
+- `tests/browserbookmarks/upstream/linkding_v1_{15,31,47}_{exporter,parser}.py` are the
+  unmodified upstream exporter and parser modules from linkding tags v1.15.0
+  (`2c7848aa46cffbd2cfe98628842bf06004d17dd3`), v1.31.0
+  (`695b0dc300772add2069d7857b99b989da2305b7`) and v1.47.0
+  (`24b5ad6cc9bde497b5d1b1e86aed5a2fb7d25c2f`). The format integration tests strip only
+  their Django imports; they are test-only and not part of the wheel.
+
+**Runtime dependencies (optional `browser-bookmarks` extra, not vendored):**
+
+| Package | License | Use |
+| --- | --- | --- |
+| [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) (`beautifulsoup4`) | MIT | Netscape-HTML bookmark parsing |
+| [html5lib](https://github.com/html5lib/html5lib-python) | MIT | HTML5 tree builder for Beautiful Soup |
+| [webencodings](https://github.com/gsnedders/python-webencodings) | BSD-3-Clause | strict re-decoding with the detected encoding |
+| [filelock](https://github.com/tox-dev/filelock) | MIT (older releases: Unlicense; verify for the installed version) | lock for concurrent review edits |
+| [ijson](https://github.com/ICRAR/ijson) | BSD-3-Clause | streaming JSON complexity preflight (pure-Python backend) |
+
+Test-only: [Hypothesis](https://github.com/HypothesisWorks/hypothesis) (MPL-2.0).
+
+**Test fixtures** (`tests/browserbookmarks/fixtures/`, provenance in its `README.md`;
+copies of three of them are the quick-start samples in `examples/browser-bookmarks/`):
+
+- `firefox.html`, `chrome.html` (also `examples/browser-bookmarks/`): unmodified real
+  browser exports from the test suite of
+  [bookmarks-parser](https://github.com/andriyor/bookmarks-parser) at
+  `c5a7a94bb20b10f2123c9f6fbc7633cb05332c07` (declared MIT on PyPI; no license file was
+  found in the repository).
+- `linkding-upstream.html`: unmodified linkding import test resource
+  (`bookmarks/tests/resources/simple_valid_import_file.html` at `27b7303`), MIT as above.
+- `linkding-conflicts.html` (also `examples/browser-bookmarks/linkding.html`) and
+  `linkding-v1.15.html`, `linkding-v1.31.html`, `linkding-v1.47.html`: generated by
+  running linkding's own exporter functions on synthetic bookmark values
+  (`tests/browserbookmarks/upstream/generate_fixtures.py` reproduces the versioned ones).
+- `safari-no-root.html`, `safari-folders.html`, `safari-reading-list.html`: raw HTML
+  literals from Chromium's Safari importer tests
+  (`components/user_data_importer/utility/safari_data_importer_unittest.cc` at
+  `f82317413d635d3dfc1abf79597fce56eb9eceff`), Copyright 2015 The Chromium Authors,
+  BSD-3-Clause ([licenses/chromium-BSD-3-Clause.txt](licenses/chromium-BSD-3-Clause.txt)).
+
+**Prior art and related tools** (surveyed for the gap this command fills; no code from them
+is used except linkding's as stated above): [linkding](https://github.com/sissbruecker/linkding)
+(MIT; exporter/importer read, duplicate handling of `_import_batch`/`_copy_bookmark_data`,
+[issue 751](https://github.com/sissbruecker/linkding/issues/751)),
+[buku](https://github.com/jarun/buku) 5.1 (GPL-3.0; import behavior checked with the merged
+output), [BrowserBookmarkChecker](https://github.com/VoxHash/BrowserBookmarkChecker) 1.0.0
+(GPL-3.0 per its LICENSE file; not reused or redistributed),
+[bookmarks-parser](https://github.com/andriyor/bookmarks-parser) 0.2.0,
+[bkmrk](https://github.com/jtabke/bkmrk) 0.2.2 (already preserves notes when deduplicating
+its own store), [LinkMarks](https://docs.rs/linkmarks-core/2.2.0/) 2.2 and
+[PyBookmark](https://github.com/Crumbs350/pybookmark) 1.1.1.1 (read, not run).
+
+
+## `notewrench zotero-dupes` (formerly library-bridge)
+
+Source: `src/notewrench/zoterodupes/` (including the review page `review.html`, `review.css`
+and `review.js`), tests in `tests/zoterodupes/`, examples and their generator in
+`examples/zotero-dupes/`. Original implementation, review page, tests and examples:
+Copyright (c) 2026 Library Bridge contributors, licensed under the **MIT License**
+([licenses/zotero-dupes-MIT.txt](licenses/zotero-dupes-MIT.txt)), unlike the rest of notewrench
+(AGPL-3.0-only). Each source file keeps its `SPDX-License-Identifier: MIT` header; the MIT notice
+applies to these files when they are distributed as part of notewrench. The review page is
+browser JavaScript generated into one self-contained HTML file; it loads nothing from a network.
+
+The command is a thin offline adapter. These packages are runtime dependencies of the optional
+`zotero-dupes` extra (`pip install 'notewrench[zotero-dupes]'`); they are installed from PyPI under
+their own licenses and none of their source is copied into notewrench:
+
+| Project | License | Use here |
+| --- | --- | --- |
+| [BibDedupe](https://github.com/CoLRev-Environment/bib-dedupe) (`bib-dedupe` 0.11) | MIT | Main bibliographic matcher: `prep`, `block` and `match` with one CPU, unchanged; the adapter preselects cross-library records and adds candidates |
+| [RDFLib](https://github.com/RDFLib/rdflib) | BSD-3-Clause | Parses native Zotero RDF/XML exports |
+| [defusedxml](https://github.com/tiran/defusedxml) | PSF-2.0 | Rejects DTDs/entities before RDF parsing |
+| [RapidFuzz](https://github.com/rapidfuzz/RapidFuzz) | MIT | Title-similarity candidates for sparse exports (already a BibDedupe dependency) |
+| [pandas](https://github.com/pandas-dev/pandas) | BSD-3-Clause | Data frames passed to BibDedupe (held below 3: BibDedupe 0.11 fails on sparse records under pandas 3) |
+| [isbnlib](https://github.com/xlcnd/isbnlib) | LGPL-3.0 | Offline ISBN extraction, checksum validation and ISBN-10 to ISBN-13 conversion; no metadata lookups are called |
+| [jsonschema](https://github.com/python-jsonschema/jsonschema) | MIT | Validates decision and artifact files against the bundled JSON Schemas |
+
+Interoperability references and related tools (consulted; no code copied):
+
+- [Zotero](https://github.com/zotero/zotero) (AGPL-3.0) duplicate detection
+  ([documentation](https://www.zotero.org/support/duplicate_detection)), its
+  [Zotero RDF translator](https://github.com/zotero/translators/blob/master/Zotero%20RDF.js) and the
+  [Extra field conventions](https://www.zotero.org/support/kb/item_types_and_fields#citing_fields_from_extra).
+- [Better BibTeX](https://github.com/retorquere/zotero-better-bibtex) (MIT) JSON and CSL JSON exports.
+- Related tools acknowledged without code reuse: [Zoplicate](https://github.com/ChenglongMa/zoplicate),
+  [Citation.js](https://github.com/citation-js/citation-js),
+  [Zotero MCP](https://github.com/54yyyu/zotero-mcp) and
+  [bibliography-io](https://github.com/CoLRev-Environment/bibliography-io).
+
+Test fixtures in `tests/zoterodupes/fixtures/upstream/` are **unmodified upstream files**
+(source URL and SHA-256 of each in `manifest.json`, provenance in
+[tests/zoterodupes/fixtures/UPSTREAM.md](tests/zoterodupes/fixtures/UPSTREAM.md)) and keep their
+licenses beside them: Zotero test exports and the official Zotero RDF export translator under the
+GNU AGPL v3 (`ZOTERO-LICENSE.txt`), Better BibTeX regression exports under MIT (`BBT-LICENSE.txt`).
+`derived-official-translator.rdf` was produced by running that unmodified translator on the item in
+`derived-official-translator.source.json`. The fixtures are test data only and are not in the wheel.
+`examples/zotero-dupes/personal.json` and `group.json` are derived from the Better BibTeX fixtures
+by `examples/zotero-dupes/make_examples.py` with clearly synthetic library-specific edits (keys,
+URIs, tags, notes, annotations, a conflicting DOI/year); the example DOI is a synthetic matching
+identifier, and the confirmed example decision is synthetic, not a human review.
+
+
+## `notewrench bibtex-keys` (formerly citekey-audit)
+
+Original implementation (`src/notewrench/bibtexkeys/`), tests (`tests/bibtexkeys/`),
+benchmark (`benchmarks/bibtex-keys/`) and examples (`examples/bibtex-keys/`): Copyright (c)
+2026 citekey-audit contributors, **MIT License** ([text](licenses/bibtex-keys-MIT.txt)).
+This command keeps its MIT license and notice; it differs from the AGPL-3.0-only license
+of the rest of notewrench. Each source file carries `SPDX-License-Identifier: MIT`. The
+MIT terms permit distribution as part of this AGPL-3.0-only work; the combined
+distribution is offered under AGPL-3.0-only, and the MIT notice must be retained with
+these files.
+
+Runtime dependencies (optional `bibtex-keys` extra, `pip install 'notewrench[bibtex-keys]'`),
+used as libraries and not vendored:
+
+- [Pybtex](https://pybtex.org/) (MIT) — BibTeX/BibLaTeX parsing, including macro and
+  concatenation handling; it pulls in [latexcodec](https://github.com/mcmtroffaes/latexcodec) (MIT).
+- [markdown-it-py](https://github.com/executablebooks/markdown-it-py) (MIT) — CommonMark
+  structure; pulls in [mdurl](https://github.com/executablebooks/mdurl) (MIT).
+- [mdit-py-plugins](https://github.com/executablebooks/mdit-py-plugins) (MIT) — dollar
+  math, attributes and footnotes, used to protect those regions while scanning citations.
+- [pylatexenc](https://github.com/phfaist/pylatexenc) (MIT) — source-positioned TeX
+  macros/environments, used to protect raw TeX in Markdown.
+- [PyYAML](https://pyyaml.org/) (MIT) — YAML front-matter source marks.
+- Python's standard-library `difflib` (PSF License) — unified diffs; `html.parser` for
+  raw HTML code-element bodies; `urllib.parse` for URI handling.
+
+Formats and behavior followed (consulted as references; no code copied):
+[Better BibTeX for Zotero](https://github.com/retorquere/zotero-better-bibtex) v9.0.77
+(MIT) — `content/item-export-format.ts` (`serialized.uri`), the postscript API
+(`site/content/exporting/scripting.md`, `tex.add`), `translators/lib/bbtjson.ts` and the
+BetterBibTeX JSON translator ID `36a3b0b5-bad0-4a04-b79b-441c7cef77db`, and the Quick Copy
+`zotero://select/items/@key` link format; the
+[Pandoc citation syntax](https://pandoc.org/MANUAL.html#extension-citations) (Pandoc 3.13
+was used as a development oracle only, never at runtime). Prior art surveyed before
+implementation, none reused: [Obsidian Citations](https://github.com/hans/obsidian-citation-plugin)
+0.4.5, [Zotero Integration](https://github.com/community-archive/obsidian-zotero-integration)
+3.2.1, [ZotLit](https://github.com/aidenlx/zotlit), [bibtex-tidy](https://github.com/FlamingTempura/bibtex-tidy)
+1.15.1 and [bibtexparser](https://github.com/sciunto-org/python-bibtexparser) 2.1.0.
+
+Test fixtures under `tests/bibtexkeys/fixtures/upstream/` are **unmodified files from
+Better BibTeX** (v9.0.77 and v8.0.25 `test/fixtures/export/`), MIT License, Copyright (c)
+2016 Emiliano Heyns; the upstream license text ships beside them
+(`tests/bibtexkeys/fixtures/upstream/bbt-license.txt`), and exact source URLs and sizes are
+recorded in `variants/manifest.json` and [PROVENANCE.md](tests/bibtexkeys/fixtures/PROVENANCE.md).
+`examples/bibtex-keys/old.bib`/`old.json` preserve that real export metadata (a published
+SysML paper's bibliographic record) and add a **synthetic** Zotero item URI;
+`new.bib`/`new.json` change only the citation key; `notes/systems.md` is original
+demonstration text. Other inline test inputs are synthetic.
+
+Review bundles keep the original identifier `"tool": "citekey-audit"` and
+`"schema_version": 1`; the staging directory prefix `.citekey-audit-` is also unchanged.

@@ -2,8 +2,9 @@
 
 A path is either a source itself (a Zotero data folder or ``zotero.sqlite``, a Calibre
 library folder or ``metadata.db``, a Joplin ``.jex`` file or raw export folder, a
-Karakeep/Wallabag export, a CSL-JSON bibliography, a Markdown file) or a plain folder
-that is scanned for such sources (hidden entries and symlinks are skipped).
+Karakeep/Wallabag export, a browser or linkding Netscape-HTML bookmark export, a
+CSL-JSON bibliography, a Markdown file) or a plain folder that is scanned for such
+sources (hidden entries and symlinks are skipped).
 """
 # SPDX-License-Identifier: AGPL-3.0-only
 from __future__ import annotations
@@ -19,11 +20,14 @@ from ..linkdedupe.adapters import AdapterError, detect_format
 from ..linkdedupe.strictjson import parse_json
 
 MARKDOWN = re.compile(r"\.(md|markdown)\Z", re.IGNORECASE)
+HTML = re.compile(r"\.html?\Z", re.IGNORECASE)
+NETSCAPE_DOCTYPE = b"<!doctype netscape-bookmark-file-1"
+HTML_HEAD_BYTES = 64 * 1024
 MAX_DEPTH = 6
 MAX_ENTRIES = 50_000
 MAX_JSON_BYTES = 64 * 1024 * 1024
 
-KINDS = ("zotero", "joplin", "calibre", "readlater", "bibliography", "markdown")
+KINDS = ("zotero", "joplin", "calibre", "readlater", "bookmarks", "bibliography", "markdown")
 
 
 class UsageError(Exception):
@@ -36,7 +40,7 @@ class Source:
     path: str                    # as displayed and used in suggested commands
     snapshot: str | None = None  # zotero: the zotero.sqlite file
     storage: str | None = None   # zotero: the storage/ folder
-    format: str | None = None    # readlater: karakeep | wallabag-v2
+    format: str | None = None    # readlater: karakeep | wallabag-v2; bookmarks: html | linkding
     text: str | None = None      # readlater: the export text, read once
 
 
@@ -74,6 +78,21 @@ def _json_source(path: str) -> Source | None:
     return None
 
 
+def _bookmarks_source(path: str) -> Source | None:
+    """A Netscape-HTML bookmark export, recognized by its DOCTYPE (bounded read)."""
+    try:
+        with open(path, "rb") as handle:
+            head = handle.read(HTML_HEAD_BYTES)
+    except OSError:
+        return None
+    text = head.removeprefix(b"\xef\xbb\xbf").lstrip()
+    if text[:len(NETSCAPE_DOCTYPE)].lower() != NETSCAPE_DOCTYPE:
+        return None
+    # linkding writes its notes extension and PRIVATE/TOREAD on every bookmark; browsers do not.
+    linkding = b"[linkding-notes]" in head or (b' PRIVATE="' in head and b' TOREAD="' in head)
+    return Source("bookmarks", path, format="linkding" if linkding else "html")
+
+
 def _zotero(folder: str) -> Source:
     return Source("zotero", folder, snapshot=os.path.join(folder, "zotero.sqlite"),
                   storage=os.path.join(folder, "storage"))
@@ -107,6 +126,8 @@ def classify_file(path: str, *, explicit: bool) -> Source | None:
         return _json_source(path)
     if MARKDOWN.search(name):
         return Source("markdown", path)
+    if HTML.search(name):
+        return _bookmarks_source(path)
     if explicit:
         try:
             if tarfile.is_tarfile(path):  # a JEX export saved under another name
@@ -176,8 +197,8 @@ def detect(paths: list[str]) -> Scan:
             before = len(scan.sources)
             _walk(path, scan, 1, [MAX_ENTRIES])
             if len(scan.sources) == before:
-                problems.append(f"{raw}: no Zotero, Joplin, Calibre, Karakeep/Wallabag, CSL-JSON or Markdown "
-                                "source found in this folder")
+                problems.append(f"{raw}: no Zotero, Joplin, Calibre, Karakeep/Wallabag, bookmark HTML, CSL-JSON "
+                                "or Markdown source found in this folder")
             continue
         source = classify_file(path, explicit=True) if os.path.isfile(path) else None
         if source is None:

@@ -10,6 +10,11 @@ explicit approval it can also write a new Wallabag v2 native-field export.
 It never goes online, deletes, calls an app API or imports anything, and it does
 **not** treat an identical URL as proof of identical content.
 
+**Which command?** Use `links` for Karakeep and Wallabag read-later JSON exports. For
+browser bookmark HTML exports (Firefox, Chrome, Safari) and linkding HTML exports that
+you want to merge with an explicit decision per group before importing them, use
+[`notewrench browser-bookmarks`](browser-bookmarks.md).
+
 Formerly the standalone `linkdedupe` tool (Node.js); see
 [Compatibility with linkdedupe](#compatibility-with-linkdedupe).
 

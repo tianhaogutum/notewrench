@@ -20,6 +20,8 @@ detects:
   Joplin      a .jex export or a raw export folder
   Calibre     a library folder or its metadata.db
   Read-later  Karakeep and Wallabag v2 JSON exports
+  Bookmarks   browser and linkding Netscape-HTML bookmark exports (.html/.htm;
+              needs the browser-bookmarks extra, SKIPPED without it)
   Citations   CSL-JSON bibliographies + Markdown files (Pandoc [@key] citations)
   Any other folder is scanned for these (hidden entries and symlinks are skipped).
 
@@ -32,6 +34,7 @@ are SKIPPED elsewhere.
 examples:
   notewrench doctor ~/Zotero ~/Calibre\\ Library
   notewrench doctor joplin.jex karakeep.json wallabag.json
+  notewrench doctor firefox.html chrome.html linkding.html
   notewrench doctor thesis/ --fail-on warning --format json
 """
 
@@ -44,8 +47,8 @@ class Parser(argparse.ArgumentParser):
 
 def parser() -> argparse.ArgumentParser:
     cli = Parser(prog=PROG, formatter_class=argparse.RawDescriptionHelpFormatter, epilog=EPILOG,
-                 description="One read-only health check across your Zotero, Joplin, Calibre, Karakeep/Wallabag "
-                             "and citation files: what is wrong, and the notewrench command that fixes it.")
+                 description="One read-only health check across your Zotero, Joplin, Calibre, Karakeep/Wallabag, "
+                             "browser bookmark and citation files: what is wrong, and the notewrench command that fixes it.")
     cli.add_argument("--version", action="version", version=f"{PROG} {NOTEWRENCH_VERSION}")
     cli.add_argument("paths", nargs="+", metavar="PATH", help="exports, libraries, or folders that contain them")
     cli.add_argument("--format", choices=("text", "json"), default="text")

@@ -7,7 +7,7 @@
 
 <p align="center">
   <strong>Dedupe, audit and migrate your Zotero, Joplin, Calibre, Logseq and Wallabag libraries, offline, without deleting a thing.</strong><br>
-  One standard-library CLI. <code>notewrench doctor</code> checks everything in one read-only pass and tells you which command fixes what.
+  One CLI; the core commands need only the Python standard library. <code>notewrench doctor</code> checks everything in one read-only pass and tells you which command fixes what.
 </p>
 
 <p align="center">
@@ -61,11 +61,14 @@ it, `2` usage error, unrecognized path or unreadable source. `--format json` pri
 
 | App | notewrench reads | `doctor` reports | To fix or move it |
 | --- | --- | --- | --- |
-| **Zotero** | a closed `zotero.sqlite` copy + `storage/`; CSL-JSON exports | missing attachment files, byte-identical duplicates, orphan storage folders (Linux) | `zotero-attachments`, `zotero-logseq` |
+| **Zotero** | a closed `zotero.sqlite` copy + `storage/`; CSL-JSON, Better BibTeX JSON and Zotero RDF exports | missing attachment files, byte-identical duplicates, orphan storage folders (Linux) | `zotero-attachments`, `zotero-dupes`, `zotero-logseq` |
 | **Joplin** | JEX exports and raw export folders | exact-duplicate notes, ID conflicts between exports, notes that cannot be compared | `joplin-dupes`, `joplin-logseq` |
 | **Calibre** | a closed library (`metadata.db`) | duplicate books (ISBN, normalized title and authors), invalid ISBNs, missing authors | `calibre-dupes` |
 | **Karakeep / Wallabag** | Karakeep JSON and Wallabag v2 exports | duplicate bookmarks within and across exports, invalid records | `links`, `archive`, `epub`, `wallabag-notes` |
-| **Pandoc / Better BibTeX** | CSL-JSON bibliographies + Markdown | citekeys in no bibliography, keys renamed between exports, unsupported citation syntax | `citekeys` |
+| **Browsers / linkding** | Netscape-HTML bookmark exports (Firefox, Chrome, Safari, linkding) | duplicate bookmarks within and across exports, duplicates whose notes or tags differ (with the `browser-bookmarks` extra) | `browser-bookmarks` |
+| **Web archives** | SingleFile, ArchiveBox, nb, WARC and MHTML copies you already saved | | `relink` |
+| **Pandoc / Better BibTeX** | CSL-JSON, BibTeX/BibLaTeX and Better BibTeX JSON bibliographies + Markdown | citekeys in no bibliography, keys renamed between CSL-JSON exports, unsupported citation syntax | `citekeys`, `bibtex-keys` |
+| **Anki** | "Notes in Plain Text" exports (old and new course version + a student's collection) | | `anki-merge` |
 | **Logseq** | an existing Markdown graph (as a target) | | `zotero-logseq`, `joplin-logseq`, `wallabag-notes` |
 
 ## All commands
@@ -76,13 +79,21 @@ it, `2` usage error, unrecognized path or unreadable source. `--format json` pri
 | **Migrate & sync notes** | `zotero-logseq` | Sync a Zotero CSL-JSON export into Logseq pages; bibliographic updates never touch your own notes | [zotero-logseq](docs/zotero-logseq.md) |
 | | `joplin-logseq` | Convert a Joplin JEX export into a new Logseq Markdown graph, with an audit/loss report | [joplin-logseq](docs/joplin-logseq.md) |
 | | `wallabag-notes` | Export Wallabag highlights and annotations to Markdown, Logseq blocks and CSV, and keep them updated | [wallabag-notes](docs/wallabag-notes.md) |
+| | `anki-merge` ¹ | Preview an Anki course update: merge old-teacher, new-teacher and student note exports by course ID, holding conflicts for review | [anki-merge](docs/anki-merge.md) |
 | **Read-later archives** | `archive` | Rescue cached Wallabag/Karakeep articles into a static HTML archive; convert Karakeep exports to Wallabag JSON | [archive](docs/archive.md) |
 | | `epub` | Bundle cached Wallabag/Karakeep articles into a validated EPUB 3 with a provenance report | [epub](docs/epub.md) |
+| | `relink` ¹ | Find your existing local copy (SingleFile, ArchiveBox, nb, WARC, MHTML) for each Markdown citation and patch only the links you pick | [relink](docs/relink.md) |
 | **Duplicates** | `links` | Find duplicate bookmarks across Karakeep and Wallabag exports and plan a reviewed merge | [links](docs/links.md) |
+| | `browser-bookmarks` ¹ | Review duplicate bookmarks across browser and linkding HTML exports, decide merge or keep per group, and write one importable file with receipts of every note and tag | [browser-bookmarks](docs/browser-bookmarks.md) |
 | | `joplin-dupes` | Review duplicate notes in Joplin exports and write an approved, deduplicated JEX copy | [joplin-dupes](docs/joplin-dupes.md) |
 | | `calibre-dupes` | Find duplicate books within or across Calibre libraries and plan which formats to keep | [calibre-dupes](docs/calibre-dupes.md) |
+| | `zotero-dupes` ¹ | Review duplicates between your personal and group Zotero library exports; export only the pairs you confirm | [zotero-dupes](docs/zotero-dupes.md) |
 | **Citations & attachments** | `citekeys` | Rewrite Pandoc citekeys in Markdown when your CSL-JSON keys change, matched by DOI or URL | [citekeys](docs/citekeys.md) |
+| | `bibtex-keys` ¹ | Preview a citation-key change from two BibTeX/BibLaTeX or Better BibTeX JSON snapshots (stable item IDs) across a notes folder, as a review bundle and a patch you apply yourself | [bibtex-keys](docs/bibtex-keys.md) |
 | | `zotero-attachments` | Audit a Zotero snapshot for duplicate, missing and orphaned attachment files, and compare audits | [zotero-attachments](docs/zotero-attachments.md) |
+
+¹ Wraps third-party libraries: install the extra of the same name first, for example
+`pip install 'notewrench[relink]'`. Without it, the command prints this hint.
 
 `notewrench <command> --help` lists every option. Every command has runnable synthetic
 inputs in `examples/<command>/`; the commands below run from a clone.
@@ -95,6 +106,8 @@ inputs in `examples/<command>/`; the commands below run from a clone.
 notewrench zotero-logseq examples/zotero-logseq/library.json --graph ./my-graph --dry-run
 notewrench joplin-logseq examples/joplin-logseq/synthetic.jex my-new-logseq-graph   # a new graph + report.json
 notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output notes
+notewrench anki-merge examples/anki-merge/old.txt examples/anki-merge/new.txt examples/anki-merge/student.txt \
+  --id CourseID --fields Front Back CourseID --student-fields Front Back CourseID Personal --out anki-review
 ```
 
 ### Read-later archives
@@ -103,21 +116,29 @@ notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output note
 notewrench archive rescue examples/archive/wallabag-v2.json -o archive               # Linux
 notewrench epub build examples/epub/wallabag.json --title "Weekend reading" -o reading.epub --report report.json
 notewrench epub validate reading.epub
+mkdir -p relink-demo && cp examples/relink/note.md relink-demo/
+notewrench relink index examples/relink/archive --db relink-demo/archive.sqlite
+notewrench relink scan relink-demo/note.md --db relink-demo/archive.sqlite --out relink-demo/plan.json --review relink-demo/review.md
 ```
 
 ### Duplicates
 
 ```sh
 notewrench links --out review examples/links/karakeep.json examples/links/wallabag-v2.json
+notewrench browser-bookmarks scan --html examples/browser-bookmarks/firefox.html examples/browser-bookmarks/chrome.html \
+  --linkding examples/browser-bookmarks/linkding.html --out .demo/bookmarks/review
 notewrench joplin-dupes examples/joplin-dupes/synthetic.jex --format markdown
 python3 examples/calibre-dupes/synthetic.py sample .demo
 notewrench calibre-dupes .demo/library-a .demo/library-b -o .demo/clusters.json
+notewrench zotero-dupes compare --library personal=examples/zotero-dupes/personal.json \
+  --library group=examples/zotero-dupes/group.json --output zotero-review
 ```
 
 ### Citations & attachments
 
 ```sh
 notewrench citekeys --old examples/citekeys/old.json --new examples/citekeys/new.json examples/citekeys/paper.md
+notewrench bibtex-keys plan examples/bibtex-keys/old.bib examples/bibtex-keys/new.bib examples/bibtex-keys/notes --out bibtex-review
 notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/zotero.sqlite \
   --storage examples/zotero-attachments/synthetic/storage --format markdown            # Linux
 ```
@@ -129,7 +150,10 @@ notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/z
 - **Read-only by default.** `doctor`, `zotero-attachments` and `calibre-dupes` only
   read. `joplin-dupes` and `citekeys` (its default `--dry-run`) print reviews.
   `links --dry-run`, `zotero-logseq --dry-run`, `joplin-logseq --dry-run` and
-  `wallabag-notes --dry-run` show what would be written.
+  `wallabag-notes --dry-run` show what would be written. `relink` and `bibtex-keys`
+  write a patch for you to review and apply with `git apply`; `anki-merge`,
+  `browser-bookmarks` and `zotero-dupes` write review bundles, and only the entries you
+  confirm reach their import files.
 - **Never edits a live app database.** Nothing writes to `zotero.sqlite`, Calibre's
   `metadata.db` or Joplin's profile. The Zotero and Calibre readers open the database
   read-only and refuse one that has `-wal`/`-journal` sidecar files next to it. Close the
@@ -153,16 +177,20 @@ replacing them.
 | You use | It does | notewrench adds |
 | --- | --- | --- |
 | Zotero's **Duplicate Items** pane | Merges duplicate *items* by metadata inside the running app | `zotero-attachments` audits the *files*: byte-identical attachments, missing files and orphan `storage/` folders, from a closed copy, with JSON evidence and before/after comparison |
-| **Better BibTeX** | Generates stable citekeys and keeps CSL-JSON/BibTeX exports current | `citekeys` rewrites the `[@key]` citations already in your Markdown when keys change, matched by DOI or URL. `doctor` finds citekeys that no export contains |
+| Zotero **group libraries** | Shared libraries, each with its own copies of items | `zotero-dupes` compares exports of your personal and group libraries, which Zotero's duplicate detection does not do across libraries, and exports only the pairs you confirm |
+| **Better BibTeX** | Generates stable citekeys and keeps CSL-JSON/BibTeX exports current | `citekeys` rewrites the `[@key]` citations already in your Markdown when keys change, matched by DOI or URL. `bibtex-keys` previews a key change from two BibTeX or BBT JSON snapshots as a patch. `doctor` finds citekeys that no export contains |
 | Calibre's **Find Duplicates** plugin | Interactive duplicate search inside Calibre, including against another library | `calibre-dupes` is scriptable and read-only on a closed library, with ISBN-checksum validation, evidence levels and a JSON plan of which formats to keep. You still merge in Calibre |
 | Joplin's **import/export** (JEX, RAW, Markdown) | Moves notes in and out of Joplin | `joplin-dupes` compares exports by content and attachment bytes before you re-import, and `joplin-logseq` converts JEX into a Logseq graph with a loss report |
 | **Logseq** importers and Zotero integration | Imports Roam JSON, OPML and Logseq's own formats. The Zotero integration uses the Zotero web API | Offline conversion from Joplin JEX, Zotero CSL-JSON and Wallabag exports that keeps your own notes intact on re-sync |
 | **Karakeep / Wallabag** exports | JSON (and other formats) of your bookmarks and cached articles | Duplicate detection *across* both apps with tracking-parameter normalization, plus HTML archives and validated EPUBs built from the cached copies |
+| **linkding** and browser imports | Import Netscape-HTML bookmarks; linkding skips a repeated URL within one import, so the second copy's notes and tags are lost | `browser-bookmarks` makes you decide per duplicate group first and keeps every original note, tag and source file as receipts |
 
 ## Platform support
 
-Python 3.11 to 3.14 on **Linux and macOS**, standard library only (no third-party
-dependencies). **Windows is not supported.** Two parts need Linux:
+Python 3.11 to 3.14 on **Linux and macOS**. The core commands use only the standard
+library; `anki-merge`, `relink`, `browser-bookmarks`, `zotero-dupes` and `bibtex-keys`
+need the optional extra of the same name (`pip install 'notewrench[<command>]'`, or
+`uvx --from 'notewrench[relink]' notewrench relink ...`). **Windows is not supported.** Two parts need Linux:
 `notewrench archive` publication and verification, and the `zotero-attachments` audit
 (`zotero-attachments compare` runs on macOS too). On macOS, `doctor` reports the Zotero
 check as `SKIPPED` and runs the rest. Several commands refuse paths reached through

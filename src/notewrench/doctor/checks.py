@@ -7,12 +7,15 @@ APIs and counts what they report:
 * Joplin: ``notewrench.joplindupes.load_export`` + ``analyze``
 * Calibre: ``notewrench.calibredupes`` ``read_library`` + ``make_plan`` (metadata only)
 * Karakeep/Wallabag: ``notewrench.linkdedupe.build_report``
+* Browser/linkding bookmark HTML: ``notewrench.browserbookmarks`` ``parse_html`` + ``groups_for``
+  (needs the optional ``browser-bookmarks`` extra; SKIPPED without it)
 * Citations: ``notewrench.citekeys`` ``build_mapping`` + ``rekey_markdown`` (dry run)
 """
 # SPDX-License-Identifier: AGPL-3.0-only
 from __future__ import annotations
 
 from collections import Counter
+import importlib.util
 import os
 import shlex
 import sqlite3
@@ -288,6 +291,72 @@ def check_links(sources: list[Source]) -> Result:
     return result
 
 
+# --- Browser / linkding bookmark HTML ---------------------------------------------
+
+def _missing_modules(names: tuple[str, ...]) -> list[str]:
+    missing = []
+    for name in names:
+        try:
+            found = importlib.util.find_spec(name) is not None
+        except (ImportError, ValueError):
+            found = False
+        if not found:
+            missing.append(name)
+    return missing
+
+
+def check_bookmarks(sources: list[Source]) -> Result:
+    from .. import browserbookmarks
+
+    paths = [source.path for source in sources]
+    result = Result("bookmarks", "Bookmarks", paths)
+    if _missing_modules(browserbookmarks.REQUIRES):
+        return result.skip("needs the optional browser-bookmarks dependencies: "
+                           "pip install 'notewrench[browser-bookmarks]'")
+    from pathlib import Path
+
+    from ..browserbookmarks.parsing import ReviewError, parse_html, read_limited
+    from ..browserbookmarks.review import MAX_RECORDS, MAX_TOTAL_BYTES, groups_for
+
+    records, warnings, total_bytes = [], 0, 0
+    try:
+        for index, source in enumerate(sources, 1):
+            data = read_limited(Path(source.path))
+            total_bytes += len(data)
+            parsed, source_warnings = parse_html(data, f"s{index}", source.format or "html")
+            records += parsed
+            warnings += len(source_warnings) + sum(len(record["warnings"]) for record in parsed)
+    except (ReviewError, OSError, ValueError, RecursionError) as exc:
+        return result.fail(f"{source.path}: {exc}")
+    duplicates = [group for group in groups_for(records) if len(group["members"]) > 1]
+    clustered = sum(len(group["members"]) for group in duplicates)
+    across = sum(len({member.partition(":")[0] for member in group["members"]}) > 1 for group in duplicates)
+    differing = sum(bool({"description", "notes", "tags"} & set(group["conflicts"])) for group in duplicates)
+    formats = sorted({"linkding" if source.format == "linkding" else "browser" for source in sources})
+    result.counts = {"exports": len(paths), "bookmarks": len(records), "duplicate_groups": len(duplicates),
+                     "duplicate_bookmarks": clustered, "groups_across_exports": across,
+                     "groups_with_differing_notes_or_tags": differing, "parser_warnings": warnings}
+    result.scope = f"{_plural(len(records), 'bookmark')} in {' + '.join(formats)} HTML"
+    detail = f", {across} across exports" if across and len(paths) > 1 else ""
+    result.add("warning", "duplicate_bookmarks", len(duplicates),
+               f"{_plural(len(duplicates), 'duplicate group')} ({_plural(clustered, 'bookmark')}{detail})")
+    result.add("note", "differing_duplicates", differing,
+               f"{_plural(differing, 'group')} with differing notes, descriptions or tags")
+    if result.findings:
+        limits = []
+        if len(sources) > 32 or total_bytes > MAX_TOTAL_BYTES or len(records) > MAX_RECORDS:
+            limits.append("One review takes at most 32 files, 32 MiB and 25,000 bookmarks; split larger sets.")
+        html = [source.path for source in sources if source.format != "linkding"]
+        linkding = [source.path for source in sources if source.format == "linkding"]
+        result.fix(f"Review {_plural(len(duplicates), 'duplicate bookmark group')} before importing",
+                   " ".join(["Decide merge or keep per group (review, or decide --all), then apply writes a merged "
+                             "bookmarks.html with receipts of every original note and tag. Your exports are "
+                             "never changed.", *limits]),
+                   [_command("browser-bookmarks", "scan", *(["--html", *html] if html else []),
+                             *(["--linkding", *linkding] if linkding else []), "--out", "bookmarks-review")])
+    return result
+
+
 # --- Citations (CSL-JSON + Markdown) -----------------------------------------------
 
 def check_citations(bibliographies: list[Source], documents: list[Source]) -> Result:
@@ -403,6 +472,8 @@ def run_checks(sources: list[Source]) -> list[Result]:
     results += [check_calibre(source, index) for index, source in enumerate(by_kind.get("calibre", []))]
     if by_kind.get("readlater"):
         results.append(check_links(by_kind["readlater"]))
+    if by_kind.get("bookmarks"):
+        results.append(check_bookmarks(by_kind["bookmarks"]))
     if by_kind.get("bibliography") or by_kind.get("markdown"):
         results.append(check_citations(by_kind.get("bibliography", []), by_kind.get("markdown", [])))
     return results

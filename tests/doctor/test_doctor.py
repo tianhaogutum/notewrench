@@ -258,3 +258,84 @@ def test_suggested_commands_run(demo, monkeypatch, capsys):
         if redirect:
             (workdir / redirect).write_text(result.stdout, encoding="utf-8")
     assert (workdir / "calibre-review.json").is_file() and (workdir / "links-review").is_dir()
+
+
+# --- browser / linkding bookmark HTML (optional browser-bookmarks extra) -----------
+
+BOOKMARKS = ROOT / "examples" / "browser-bookmarks"
+
+
+def _bookmark_extra_installed():
+    from notewrench.browserbookmarks import REQUIRES
+    import importlib.util
+    return all(importlib.util.find_spec(name) is not None for name in REQUIRES)
+
+
+needs_bookmarks = pytest.mark.skipif(not _bookmark_extra_installed(),
+                                     reason="needs the optional browser-bookmarks dependencies")
+
+
+@pytest.mark.parametrize("name,fmt", [("firefox.html", "html"), ("chrome.html", "html"), ("linkding.html", "linkding")])
+def test_detects_bookmark_html_by_doctype(name, fmt):
+    (source,) = detect([str(BOOKMARKS / name)]).sources
+    assert (source.kind, source.format) == ("bookmarks", fmt)
+
+
+def test_bookmark_folder_scan_and_plain_html_is_not_a_source(tmp_path):
+    assert [Path(s.path).name for s in detect([str(BOOKMARKS)]).sources] == ["chrome.html", "firefox.html", "linkding.html"]
+    page = tmp_path / "page.html"
+    page.write_text("<!doctype html><title>not bookmarks</title>")
+    with pytest.raises(UsageError):
+        detect([str(page)])
+    shutil.copyfile(BOOKMARKS / "chrome.html", tmp_path / "chrome.htm")
+    scan = detect([str(tmp_path)])
+    assert [(Path(s.path).name, s.kind) for s in scan.sources] == [("chrome.htm", "bookmarks")]
+    assert scan.ignored == 1
+
+
+@needs_bookmarks
+def test_bookmark_duplicates_are_counted_without_writing(capsys):
+    code, doc = doctor_json([BOOKMARKS], capsys)
+    bookmarks = by_check(doc)["bookmarks"]
+    counts = bookmarks["counts"]
+    assert (counts["exports"], counts["bookmarks"], counts["duplicate_groups"], counts["duplicate_bookmarks"]) == (3, 19, 4, 8)
+    assert counts["groups_with_differing_notes_or_tags"] >= 1
+    assert bookmarks["status"] == "findings" and "4 duplicate groups" in bookmarks["verdict"]
+    (fix,) = bookmarks["fixes"]
+    (command,) = fix["commands"]
+    assert command.startswith("notewrench browser-bookmarks scan --html ") and " --linkding " in command
+    assert command.endswith(" --out bookmarks-review")
+    assert code == 0  # duplicates are warnings; the default --fail-on is error
+
+
+@needs_bookmarks
+def test_suggested_bookmark_command_runs(tmp_path, monkeypatch, capsys):
+    shutil.copytree(BOOKMARKS, tmp_path / "exports")
+    monkeypatch.chdir(tmp_path)
+    _, doc = doctor_json(["exports"], capsys)
+    (command,) = by_check(doc)["bookmarks"]["fixes"][0]["commands"]
+    env = {**os.environ, "PYTHONPATH": os.pathsep.join(filter(None, [str(ROOT / "src"), os.environ.get("PYTHONPATH")]))}
+    result = subprocess.run([sys.executable, "-m", *shlex.split(command)], cwd=tmp_path, env=env,
+                            capture_output=True, text=True, timeout=120)
+    assert result.returncode == 0, (command, result.stderr)
+    assert (tmp_path / "bookmarks-review" / "review.json").is_file()
+
+
+@needs_bookmarks
+def test_invalid_bookmark_export_is_reported_not_raised(tmp_path, capsys):
+    broken = tmp_path / "broken.html"
+    broken.write_text('<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<DL><p>\n<DT><A ADD_DATE="1">no href</A>\n</DL><p>\n')
+    code, doc = doctor_json([broken], capsys)
+    bookmarks = by_check(doc)["bookmarks"]
+    assert bookmarks["status"] == "error" and "HREF" in bookmarks["reason"]
+    assert code == 2
+
+
+def test_bookmarks_are_skipped_without_the_optional_extra(monkeypatch, capsys):
+    from notewrench import browserbookmarks
+    monkeypatch.setattr(browserbookmarks, "REQUIRES", (*browserbookmarks.REQUIRES, "notewrench_no_such_module"))
+    code, doc = doctor_json([BOOKMARKS / "linkding.html"], capsys)
+    bookmarks = by_check(doc)["bookmarks"]
+    assert bookmarks["status"] == "skipped" and bookmarks["fixes"] == []
+    assert "pip install 'notewrench[browser-bookmarks]'" in bookmarks["reason"]
+    assert code == 0 and doc["summary"]["skipped"] == 1

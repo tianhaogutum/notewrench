@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "notewrench"
 version = "0.1.0"
-description = "Offline tools for personal knowledge bases: move Zotero, Joplin and Wallabag data into Logseq, archive read-later articles as HTML/EPUB, find duplicates, audit attachments and citekeys."
+description = "Offline tools for personal knowledge bases: move Zotero, Joplin and Wallabag data into Logseq, archive read-later articles as HTML/EPUB, find duplicates, audit attachments and citekeys, merge Anki course updates."
 # README.md with repository-relative links rewritten for PyPI (see tool.hatch.metadata.hooks below).
 dynamic = ["readme"]
 requires-python = ">=3.11"
@@ -16,6 +16,7 @@ keywords = [
     "pkm", "personal-knowledge-management", "note-taking", "zotero", "joplin", "logseq",
     "calibre", "wallabag", "karakeep", "read-later", "bibtex", "csl-json", "pandoc",
     "citekeys", "epub", "deduplication", "migration", "offline",
+    "anki", "linkding", "bookmarks", "biblatex", "web-archive",
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -40,15 +41,57 @@ classifiers = [
     "Topic :: Text Processing :: Markup :: Markdown",
     "Topic :: Utilities",
 ]
-# Every command uses only the Python standard library. POSIX only: Windows is not
+# The core commands use only the Python standard library; anki-merge, relink,
+# browser-bookmarks, zotero-dupes and bibtex-keys need the optional extra of the same
+# name (`pip install 'notewrench[<command>]'`). POSIX only: Windows is not
 # supported (zotero-logseq locks the graph with fcntl; several commands rely on
 # descriptor-relative, no-follow file access). `archive` publication/verification and
 # `zotero-attachments` audits additionally need Linux.
 dependencies = []
 
 [project.optional-dependencies]
-# Test runner only; the tools themselves have no third-party dependencies.
-test = ["pytest>=9.0.2"]
+# One extra per command that wraps third-party libraries; the dispatcher prints the
+# install hint when one is missing. The other commands need nothing beyond Python.
+anki-merge = ["csvdiff>=0.3.3,<0.4"]
+relink = [
+    "beautifulsoup4>=4.12,<5",
+    "idna>=3.7,<4",
+    "markdown-it-py>=4.0,<5",
+    "mdit-py-plugins>=0.5,<1",
+    "warcio>=1.7.5,<2",
+]
+browser-bookmarks = [
+    "beautifulsoup4>=4.13,<5",
+    "html5lib>=1.1,<2",
+    "webencodings>=0.5.1,<1",
+    "filelock>=3.20,<4",
+    "ijson>=3.3,<4",
+]
+# Heavy: BibDedupe brings pandas and NumPy.
+zotero-dupes = [
+    "bib-dedupe>=0.11.0,<0.12",
+    "rdflib>=7.6,<8",
+    "defusedxml>=0.7.1,<1",
+    "rapidfuzz>=3.10,<4",
+    "pandas>=2.2.3,<3",  # BibDedupe 0.11 fails on sparse records under pandas 3
+    "isbnlib>=3.10.14,<4",
+    "jsonschema>=4.26,<5",
+]
+bibtex-keys = [
+    "pybtex>=0.26.1,<0.27",
+    "markdown-it-py>=4.3.0,<5",
+    "mdit-py-plugins>=0.7.0,<0.8",
+    "pylatexenc>=2.11,<3",
+    "PyYAML>=6.0.3,<7",
+]
+# Test runner plus every optional extra, so the full suite runs. Suites whose extra
+# is missing are skipped by tests/conftest.py. (The anki-merge integration tests also
+# use the headless `anki` package when it is installed; it is not listed here.)
+test = [
+    "pytest>=9.0.2",
+    "hypothesis>=6,<7",
+    "notewrench[anki-merge,relink,browser-bookmarks,zotero-dupes,bibtex-keys]",
+]
 
 [project.urls]
 Homepage = "https://github.com/tianhaogutum/notewrench"
