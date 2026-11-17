@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Original, dependency-free CSL input validation and deterministic rendering."""
 from __future__ import annotations
 

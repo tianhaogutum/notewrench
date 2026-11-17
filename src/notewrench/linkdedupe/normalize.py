@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Conservative, explained URL normalization (port of ``lib/normalize.js``)."""
 
 from __future__ import annotations

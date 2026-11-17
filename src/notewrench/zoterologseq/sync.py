@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Conservative file-graph planning and atomic per-file application (Linux/POSIX)."""
 from __future__ import annotations
 

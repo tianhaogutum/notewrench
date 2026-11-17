@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """``notewrench relink``: reviewable Markdown backlinks to existing private web archives.
 
 Formerly the standalone ``archive-relink`` tool. Finds an existing local copy

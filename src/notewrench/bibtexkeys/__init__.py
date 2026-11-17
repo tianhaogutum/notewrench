@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 citekey-audit contributors (MIT; see licenses/bibtex-keys-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (MIT; see licenses/bibtex-keys-MIT.txt)
 """``notewrench bibtex-keys``: review citation-key changes between two stable-ID snapshots.
 
 An offline review adapter for citation-key changes, never a key generator. It compares

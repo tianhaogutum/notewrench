@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Anki Course Merge contributors
+# Copyright (c) 2026 tianhaogutum
 """Anki metadata adapter around Python's CSV reader and writer.
 
 Only regular note fields receive user-supplied names. Special columns are

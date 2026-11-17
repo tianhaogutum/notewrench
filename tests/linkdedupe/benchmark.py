@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Port of linkdedupe scripts/corpus.mjs and scripts/benchmark.mjs (used by test_report)."""
 
 from __future__ import annotations

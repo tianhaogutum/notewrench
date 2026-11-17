@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """``notewrench links`` command line (port of ``bin/linkdedupe.js``).
 
 Option parsing reproduces Node's ``util.parseArgs`` (strict, positionals allowed)

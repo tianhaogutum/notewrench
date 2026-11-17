@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """Conservative URL keys: keep distinctions an archive may care about."""
 
 from __future__ import annotations

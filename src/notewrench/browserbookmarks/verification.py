@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """Validate whole bundles, original coverage, and stable HTML receipt mappings."""
 
 from __future__ import annotations

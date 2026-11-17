@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Candidate clusters, merge plan and provenance reports (port of ``lib/report.js``)."""
 
 from __future__ import annotations

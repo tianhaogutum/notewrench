@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Exact machine-readable ambiguity contracts; no repair or extra observations."""
 import copy
 import io

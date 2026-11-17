@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 citekey-audit contributors (MIT; see licenses/bibtex-keys-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (MIT; see licenses/bibtex-keys-MIT.txt)
 """``notewrench bibtex-keys`` command line; planning is read-only with respect to all inputs.
 
 The parser, ``--help`` and ``--version`` use only the standard library; the Pybtex,

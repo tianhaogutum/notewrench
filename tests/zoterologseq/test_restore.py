@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Completed-batch restore contract; no merge, adoption, or handwritten overwrite."""
 import copy
 import fcntl

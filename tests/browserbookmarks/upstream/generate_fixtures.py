@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """Reproduce the linkding-v*.html fixtures offline from the exact, MIT-licensed upstream exporters.
 
 Run from a clone: `python tests/browserbookmarks/upstream/generate_fixtures.py`.

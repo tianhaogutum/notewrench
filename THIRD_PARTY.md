@@ -80,8 +80,7 @@ named here.
 ## `notewrench zotero-logseq` (formerly zotlog-sync)
 
 Original implementation (`src/notewrench/zoterologseq/`), tests (`tests/zoterologseq/`)
-and synthetic examples (`examples/zotero-logseq/`): Copyright (C) 2026 zotlog-sync
-contributors; SPDX-License-Identifier: AGPL-3.0-only (version 3 only, no "or later"
+and synthetic examples (`examples/zotero-logseq/`): Copyright (C) 2026 tianhaogutum; SPDX-License-Identifier: AGPL-3.0-only (version 3 only, no "or later"
 option).
 
 No upstream or competitor source code, third-party Python packages, article text,
@@ -122,7 +121,7 @@ Related tools acknowledged in the documentation, with no material included:
 Source: `src/notewrench/joplinlogseq/`, tests in `tests/joplinlogseq/`, example in
 `examples/joplin-logseq/`. The implementation, tests, example generator and the
 generated synthetic fixture are original work, licensed **AGPL-3.0-only**
-(Copyright (c) 2026 jex2logseq contributors). No third-party runtime, test or build
+(Copyright (c) 2026 tianhaogutum). No third-party runtime, test or build
 packages are used; only the Python 3.11+ standard library.
 
 Interoperability references (consulted only; nothing bundled):
@@ -156,7 +155,7 @@ upstream or a real user is used.
 
 ## `notewrench wallabag-notes` (formerly bagnotes)
 
-Original code under **AGPL-3.0-only**, copyright (C) 2026 the bagnotes contributors. No upstream
+Original code under **AGPL-3.0-only**, copyright (C) 2026 tianhaogutum. No upstream
 or competitor implementation is copied or bundled. No runtime packages, vendored libraries, paid
 APIs, model files or network services are used; Python 3.11+ and its standard library are supplied
 by the user under Python's own license.
@@ -179,7 +178,7 @@ are synthetic and were authored for this tool, not copied from upstream fixtures
 ## `notewrench archive` (formerly bagkeep)
 
 Original Python implementation, tests, documentation and synthetic examples:
-Copyright (C) 2026 bagkeep contributors, **AGPL-3.0-only**. No third-party Python
+Copyright (C) 2026 tianhaogutum, **AGPL-3.0-only**. No third-party Python
 packages, competitor code, fonts, assets, upstream article prose or models are bundled.
 Publication calls libc `renameat2` through the Python standard library's `ctypes`; no
 extra package or executable is used.
@@ -242,7 +241,7 @@ incorporated:
 ## `notewrench links` (formerly linkdedupe)
 
 Original implementation (first written for Node.js, ported to Python for notewrench),
-tests and synthetic examples: Copyright (C) 2026 linkdedupe contributors, AGPL-3.0-only.
+tests and synthetic examples: Copyright (C) 2026 tianhaogutum, AGPL-3.0-only.
 No third-party runtime or development dependencies, competitor source, article content,
 logos or server implementation are incorporated.
 
@@ -280,7 +279,7 @@ acknowledged related tools; none of their code is used.
 Source: `src/notewrench/joplindupes/`, tests and synthetic fixture generators in
 `tests/joplindupes/`, examples in `examples/joplin-dupes/`, benchmark in
 `benchmarks/joplin-dupes/`. Original implementation, tests and synthetic examples:
-Copyright (c) 2026 joplin-dedupe contributors, licensed **AGPL-3.0-only**. No Joplin
+Copyright (c) 2026 tianhaogutum, licensed **AGPL-3.0-only**. No Joplin
 source, server code, logos, competitor code, upstream fixtures or articles are
 included in the implementation or examples. Only the Python 3.11+ standard library
 is used; there are no runtime or build dependencies.
@@ -331,7 +330,7 @@ mathematical examples, not claims of registration.
 ## `notewrench citekeys` (formerly citekey-rekey)
 
 Original CLI, scanner, identity matcher, tests and synthetic examples (first written for
-Node.js, ported to Python for notewrench): Copyright (C) 2026 citekey-rekey contributors,
+Node.js, ported to Python for notewrench): Copyright (C) 2026 tianhaogutum,
 AGPL-3.0-only. No runtime or development dependencies, bundled binaries or models.
 
 Interoperability references (no code, documentation prose or fixtures copied):
@@ -352,7 +351,7 @@ All DOI/URL/key examples and benchmark documents were authored synthetically for
 Original implementation (`src/notewrench/zoteroattachments/`), tests
 (`tests/zoteroattachments/`), the fixture generator and synthetic examples
 (`examples/zotero-attachments/`) and the benchmark (`benchmarks/zotero-attachments/`):
-Copyright (c) 2026 zotero-attach-audit contributors. SPDX-License-Identifier:
+Copyright (c) 2026 tianhaogutum. SPDX-License-Identifier:
 **AGPL-3.0-only**. No Zotero code is incorporated.
 
 Zero third-party Python package dependencies. Python 3.11+ and its bundled standard
@@ -385,8 +384,7 @@ interoperability tool.
 ## `notewrench anki-merge` (formerly anki-course-merge)
 
 Original implementation (`src/notewrench/ankimerge/`), tests (`tests/ankimerge/`), sample
-exports and their generator (`examples/anki-merge/`): Copyright (c) 2026 Anki Course Merge
-contributors, under the **MIT License** ([text](licenses/anki-merge-MIT.txt)), not the
+exports and their generator (`examples/anki-merge/`): Copyright (c) 2026 tianhaogutum, under the **MIT License** ([text](licenses/anki-merge-MIT.txt)), not the
 AGPL-3.0-only license of the rest of notewrench. Every ported source file keeps an
 `SPDX-License-Identifier: MIT` header with that copyright line. The MIT terms permit
 inclusion in this AGPL-3.0-only distribution; the combined work is distributed under
@@ -428,7 +426,7 @@ not affiliated with or endorsed by them.
 
 Original implementation (`src/notewrench/relink/`), tests (`tests/relink/`), synthetic
 examples (`examples/relink/`), benchmark (`benchmarks/relink/`) and documentation
-(`docs/relink.md`): Copyright (c) 2026 archive-relink contributors, **MIT License**
+(`docs/relink.md`): Copyright (c) 2026 tianhaogutum, **MIT License**
 (full text: [licenses/relink-MIT.txt](licenses/relink-MIT.txt)). This differs from
 notewrench's AGPL-3.0-only license: the MIT notice is kept, and each source file carries
 `SPDX-License-Identifier: MIT` with the original copyright line. MIT code may be
@@ -564,7 +562,7 @@ its own store), [LinkMarks](https://docs.rs/linkmarks-core/2.2.0/) 2.2 and
 Source: `src/notewrench/zoterodupes/` (including the review page `review.html`, `review.css`
 and `review.js`), tests in `tests/zoterodupes/`, examples and their generator in
 `examples/zotero-dupes/`. Original implementation, review page, tests and examples:
-Copyright (c) 2026 Library Bridge contributors, licensed under the **MIT License**
+Copyright (c) 2026 tianhaogutum, licensed under the **MIT License**
 ([licenses/zotero-dupes-MIT.txt](licenses/zotero-dupes-MIT.txt)), unlike the rest of notewrench
 (AGPL-3.0-only). Each source file keeps its `SPDX-License-Identifier: MIT` header; the MIT notice
 applies to these files when they are distributed as part of notewrench. The review page is

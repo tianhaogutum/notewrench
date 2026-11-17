@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """``notewrench browser-bookmarks``: offline review of duplicate browser and linkding bookmarks.
 
 Scans browser Netscape-HTML bookmark exports and linkding HTML exports, groups

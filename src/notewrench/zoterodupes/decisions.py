@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """Validate explicit pair decisions and produce provenance-rich suggestions."""
 
 from __future__ import annotations

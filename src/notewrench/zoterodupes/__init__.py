@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """``notewrench zotero-dupes``: read-only cross-library duplicate review of Zotero exports.
 
 Formerly the standalone ``library-bridge`` tool (MIT). Compares a personal library

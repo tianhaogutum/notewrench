@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Anki Course Merge contributors
+# Copyright (c) 2026 tianhaogutum
 """``notewrench anki-merge``: offline three-way preflight for Anki course note text exports.
 
 Merges old-teacher, new-teacher and student "Notes in Plain Text" exports by a stable

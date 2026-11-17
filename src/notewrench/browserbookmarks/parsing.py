@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """Metadata-preserving adapter around Beautiful Soup's HTML5 parser."""
 
 from __future__ import annotations

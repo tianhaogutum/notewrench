@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Strict JSON with duplicate-key and unsafe-integer detection (port of ``lib/json.js``).
 
 ``JSON.parse`` alone would silently overwrite fields or round source IDs before

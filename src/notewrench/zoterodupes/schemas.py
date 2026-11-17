@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """Self-contained JSON Schemas for local artifact interchange.
 
 These describe emitted artifacts. Fingerprint/reference and decision-consistency

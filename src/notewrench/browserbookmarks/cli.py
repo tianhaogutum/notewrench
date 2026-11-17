@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """``notewrench browser-bookmarks``: explicit merge/keep decisions and a resumable terminal reviewer.
 
 The parser, ``--help`` and ``--version`` need only the standard library; the

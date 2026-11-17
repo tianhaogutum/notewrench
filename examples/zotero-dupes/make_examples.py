@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """Regenerate the synthetic ``notewrench zotero-dupes`` demonstration files in this folder.
 
 1. Derive ``personal.json`` and ``group.json`` from unmodified upstream Better BibTeX

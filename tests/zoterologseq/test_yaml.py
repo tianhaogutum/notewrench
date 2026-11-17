@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Contracts for the read-only YAML subset; no general YAML parser is promised."""
 import json
 from pathlib import Path

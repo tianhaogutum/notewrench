@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """``notewrench relink`` command line: discovery, review and selected patch output are separate steps.
 
 The parser, ``--help`` and ``--version`` use only the standard library; the

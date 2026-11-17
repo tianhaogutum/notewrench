@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 bookmark-receipts contributors (see licenses/browser-bookmarks-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/browser-bookmarks-MIT.txt)
 """Run one bounded scan/decide/apply/verify pipeline on synthetic linkding exports; temporary data is removed.
 
 Run from a clone (needs the browser-bookmarks extra):

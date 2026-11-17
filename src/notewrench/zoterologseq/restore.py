@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Explicit whole-batch recovery; exact manifest restoration, never a merge."""
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """A markdown-it-py span plugin; upstream rules decide what is a link."""
 
 from __future__ import annotations

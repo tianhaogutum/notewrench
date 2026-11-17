@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """Read Zotero/Better BibTeX/CSL JSON and native Zotero RDF exports.
 
 RDF parsing is delegated to RDFLib; this module maps the actual Zotero exporter

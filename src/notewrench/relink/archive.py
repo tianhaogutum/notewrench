@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """Bounded, local-only adapters for existing web archive formats."""
 
 from __future__ import annotations

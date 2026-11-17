@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Library Bridge contributors (see licenses/zotero-dupes-MIT.txt)
+# Copyright (c) 2026 tianhaogutum (see licenses/zotero-dupes-MIT.txt)
 """``notewrench zotero-dupes`` command line. All outputs go into a new directory.
 
 The parser, ``--help`` and ``--version`` use only the standard library; the

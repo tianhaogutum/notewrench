@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """Disposable SQLite index, evidence plans, and explicitly selected patches."""
 
 from __future__ import annotations

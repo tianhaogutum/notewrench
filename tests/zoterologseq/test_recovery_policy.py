@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Opt-in CLI exit policy: identical evidence, JSON, reads and no writes."""
 from collections import Counter
 import fcntl

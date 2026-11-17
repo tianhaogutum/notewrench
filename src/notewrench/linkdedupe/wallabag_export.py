@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Approved Wallabag v2 native-field export (port of ``lib/wallabag-export.js``)."""
 
 from __future__ import annotations

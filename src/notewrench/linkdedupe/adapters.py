@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """Karakeep native and Wallabag v2 record adapters (port of ``lib/adapters.js``)."""
 
 from __future__ import annotations

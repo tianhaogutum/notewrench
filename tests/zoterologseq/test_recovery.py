@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 zotlog-sync contributors
+# Copyright (C) 2026 tianhaogutum
 """Read-only incomplete-attempt audit contracts; synthetic evidence, never repair."""
 import copy
 import fcntl

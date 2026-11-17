@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2026 linkdedupe contributors
+# Copyright (C) 2026 tianhaogutum
 """``notewrench links``: offline, provenance-preserving duplicate candidates across
 Karakeep and Wallabag exports.
 

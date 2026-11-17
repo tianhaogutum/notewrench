@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Anki Course Merge contributors
+# Copyright (c) 2026 tianhaogutum
 """Anki policies on top of csvdiff's keyed semantic field differences."""
 
 from __future__ import annotations

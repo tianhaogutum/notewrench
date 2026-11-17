@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 Anki Course Merge contributors
+# Copyright (c) 2026 tianhaogutum
 """``notewrench anki-merge`` command line and atomic, reviewable artifact bundle.
 
 Exit 0: no unresolved notes; 1: a bundle was written but some notes need review;

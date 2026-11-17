@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# Copyright (c) 2026 archive-relink contributors
+# Copyright (c) 2026 tianhaogutum
 """Generate a bounded realistic archive and measure a full ``notewrench relink`` index/scan round.
 
 Run from a clone with the relink extra installed:
