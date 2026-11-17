@@ -1,0 +1,7 @@
+#separator:tab
+#html:true
+What powers photosynthesis?	Light	C01
+Capital of Australia?	Sydney	C02
+DNA shape?	Double helix	C03
+Retired course topic	Kept for review	C04
+Student removed this note	Do not resurrect silently	C05

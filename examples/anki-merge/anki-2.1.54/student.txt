@@ -1,0 +1,16 @@
+#separator:tab
+#html:true
+#guid column:1
+#notetype column:2
+#deck column:3
+#tags column:8
+Jy]/G@!0|w	Course Facts	Default	What powers photosynthesis?	Light	C01	"Remember this in lecture
+第二行 notes"	course::biology personal
+f7P(L{>x2d	Course Facts	Default	Capital of Australia?	Sydney	C02	"Remember this in lecture
+第二行 notes"	course::biology personal
+Q|<R-e^ce.	Course Facts	Default	DNA shape?	"Twisted ladder — my mnemonic<br><img src=""dna.svg"">"	C03	"Remember this in lecture
+第二行 notes"	course::biology personal
+y2|Zq&Wb0j	Course Facts	Default	Retired course topic	Kept for review	C04	"Remember this in lecture
+第二行 notes"	course::biology personal
+Q{vTy+vGOH	Course Facts	Default	My own question	Personal answer	S01	"Remember this in lecture
+第二行 notes"	course::biology personal

@@ -1,0 +1,11 @@
+#separator:tab
+#html:true
+#guid column:1
+#notetype column:2
+#deck column:3
+#tags column:7
+ck@SRy&2Zt	Course Facts	Default	What powers photosynthesis?	Light	C01	course::biology
+F?w/_7asxV	Course Facts	Default	Capital of Australia?	Sydney	C02	course::biology
+D=WsRXtJ+z	Course Facts	Default	DNA shape?	Double helix	C03	course::biology
+j1N;BEVMrU	Course Facts	Default	Retired course topic	Kept for review	C04	course::biology
+C9F=@*VO5G	Course Facts	Default	Student removed this note	Do not resurrect silently	C05	course::biology

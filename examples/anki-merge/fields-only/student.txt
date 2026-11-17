@@ -1,0 +1,12 @@
+#separator:tab
+#html:true
+What powers photosynthesis?	Light	C01	"Remember this in lecture
+第二行 notes"
+Capital of Australia?	Sydney	C02	"Remember this in lecture
+第二行 notes"
+DNA shape?	"Twisted ladder — my mnemonic<br><img src=""dna.svg"">"	C03	"Remember this in lecture
+第二行 notes"
+Retired course topic	Kept for review	C04	"Remember this in lecture
+第二行 notes"
+My own question	Personal answer	S01	"Remember this in lecture
+第二行 notes"

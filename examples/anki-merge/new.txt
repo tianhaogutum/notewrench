@@ -1,0 +1,11 @@
+#separator:tab
+#html:true
+#guid column:1
+#notetype column:2
+#deck column:3
+#tags column:7
+ls)t:J5*=w	Course Facts	Default	Which energy source powers photosynthesis?	Light	C01	course::biology
+z%S>@IA8vm	Course Facts	Default	Capital of Australia?	Canberra	C02	course::biology
+"vfe#-^P>!r"	Course Facts	Default	DNA shape?	A double-helical molecule	C03	course::biology
+hv~oDUrM8(	Course Facts	Default	Student removed this note	Do not resurrect silently	C05	course::biology
+KOMh_`_Oc*	Course Facts	Default	RNA sugar?	Ribose	C06	course::biology

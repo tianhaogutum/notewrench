@@ -1,0 +1,7 @@
+#separator:tab
+#html:true
+Which energy source powers photosynthesis?	Light	C01
+Capital of Australia?	Canberra	C02
+DNA shape?	A double-helical molecule	C03
+Student removed this note	Do not resurrect silently	C05
+RNA sugar?	Ribose	C06
