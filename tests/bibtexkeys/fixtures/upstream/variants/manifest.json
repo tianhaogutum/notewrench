@@ -1,0 +1,38 @@
+[
+  {
+    "name": "v8-auto-export.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v8.0.25/test/fixtures/export/Auto-Export%20citekey%20edits%20%23citekey-edit.before.bibtex",
+    "bytes": 737,
+    "status": "downloaded"
+  },
+  {
+    "name": "v8-stable.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v8.0.25/test/fixtures/export/Better%20BibLaTeX.stable-keys.biblatex",
+    "bytes": 1986,
+    "status": "downloaded"
+  },
+  {
+    "name": "v9-extra-bibtex.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v9.0.77/test/fixtures/export/Better%20BibTeX%20export%20from%20Zotero%20missing%20Extra%20fields%20eg%20issued%20%232816.bibtex",
+    "bytes": 1343,
+    "status": "downloaded"
+  },
+  {
+    "name": "v9-extra-biblatex.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v9.0.77/test/fixtures/export/Better%20BibTeX%20export%20from%20Zotero%20missing%20Extra%20fields%20eg%20issued%20%232816.biblatex",
+    "bytes": 1314,
+    "status": "downloaded"
+  },
+  {
+    "name": "v9-custom-fields.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v9.0.77/test/fixtures/export/Error%20exporting%20with%20custom%20Extra%20field%20%231118.bibtex",
+    "bytes": 377,
+    "status": "downloaded"
+  },
+  {
+    "name": "v9-arabic-key.bib",
+    "url": "https://raw.githubusercontent.com/retorquere/zotero-better-bibtex/v9.0.77/test/fixtures/export/Arabic%20script%20letters%20in%20citation%20keys%20%232403.biblatex",
+    "bytes": 5664,
+    "status": "downloaded"
+  }
+]
