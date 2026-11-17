@@ -6,3 +6,6 @@ examples/joplin-logseq/synthetic.jex -text
 # Binary fixtures (SQLite snapshots, images): never normalize.
 *.sqlite binary
 *.jex binary
+# Bookmark exports keep their exact bytes (linkding's exporter writes mixed CR/LF line endings).
+examples/browser-bookmarks/*.html -text
+tests/browserbookmarks/fixtures/*.html -text
