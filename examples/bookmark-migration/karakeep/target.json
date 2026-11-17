@@ -1,0 +1,145 @@
+{
+  "bookmarks": [
+    {
+      "createdAt": 1701000000,
+      "title": "猫咪与 café",
+      "tags": [
+        "研究",
+        "工具"
+      ],
+      "lists": [
+        "t-research"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/unchanged"
+      },
+      "note": "第一行\n第二行",
+      "archived": false
+    },
+    {
+      "createdAt": 1701003610,
+      "title": "变更后的标题",
+      "tags": [
+        "迁移",
+        "完成"
+      ],
+      "lists": [
+        "t-archive"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/changed?edition=2"
+      },
+      "note": "新备注：少了原文",
+      "archived": true
+    },
+    {
+      "createdAt": 1701000020,
+      "title": "重复 A",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000030,
+      "title": "重复 B",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000060,
+      "title": "附件引用清单示例",
+      "tags": [
+        "附件"
+      ],
+      "lists": [
+        "t-root"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/attachments"
+      },
+      "note": "附件仅由独立清单补充，不属于Karakeep普通导出",
+      "archived": false
+    },
+    {
+      "createdAt": 1701000070,
+      "title": "保留查询参数",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/query?mode=full&item=42"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000090,
+      "title": "新增条目",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/new"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000080,
+      "title": "独立文本条目",
+      "tags": [
+        "文本"
+      ],
+      "lists": [],
+      "content": {
+        "type": "text",
+        "text": "这是虚构的纯文本收藏，没有URL。"
+      },
+      "note": null,
+      "archived": false
+    }
+  ],
+  "lists": [
+    {
+      "id": "t-root",
+      "name": "收集",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": null
+    },
+    {
+      "id": "t-research",
+      "name": "研究",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "t-root"
+    },
+    {
+      "id": "t-archive",
+      "name": "归档",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "t-root"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "bookmarks": [
+    {
+      "createdAt": 1700003600,
+      "title": "学习指南 — café",
+      "tags": [
+        "知识"
+      ],
+      "lists": [
+        "c-research"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/guide?lang=zh&view=full"
+      },
+      "note": "目标拥有备注，但来源HTML无法比较",
+      "archived": false
+    },
+    {
+      "createdAt": 1700000010,
+      "title": "重复收藏",
+      "tags": [],
+      "lists": [
+        "c-research"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1700000050,
+      "title": "文件夹重排",
+      "tags": [],
+      "lists": [
+        "c-archive"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/folders"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1700000030,
+      "title": "检索",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/search?q=收藏&lang=zh"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1700000040,
+      "title": "稳定条目",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/stable#方法"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1700000060,
+      "title": "目标新增 ✨",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.org/new"
+      },
+      "note": null,
+      "archived": false
+    }
+  ],
+  "lists": [
+    {
+      "id": "c-root",
+      "name": "资料",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": null
+    },
+    {
+      "id": "c-research",
+      "name": "研究",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "c-root"
+    },
+    {
+      "id": "c-archive",
+      "name": "归档",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "c-root"
+    }
+  ]
+}

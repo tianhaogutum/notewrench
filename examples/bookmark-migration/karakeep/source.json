@@ -1,0 +1,157 @@
+{
+  "bookmarks": [
+    {
+      "createdAt": 1701000000,
+      "title": "猫咪与 café",
+      "tags": [
+        "研究",
+        "工具"
+      ],
+      "lists": [
+        "s-research"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/unchanged"
+      },
+      "note": "第一行\n第二行",
+      "archived": false
+    },
+    {
+      "createdAt": 1701000010,
+      "title": "变更条目",
+      "tags": [
+        "迁移",
+        "待办"
+      ],
+      "lists": [
+        "s-research"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/changed?edition=2"
+      },
+      "note": "旧备注：保留原文 🧭",
+      "archived": false
+    },
+    {
+      "createdAt": 1701000020,
+      "title": "重复 A",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000030,
+      "title": "重复 B",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000040,
+      "title": "重复 C",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/duplicate"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000050,
+      "title": "丢失的条目",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/lost"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000060,
+      "title": "附件引用清单示例",
+      "tags": [
+        "附件"
+      ],
+      "lists": [
+        "s-root"
+      ],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/attachments"
+      },
+      "note": "附件仅由独立清单补充，不属于Karakeep普通导出",
+      "archived": false
+    },
+    {
+      "createdAt": 1701000070,
+      "title": "保留查询参数",
+      "tags": [],
+      "lists": [],
+      "content": {
+        "type": "link",
+        "url": "https://example.net/query?mode=full&item=42"
+      },
+      "note": null,
+      "archived": false
+    },
+    {
+      "createdAt": 1701000080,
+      "title": "独立文本条目",
+      "tags": [
+        "文本"
+      ],
+      "lists": [],
+      "content": {
+        "type": "text",
+        "text": "这是虚构的纯文本收藏，没有URL。"
+      },
+      "note": null,
+      "archived": false
+    }
+  ],
+  "lists": [
+    {
+      "id": "s-root",
+      "name": "收集",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": null
+    },
+    {
+      "id": "s-research",
+      "name": "研究",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "s-root"
+    },
+    {
+      "id": "s-archive",
+      "name": "归档",
+      "description": null,
+      "icon": "📁",
+      "type": "manual",
+      "query": null,
+      "parentId": "s-root"
+    }
+  ]
+}

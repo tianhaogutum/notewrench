@@ -1,0 +1,51 @@
+{
+  "fixture_kind": "fictional; independent data shaped to the documented export formats",
+  "source_records": 7,
+  "target_records": 6,
+  "conservative": {
+    "matched": 4,
+    "missing": 3,
+    "added": 2,
+    "source_duplicate_groups": 1,
+    "target_duplicate_groups": 0,
+    "raw_url_differences": 1
+  },
+  "raw": {
+    "matched": 3,
+    "missing": 4,
+    "added": 3
+  },
+  "expected_conflicts": [
+    {
+      "url": "https://example.org/guide?lang=zh&view=full",
+      "field": "created_at",
+      "source": 1700000000,
+      "target": 1700003600
+    },
+    {
+      "url": "https://example.org/folders",
+      "field": "folders",
+      "source": [
+        [
+          "资料",
+          "研究"
+        ]
+      ],
+      "target": [
+        [
+          "资料",
+          "归档"
+        ]
+      ]
+    }
+  ],
+  "checks": [
+    "A[1] and $.bookmarks[0] match conservatively but their raw URLs differ.",
+    "Source A[2]/A[3] duplicate group has two occurrences; only one target occurrence exists.",
+    "Source A[4] is inside 资料/研究; target $.bookmarks[2] is inside 资料/归档.",
+    "The two search URLs differ by q=书签 versus q=收藏; retain these semantic query parameters and report missing+added.",
+    "The source has no TAGS attribute and no DD notes; tags and notes must be not comparable, not missing.",
+    "Attachments are not exported by these two native formats; absence is not an attachment-loss finding.",
+    "Ordering of output may differ; counts and original positions are authoritative fixture expectations."
+  ]
+}

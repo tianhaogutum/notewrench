@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "entries": {
+    "$.bookmarks[4]": [
+      {
+        "reference": "manual",
+        "path": "files/manual-target.txt"
+      },
+      {
+        "reference": "diagram",
+        "path": "files/diagram-target.txt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "fixture_kind": "fictional; independent data shaped to Karakeep export schema",
+  "source_records": 9,
+  "target_records": 8,
+  "source_link_records": 8,
+  "target_link_records": 7,
+  "source_skipped": 1,
+  "target_skipped": 1,
+  "conservative": {
+    "matched": 6,
+    "missing": 2,
+    "added": 1,
+    "source_duplicate_groups": 1,
+    "target_duplicate_groups": 1,
+    "raw_url_differences": 0
+  },
+  "expected_conflict_pair": {
+    "source_position": "$.bookmarks[1]",
+    "target_position": "$.bookmarks[1]",
+    "url": "https://example.net/changed?edition=2",
+    "fields": [
+      "title",
+      "tags",
+      "folders",
+      "note",
+      "created_at",
+      "archived"
+    ]
+  },
+  "attachments": {
+    "source_position": "$.bookmarks[6]",
+    "target_position": "$.bookmarks[4]",
+    "references": [
+      "manual",
+      "diagram"
+    ],
+    "source_existing": 2,
+    "target_existing": 1,
+    "target_missing": 1,
+    "missing_path": "files/diagram-target.txt"
+  },
+  "checks": [
+    "Different list IDs s-*/t-* map to the same names and parent hierarchy, not a false folder conflict.",
+    "Exact duplicate A and B match their counterparts; source duplicate C is missing. Preserve source cardinality.",
+    "The text-only record must be disclosed as skipped/not audited; it is not a URL and must not make URL totals pass.",
+    "All six listed fields conflict for the changed entry. Labels such as created_at may be rendered as exported_time by implementation.",
+    "Attachments are supplied ONLY by the tool-specific sidecar manifest, not invented Karakeep fields.",
+    "manual exists locally on both sides; diagram reference survives but its target local file is missing.",
+    "File content integrity and downloads are outside this fixture and v0.1 scope."
+  ]
+}
