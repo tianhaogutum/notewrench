@@ -10,8 +10,8 @@ version 3 text, Copyright (C) 2007 Free Software Foundation, Inc., reproduced fr
 <https://www.gnu.org/licenses/agpl-3.0.txt> under its verbatim-copying notice. The original
 work is offered under version 3 **only**, not "or later".
 
-Five later commands (`anki-merge`, `relink`, `browser-bookmarks`, `zotero-dupes` and
-`bibtex-keys`) were separate projects under the **MIT License**. Their files keep that
+Six later commands (`anki-merge`, `relink`, `browser-bookmarks`, `zotero-dupes`,
+`bibtex-keys` and `bookmark-migration`) were separate projects under the **MIT License**. Their files keep that
 license and notice (each source file carries `SPDX-License-Identifier: MIT` and the
 original copyright line; full texts in [`licenses/`](licenses/)). MIT code may be
 distributed as part of this AGPL-3.0-only work; those files on their own remain
@@ -76,6 +76,7 @@ named here.
 - [`notewrench browser-bookmarks` (formerly bookmark-receipts)](#notewrench-browser-bookmarks-formerly-bookmark-receipts)
 - [`notewrench zotero-dupes` (formerly library-bridge)](#notewrench-zotero-dupes-formerly-library-bridge)
 - [`notewrench bibtex-keys` (formerly citekey-audit)](#notewrench-bibtex-keys-formerly-citekey-audit)
+- [`notewrench bookmark-migration` (formerly bookmark-migration-audit)](#notewrench-bookmark-migration-formerly-bookmark-migration-audit)
 
 ## `notewrench zotero-logseq` (formerly zotlog-sync)
 
@@ -658,3 +659,34 @@ demonstration text. Other inline test inputs are synthetic.
 
 Review bundles keep the original identifier `"tool": "citekey-audit"` and
 `"schema_version": 1`; the staging directory prefix `.citekey-audit-` is also unchanged.
+
+## `notewrench bookmark-migration` (formerly bookmark-migration-audit)
+
+Original implementation (`src/notewrench/bookmarkmigration/`), tests
+(`tests/bookmarkmigration/`), examples (`examples/bookmark-migration/`) and docs
+(`docs/bookmark-migration.md`, `docs/bookmark-migration/`): Copyright (c) 2026
+tianhaogutum, **MIT License** ([text](licenses/bookmark-migration-MIT.txt)). This command
+keeps its MIT license and notice; it differs from the AGPL-3.0-only license of the rest of
+notewrench. Each source file carries `SPDX-License-Identifier: MIT`. The MIT terms permit
+distribution as part of this AGPL-3.0-only work; the combined distribution is offered
+under AGPL-3.0-only, and the MIT notice must be retained with these files.
+
+No third-party runtime dependency and no extra: it uses only the Python standard library
+(PSF License), including `html.parser` for Netscape HTML, `json` and `urllib.parse`. No
+third-party code, test file or documentation is vendored.
+
+Formats followed (consulted as references; no code copied, nothing bundled):
+[Karakeep](https://github.com/karakeep-app/karakeep) (AGPL-3.0) at commit
+`88a9ff9cfdfa2b99da4d6a700ea2d0055bd3639d` — the JSON export schema and converter
+(`packages/shared/import-export/exporters.ts`), the web export route, and the official
+parser and its tests, for structural facts only; Mozilla's
+[BookmarkHTMLUtils.sys.mjs](https://github.com/mozilla/gecko-dev/blob/6891d8609824fc63b03af460d0b5a4911749b56b/toolkit/components/places/BookmarkHTMLUtils.sys.mjs)
+(MPL-2.0) and its historical bookmarks HTML tests, for the Netscape bookmarks format. A
+Mozilla historical sample was parsed during development and is not shipped. Details are
+in [docs/bookmark-migration/formats.md](docs/bookmark-migration/formats.md).
+
+Examples under `examples/bookmark-migration/` are original fictional data (reserved
+`example.org`/`example.net` domains, invented titles, notes, dates and attachment files).
+
+Reports keep their original format: `report.json` has `"schema_version": 1` and its
+`tool_version` field, and the optional attachment manifest keeps `"schema_version": 1`.

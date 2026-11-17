@@ -59,6 +59,9 @@ COMMANDS: tuple[Command, ...] = (
     Command("anki-merge", "notewrench.ankimerge.cli",
             "Preview an Anki course update: merge teacher and student note exports",
             "Migrate & sync notes", extra="anki-merge", requires=("csvdiff",)),
+    Command("bookmark-migration", "notewrench.bookmarkmigration.cli",
+            "Audit a bookmark migration: compare before/after HTML or Karakeep exports",
+            "Migrate & sync notes"),
     Command("archive", "notewrench.archive.cli",
             "Rescue cached Wallabag/Karakeep articles as a static HTML archive",
             "Read-later archives", linux_only=True),
@@ -108,6 +111,7 @@ LEGACY = {
     "citekey-rekey": "citekeys", "zotero-attach-audit": "zotero-attachments",
     "anki-course-merge": "anki-merge", "archive-relink": "relink", "library-bridge": "zotero-dupes",
     "citekey-audit": "bibtex-keys", "bookmark-receipts": "browser-bookmarks",
+    "bookmark-migration-audit": "bookmark-migration", "bookmark-audit": "bookmark-migration",
 }
 
 

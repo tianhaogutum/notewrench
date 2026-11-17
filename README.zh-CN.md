@@ -60,8 +60,8 @@ uvx notewrench doctor examples/doctor
 | **Zotero** | 已关闭的 `zotero.sqlite` 副本 + `storage/`；CSL-JSON、Better BibTeX JSON 和 Zotero RDF 导出 | 缺失的附件文件、字节完全相同的重复文件、孤立的 storage 文件夹（Linux） | `zotero-attachments`、`zotero-dupes`、`zotero-logseq` |
 | **Joplin** | JEX 导出和 RAW 导出文件夹 | 完全重复的笔记、多份导出之间的 ID 冲突、无法比对的笔记 | `joplin-dupes`、`joplin-logseq` |
 | **Calibre** | 已关闭的书库（`metadata.db`） | 重复图书（ISBN、规范化书名和作者）、无效 ISBN、缺作者 | `calibre-dupes` |
-| **Karakeep / Wallabag** | Karakeep JSON 和 Wallabag v2 导出 | 单份导出内及多份导出之间的重复书签、无效记录 | `links`、`archive`、`epub`、`wallabag-notes` |
-| **浏览器 / linkding** | Netscape HTML 书签导出（Firefox、Chrome、Safari、linkding） | 单份导出内及多份导出之间的重复书签、笔记或标签不一致的重复组（需 `browser-bookmarks` extra） | `browser-bookmarks` |
+| **Karakeep / Wallabag** | Karakeep JSON 和 Wallabag v2 导出 | 单份导出内及多份导出之间的重复书签、无效记录 | `links`、`bookmark-migration`、`archive`、`epub`、`wallabag-notes` |
+| **浏览器 / linkding** | Netscape HTML 书签导出（Firefox、Chrome、Safari、linkding） | 单份导出内及多份导出之间的重复书签、笔记或标签不一致的重复组（需 `browser-bookmarks` extra） | `browser-bookmarks`、`bookmark-migration` |
 | **网页存档** | 你已保存的 SingleFile、ArchiveBox、nb、WARC 和 MHTML 副本 | | `relink` |
 | **Pandoc / Better BibTeX** | CSL-JSON、BibTeX/BibLaTeX 和 Better BibTeX JSON 文献库 + Markdown | 不在任何文献库中的 citekey、两次 CSL-JSON 导出之间被改名的 key、不支持的引用写法 | `citekeys`、`bibtex-keys` |
 | **Anki** | “纯文本笔记”导出（课程旧版与新版 + 学生的牌组） | | `anki-merge` |
@@ -76,6 +76,7 @@ uvx notewrench doctor examples/doctor
 | | `joplin-logseq` | 把 Joplin JEX 导出转换成新的 Logseq Markdown 图谱，附审计/损失报告 | [joplin-logseq](docs/joplin-logseq.md) |
 | | `wallabag-notes` | 把 Wallabag 高亮和批注导出为 Markdown、Logseq 块和 CSV，之后可持续更新 | [wallabag-notes](docs/wallabag-notes.md) |
 | | `anki-merge` ¹ | 预检 Anki 课程更新：按课程 ID 合并旧版教师、新版教师和学生的笔记文本导出，冲突留待审核 | [anki-merge](docs/anki-merge.md) |
+| | `bookmark-migration` | 核查收藏迁移结果：比较迁移前后的浏览器 HTML 或 Karakeep JSON 导出，报告丢失、新增和重复的 URL，以及标签、文件夹、备注和时间的冲突 | [bookmark-migration](docs/bookmark-migration.md) |
 | **稍后读归档** | `archive` | 把 Wallabag/Karakeep 缓存的文章救成静态 HTML 归档；把 Karakeep 导出转成 Wallabag JSON | [archive](docs/archive.md) |
 | | `epub` | 把 Wallabag/Karakeep 缓存的文章打包成经过校验的 EPUB 3，附来源报告 | [epub](docs/epub.md) |
 | | `relink` ¹ | 为 Markdown 引用找到你本地已有的网页存档副本（SingleFile、ArchiveBox、nb、WARC、MHTML），只为你选中的链接生成补丁 | [relink](docs/relink.md) |
@@ -90,6 +91,8 @@ uvx notewrench doctor examples/doctor
 
 ¹ 依赖第三方库：先安装同名的 extra，例如 `pip install 'notewrench[relink]'`。未安装时命令会打印这条提示。
 
+有三个命令处理书签：`browser-bookmarks` 在**导入前**审查浏览器和 linkding 书签的重复项，`links` 在 Karakeep 和 Wallabag **内部**查重，`bookmark-migration` 在**迁移后**拿结果和迁移前的导出逐条比对。
+
 `notewrench <命令> --help` 列出全部选项。每个命令在 `examples/<命令>/` 下都有可直接运行的合成输入，下面的命令需在克隆的仓库里运行。
 
 ## 分组示例
@@ -102,6 +105,8 @@ notewrench joplin-logseq examples/joplin-logseq/synthetic.jex my-new-logseq-grap
 notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output notes
 notewrench anki-merge examples/anki-merge/old.txt examples/anki-merge/new.txt examples/anki-merge/student.txt \
   --id CourseID --fields Front Back CourseID --student-fields Front Back CourseID Personal --out anki-review
+notewrench bookmark-migration examples/bookmark-migration/cross-format/source.html \
+  examples/bookmark-migration/cross-format/target.json --output-dir migration-check
 ```
 
 ### 稍后读归档
@@ -140,7 +145,7 @@ notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/z
 ## 安全性
 
 - **离线、无需账号、没有遥测。** 没有任何命令会联网或调用应用 API，所有操作都针对你导出或复制出来的文件。
-- **默认只读。** `doctor`、`zotero-attachments` 和 `calibre-dupes` 只读不写；`joplin-dupes` 和 `citekeys`（默认 `--dry-run`）只打印审查结果；`links --dry-run`、`zotero-logseq --dry-run`、`joplin-logseq --dry-run` 和 `wallabag-notes --dry-run` 只展示将要写入的内容。`relink` 和 `bibtex-keys` 生成补丁，由你审查后用 `git apply` 应用；`anki-merge`、`browser-bookmarks` 和 `zotero-dupes` 写出审查包，只有你确认的条目才会进入导入文件。
+- **默认只读。** `doctor`、`zotero-attachments` 和 `calibre-dupes` 只读不写；`bookmark-migration` 只读输入，只写报告；`joplin-dupes` 和 `citekeys`（默认 `--dry-run`）只打印审查结果；`links --dry-run`、`zotero-logseq --dry-run`、`joplin-logseq --dry-run` 和 `wallabag-notes --dry-run` 只展示将要写入的内容。`relink` 和 `bibtex-keys` 生成补丁，由你审查后用 `git apply` 应用；`anki-merge`、`browser-bookmarks` 和 `zotero-dupes` 写出审查包，只有你确认的条目才会进入导入文件。
 - **从不修改正在使用的应用数据库。** 不会写入 `zotero.sqlite`、Calibre 的 `metadata.db` 或 Joplin 的配置目录。Zotero 和 Calibre 的读取器以只读方式打开数据库；如果旁边有 `-wal`/`-journal` 文件就直接拒绝。请先关闭应用，或者用副本。
 - **写新文件，不覆盖。** 输出总是写到新文件或新目录，已存在的路径会被拒绝。重复项只有在你于决定文件中批准后才会合并：`joplin-dupes` 写出一个供你导入的 *新* JEX，`links --wallabag-export` 写出一个 *新* 的 Wallabag 导出。
 - **你自己的笔记归你。** `zotero-logseq` 只改写每个 Logseq 页面里它自己管理、带哈希校验的区域，从不删除页面；`wallabag-notes --update` 只改写它管理的文件，发现你改过就拒绝。
@@ -160,6 +165,7 @@ notewrench 处理的是导出文件和已关闭的副本，在应用之外运行
 | **Logseq** 导入器和 Zotero 集成 | 导入 Roam JSON、OPML 和 Logseq 自身格式；Zotero 集成走 Zotero Web API | 从 Joplin JEX、Zotero CSL-JSON 和 Wallabag 导出离线转换，重新同步时保留你自己的笔记 |
 | **Karakeep / Wallabag** 导出 | 书签和缓存文章的 JSON（以及其他格式） | 跨两个应用查重并规范化跟踪参数，还能用缓存副本生成 HTML 归档和经过校验的 EPUB |
 | **linkding** 和浏览器导入 | 导入 Netscape HTML 书签；linkding 在同一次导入中跳过重复 URL，第二份的笔记和标签随之丢失 | `browser-bookmarks` 要求你先逐组决定，并把每条原始笔记、标签和源文件保留为凭据 |
+| Karakeep 的**导入/导出**和服务器迁移 | 导入浏览器 HTML，在服务器之间迁移书签、列表、标签和部分资产 | `bookmark-migration` 跨格式、逐条比较迁移前后的导出，列出丢失、新增和改变的内容 |
 
 ## 平台支持
 

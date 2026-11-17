@@ -20,6 +20,7 @@ SUBCOMMANDS = {
     "citekeys": [],
     "zotero-attachments": ["compare"],
     "anki-merge": [],
+    "bookmark-migration": [],
     "relink": ["index", "scan", "patch", "doctor"],
     "browser-bookmarks": ["scan", "status", "show", "review", "compat", "render", "decide", "apply", "verify"],
     "zotero-dupes": ["compare", "finalize", "inspect", "carry-decisions", "schema"],
@@ -33,7 +34,8 @@ SUBPACKAGES = {
     "links": "notewrench.linkdedupe", "joplin-dupes": "notewrench.joplindupes",
     "calibre-dupes": "notewrench.calibredupes", "citekeys": "notewrench.citekeys",
     "zotero-attachments": "notewrench.zoteroattachments",
-    "anki-merge": "notewrench.ankimerge", "relink": "notewrench.relink",
+    "anki-merge": "notewrench.ankimerge", "bookmark-migration": "notewrench.bookmarkmigration",
+    "relink": "notewrench.relink",
     "browser-bookmarks": "notewrench.browserbookmarks", "zotero-dupes": "notewrench.zoterodupes",
     "bibtex-keys": "notewrench.bibtexkeys",
 }
@@ -78,7 +80,7 @@ def test_command_table_shape():
     groups = {group: [c.name for c in cli.COMMANDS if c.group == group] for group in cli.GROUPS}
     assert groups == {
         "Check": ["doctor"],
-        "Migrate & sync notes": ["zotero-logseq", "joplin-logseq", "wallabag-notes", "anki-merge"],
+        "Migrate & sync notes": ["zotero-logseq", "joplin-logseq", "wallabag-notes", "anki-merge", "bookmark-migration"],
         "Read-later archives": ["archive", "epub", "relink"],
         "Duplicates": ["links", "browser-bookmarks", "joplin-dupes", "calibre-dupes", "zotero-dupes"],
         "Citations & attachments": ["citekeys", "bibtex-keys", "zotero-attachments"],

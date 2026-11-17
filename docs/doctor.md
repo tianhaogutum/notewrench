@@ -86,7 +86,9 @@ that does not exist, or a file or folder in which nothing is recognized, is a us
 error (exit 2) and nothing runs. Several Joplin exports are analyzed together, like
 `notewrench joplin-dupes a.jex b.jex`, so ID conflicts across them are found. The same
 goes for read-later exports and `notewrench links`, and for bookmark HTML exports and
-`notewrench browser-bookmarks scan`.
+`notewrench browser-bookmarks scan`. Doctor checks each export as it is; to compare a
+bookmark export from before a migration with one from after it, run
+`notewrench bookmark-migration BEFORE AFTER`.
 
 ### Citations: unknown and renamed keys
 

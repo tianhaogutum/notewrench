@@ -64,8 +64,8 @@ it, `2` usage error, unrecognized path or unreadable source. `--format json` pri
 | **Zotero** | a closed `zotero.sqlite` copy + `storage/`; CSL-JSON, Better BibTeX JSON and Zotero RDF exports | missing attachment files, byte-identical duplicates, orphan storage folders (Linux) | `zotero-attachments`, `zotero-dupes`, `zotero-logseq` |
 | **Joplin** | JEX exports and raw export folders | exact-duplicate notes, ID conflicts between exports, notes that cannot be compared | `joplin-dupes`, `joplin-logseq` |
 | **Calibre** | a closed library (`metadata.db`) | duplicate books (ISBN, normalized title and authors), invalid ISBNs, missing authors | `calibre-dupes` |
-| **Karakeep / Wallabag** | Karakeep JSON and Wallabag v2 exports | duplicate bookmarks within and across exports, invalid records | `links`, `archive`, `epub`, `wallabag-notes` |
-| **Browsers / linkding** | Netscape-HTML bookmark exports (Firefox, Chrome, Safari, linkding) | duplicate bookmarks within and across exports, duplicates whose notes or tags differ (with the `browser-bookmarks` extra) | `browser-bookmarks` |
+| **Karakeep / Wallabag** | Karakeep JSON and Wallabag v2 exports | duplicate bookmarks within and across exports, invalid records | `links`, `bookmark-migration`, `archive`, `epub`, `wallabag-notes` |
+| **Browsers / linkding** | Netscape-HTML bookmark exports (Firefox, Chrome, Safari, linkding) | duplicate bookmarks within and across exports, duplicates whose notes or tags differ (with the `browser-bookmarks` extra) | `browser-bookmarks`, `bookmark-migration` |
 | **Web archives** | SingleFile, ArchiveBox, nb, WARC and MHTML copies you already saved | | `relink` |
 | **Pandoc / Better BibTeX** | CSL-JSON, BibTeX/BibLaTeX and Better BibTeX JSON bibliographies + Markdown | citekeys in no bibliography, keys renamed between CSL-JSON exports, unsupported citation syntax | `citekeys`, `bibtex-keys` |
 | **Anki** | "Notes in Plain Text" exports (old and new course version + a student's collection) | | `anki-merge` |
@@ -80,6 +80,7 @@ it, `2` usage error, unrecognized path or unreadable source. `--format json` pri
 | | `joplin-logseq` | Convert a Joplin JEX export into a new Logseq Markdown graph, with an audit/loss report | [joplin-logseq](docs/joplin-logseq.md) |
 | | `wallabag-notes` | Export Wallabag highlights and annotations to Markdown, Logseq blocks and CSV, and keep them updated | [wallabag-notes](docs/wallabag-notes.md) |
 | | `anki-merge` ¹ | Preview an Anki course update: merge old-teacher, new-teacher and student note exports by course ID, holding conflicts for review | [anki-merge](docs/anki-merge.md) |
+| | `bookmark-migration` | Audit a bookmark migration: compare the browser HTML or Karakeep JSON export from before with the one from after, and report missing, added and duplicate URLs and conflicting tags, folders, notes and times | [bookmark-migration](docs/bookmark-migration.md) |
 | **Read-later archives** | `archive` | Rescue cached Wallabag/Karakeep articles into a static HTML archive; convert Karakeep exports to Wallabag JSON | [archive](docs/archive.md) |
 | | `epub` | Bundle cached Wallabag/Karakeep articles into a validated EPUB 3 with a provenance report | [epub](docs/epub.md) |
 | | `relink` ¹ | Find your existing local copy (SingleFile, ArchiveBox, nb, WARC, MHTML) for each Markdown citation and patch only the links you pick | [relink](docs/relink.md) |
@@ -95,6 +96,11 @@ it, `2` usage error, unrecognized path or unreadable source. `--format json` pri
 ¹ Wraps third-party libraries: install the extra of the same name first, for example
 `pip install 'notewrench[relink]'`. Without it, the command prints this hint.
 
+Three commands handle bookmarks: `browser-bookmarks` reviews duplicate browser and
+linkding bookmarks **before** an import, `links` finds duplicates **inside** Karakeep and
+Wallabag, and `bookmark-migration` checks the result **after** a migration against the
+export you started from.
+
 `notewrench <command> --help` lists every option. Every command has runnable synthetic
 inputs in `examples/<command>/`; the commands below run from a clone.
 
@@ -108,6 +114,8 @@ notewrench joplin-logseq examples/joplin-logseq/synthetic.jex my-new-logseq-grap
 notewrench wallabag-notes examples/wallabag-notes/wallabag-v2.json --output notes
 notewrench anki-merge examples/anki-merge/old.txt examples/anki-merge/new.txt examples/anki-merge/student.txt \
   --id CourseID --fields Front Back CourseID --student-fields Front Back CourseID Personal --out anki-review
+notewrench bookmark-migration examples/bookmark-migration/cross-format/source.html \
+  examples/bookmark-migration/cross-format/target.json --output-dir migration-check
 ```
 
 ### Read-later archives
@@ -148,7 +156,7 @@ notewrench zotero-attachments --snapshot examples/zotero-attachments/synthetic/z
 - **Offline, no accounts, no telemetry.** No command opens a network connection or
   calls an app API. Everything works on files you exported or copied.
 - **Read-only by default.** `doctor`, `zotero-attachments` and `calibre-dupes` only
-  read. `joplin-dupes` and `citekeys` (its default `--dry-run`) print reviews.
+  read; `bookmark-migration` only reads its inputs and writes a report. `joplin-dupes` and `citekeys` (its default `--dry-run`) print reviews.
   `links --dry-run`, `zotero-logseq --dry-run`, `joplin-logseq --dry-run` and
   `wallabag-notes --dry-run` show what would be written. `relink` and `bibtex-keys`
   write a patch for you to review and apply with `git apply`; `anki-merge`,
@@ -184,6 +192,7 @@ replacing them.
 | **Logseq** importers and Zotero integration | Imports Roam JSON, OPML and Logseq's own formats. The Zotero integration uses the Zotero web API | Offline conversion from Joplin JEX, Zotero CSL-JSON and Wallabag exports that keeps your own notes intact on re-sync |
 | **Karakeep / Wallabag** exports | JSON (and other formats) of your bookmarks and cached articles | Duplicate detection *across* both apps with tracking-parameter normalization, plus HTML archives and validated EPUBs built from the cached copies |
 | **linkding** and browser imports | Import Netscape-HTML bookmarks; linkding skips a repeated URL within one import, so the second copy's notes and tags are lost | `browser-bookmarks` makes you decide per duplicate group first and keeps every original note, tag and source file as receipts |
+| Karakeep **import/export** and server migration | Imports browser HTML and moves bookmarks, lists, tags and some assets between servers | `bookmark-migration` compares the export from before with the one from after, across formats, entry by entry, and shows what was lost, added or changed |
 
 ## Platform support
 

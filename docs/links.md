@@ -13,7 +13,9 @@ It never goes online, deletes, calls an app API or imports anything, and it does
 **Which command?** Use `links` for Karakeep and Wallabag read-later JSON exports. For
 browser bookmark HTML exports (Firefox, Chrome, Safari) and linkding HTML exports that
 you want to merge with an explicit decision per group before importing them, use
-[`notewrench browser-bookmarks`](browser-bookmarks.md).
+[`notewrench browser-bookmarks`](browser-bookmarks.md). After a migration, to check
+what arrived against the export you started from, use
+[`notewrench bookmark-migration`](bookmark-migration.md).
 
 Formerly the standalone `linkdedupe` tool (Node.js); see
 [Compatibility with linkdedupe](#compatibility-with-linkdedupe).

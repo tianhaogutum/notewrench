@@ -12,7 +12,9 @@ byte-exact source file.
 **Which command?** Use `browser-bookmarks` for browser bookmark HTML exports and
 linkding HTML exports, when you want to decide each duplicate group yourself before
 importing into linkding or a browser. For Karakeep and Wallabag read-later JSON
-exports, use [`notewrench links`](links.md).
+exports, use [`notewrench links`](links.md). After the import or any other migration,
+compare the export from before with the export from after using
+[`notewrench bookmark-migration`](bookmark-migration.md).
 
 It is a small, offline pre-import adapter: it reuses linkding's MIT HTML exporter and
 Beautiful Soup/html5lib rather than replacing linkding, buku or your browser. No URL is

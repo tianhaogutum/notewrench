@@ -25,6 +25,7 @@ hint).
 | [`notewrench joplin-logseq`](joplin-logseq.md) | Convert a Joplin JEX export into a fresh Logseq Markdown file graph, with links, attachments, tags and a loss report |
 | [`notewrench wallabag-notes`](wallabag-notes.md) | Export Wallabag highlights and annotations to Markdown, Logseq blocks and CSV, and update them later without losing your edits ([format notes](wallabag-notes/format.md)) |
 | [`notewrench anki-merge`](anki-merge.md) | Merge old-teacher, new-teacher and student Anki note text exports by stable course ID before importing a course update, keeping personal fields and holding conflicts for review (needs an extra) |
+| [`notewrench bookmark-migration`](bookmark-migration.md) | Audit a bookmark migration: compare the browser HTML or Karakeep JSON export from before with the one from after, and report moved, missing, added and duplicate URLs and conflicting tags, folders, notes and times ([format notes](bookmark-migration/formats.md)) |
 
 ## Read-later archives
 
@@ -43,6 +44,11 @@ hint).
 | [`notewrench joplin-dupes`](joplin-dupes.md) | Review duplicate notes across Joplin JEX/raw exports and write an approved deduplicated JEX copy |
 | [`notewrench calibre-dupes`](calibre-dupes.md) | Find duplicate books within one Calibre library or across two, and plan which formats to keep ([format notes](calibre-dupes/format.md)) |
 | [`notewrench zotero-dupes`](zotero-dupes.md) | Compare exports of a personal Zotero library and group libraries, review duplicate candidates with their notes and annotations in an offline HTML page, and export only confirmed matches ([artifact contract](zotero-dupes/artifacts.md)) (needs an extra) |
+
+**Which bookmark command?** Before an import, review duplicate browser and linkding
+bookmarks with `browser-bookmarks`; inside read-later apps, find duplicates across
+Karakeep and Wallabag exports with `links`; after a migration, check the result against
+the export you started from with `bookmark-migration`.
 
 ## Citations and attachments
 
