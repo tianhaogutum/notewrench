@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>notewrench zotero-dupes · Cross-library review</title>
+  <style>/*BRIDGE_CSS*/</style>
+</head>
+<body>
+  <header class="topbar"><div><span class="eyebrow">RESEARCH LIBRARIES / READ-ONLY REVIEW</span><h1>notewrench zotero-dupes<span class="brand-dot">●</span></h1></div><div class="actions"><label class="button secondary">Load decisions<input type="file" id="import" accept="application/json,.json" hidden></label><button id="download">Download decisions</button></div></header>
+  <div class="summary"><div><strong id="progress">Loading review…</strong><p>Compare the evidence. Confirm each pair. Keep the differences.</p></div><div id="counts" class="counts"></div></div>
+  <div id="message" role="status" aria-live="polite"></div>
+  <details class="guidance"><summary>How to review and export</summary><p>Choose <b>Same work</b> only after reviewing the fields, tags, notes and annotations. A cluster is a set of candidates; confirming one pair does not confirm another.</p><p>Your decisions may be saved in this browser when local storage is available. <b>Download decisions</b> saves a portable backup. To produce confirmed correspondences and preservation suggestions, run:</p><pre>notewrench zotero-dupes finalize --review PATH/review.json --decisions PATH/decisions.json --output confirmed</pre><p>Keep your original export files. This tool does not modify them or connect to Zotero. PDF files and highlights not present in the export are outside this review.</p><div id="warnings"></div></details>
+  <div class="workspace"><aside><label for="search">Find a title, library or identifier</label><input id="search" type="search" placeholder="Search candidates…"><label for="filter">Review status</label><select id="filter"><option value="all">All candidate clusters</option><option value="unreviewed">Needs review</option><option value="same">Has confirmed pairs</option><option value="different">Has different-work pairs</option><option value="defer">Has deferred pairs</option><option value="warning">Has evidence warnings</option></select><nav id="clusters" aria-label="Candidate clusters"></nav></aside><main id="main"><noscript>Enable JavaScript to review candidates offline, or edit decisions.json and use the finalize command.</noscript></main></div>
+  <footer>Offline review · Matching evidence from BibDedupe and RapidFuzz · Source data stays in this file</footer>
+  <script type="application/json" id="bridge-data">/*BRIDGE_DATA*/</script>
+  <script>/*BRIDGE_JS*/</script>
+</body>
+</html>
+

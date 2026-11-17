@@ -1,0 +1,194 @@
+{
+  "items": [
+    {
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "Nancy K",
+          "lastName": "Adams"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Shanaka L",
+          "lastName": "DeSilva"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Self"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Guido",
+          "lastName": "Salas"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Schubring"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Jason L",
+          "lastName": "Permenter"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Kendra",
+          "lastName": "Arbesman"
+        }
+      ],
+      "date": "2001",
+      "extra": [],
+      "itemID": 1,
+      "itemType": "journalArticle",
+      "pages": "493-518",
+      "publicationTitle": "Bulletin of Volcanology",
+      "tags": [
+        {
+          "tag": "reading-group",
+          "type": 0
+        },
+        {
+          "tag": "volcanology",
+          "type": 1
+        }
+      ],
+      "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+      "volume": "62",
+      "citationKey": "Adams2001",
+      "key": "GROUP001",
+      "uri": "http://zotero.org/groups/200/items/GROUP001",
+      "DOI": "https://doi.org/10.1007/s004450000105",
+      "notes": [
+        "<div><p>Group reading: verify the dating assumptions.</p></div>"
+      ],
+      "attachments": [
+        {
+          "key": "PDF00002",
+          "title": "Annotated PDF",
+          "annotations": [
+            {
+              "key": "ANN00002",
+              "annotationType": "highlight",
+              "annotationText": "Huaynaputina",
+              "annotationComment": "Check location",
+              "annotationPageLabel": "493"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "Nancy K",
+          "lastName": "Adams"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Shanaka L",
+          "lastName": "DeSilva"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Self"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Guido",
+          "lastName": "Salas"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Schubring"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Jason L",
+          "lastName": "Permenter"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Kendra",
+          "lastName": "Arbesman"
+        }
+      ],
+      "date": "2004",
+      "extra": [],
+      "itemID": 2,
+      "itemType": "preprint",
+      "pages": "493-518",
+      "publicationTitle": "Bulletin of Volcanology",
+      "tags": [
+        {
+          "tag": "reading-group",
+          "type": 0
+        },
+        {
+          "tag": "volcanology",
+          "type": 1
+        }
+      ],
+      "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+      "volume": "62",
+      "citationKey": "Adams2001",
+      "key": "GROUP002",
+      "uri": "http://zotero.org/groups/200/items/GROUP002",
+      "DOI": "10.1234/different-version",
+      "notes": [
+        "<p>This synthetic variant intentionally has a conflicting DOI and date.</p>"
+      ],
+      "attachments": [
+        {
+          "key": "PDF00003",
+          "title": "Annotated PDF",
+          "annotations": [
+            {
+              "key": "ANN00003",
+              "annotationType": "highlight",
+              "annotationText": "Huaynaputina",
+              "annotationComment": "Check location",
+              "annotationPageLabel": "493"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Olson2006-group",
+      "author": [
+        {
+          "family": "Olson",
+          "given": "Hope A."
+        }
+      ],
+      "citation-key": "Olson2006",
+      "container-title": "Library Quarterly",
+      "container-title-short": "Libr. Q.",
+      "DOI": "10.1086/504343",
+      "issue": "1",
+      "issued": {
+        "date-parts": [
+          [
+            "2006"
+          ]
+        ]
+      },
+      "language": "en-US",
+      "page": "19–35",
+      "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+      "title-short": "Codes, costs, and critiques",
+      "type": "article-journal",
+      "volume": "76",
+      "note": "Review the indexing terminology",
+      "keyword": [
+        "cataloguing",
+        "seminar"
+      ]
+    }
+  ]
+}

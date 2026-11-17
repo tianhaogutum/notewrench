@@ -1,0 +1,48 @@
+{
+  "config": {
+    "id": "36a3b0b5-bad0-4a04-b79b-441c7cef77db",
+    "label": "BetterBibTeX JSON",
+    "localeDateOrder": "mdy",
+    "options": {
+      "exportNotes": true
+    },
+    "preferences": {
+      "DOIandURL": "doi",
+      "asciiBibTeX": false,
+      "autoExport": "idle",
+      "auxImport": true,
+      "biblatexExtendedNameFormat": true,
+      "citekeyFold": false,
+      "citekeyFormat": "auth(n=0,m=1,creator=\"*\",initials=false) + Title.jieba.skipwords.capitalize.select(1,2).nopunct + year",
+      "extraMergeCSL": true,
+      "extraMergeCitekeys": true,
+      "extraMergeTeX": true,
+      "importCaseProtection": "off",
+      "qualityReport": true,
+      "quickCopyMode": "orgRef",
+      "skipFields": "abstract, keywords",
+      "verbatimFields": "url,doi,file,eprint,verba,verbb,verbc",
+      "warnBulkModify": 0,
+      "chinese": true,
+      "chineseSplitName": false
+    }
+  },
+  "items": [
+    {
+      "creators": [
+        {
+          "creatorType": "author",
+          "name": "傅斯年"
+        }
+      ],
+      "date": "1985",
+      "itemID": 1,
+      "itemType": "book",
+      "libraryCatalog": "tulips.ntu.edu.tw Library Catalog",
+      "numPages": "270",
+      "place": "台北",
+      "publisher": "新文豐",
+      "title": "性命古訓辨證"
+    }
+  ]
+}

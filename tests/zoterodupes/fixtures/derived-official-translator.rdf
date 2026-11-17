@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:z="http://www.zotero.org/namespaces/export#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"
+  xmlns:link="http://purl.org/rss/1.0/modules/link/"
+  xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+  xmlns:bib="http://purl.org/net/biblio#"
+>
+  <bib:Article rdf:about="#item_1">
+    <z:itemType>journalArticle</z:itemType>
+    <dcterms:isPartOf>
+      <bib:Part rdf:nodeID="b1">
+        <dc:title>Research articles</dc:title>
+        <dcterms:isPartOf rdf:resource="urn:issn:0258-8900"/>
+      </bib:Part>
+    </dcterms:isPartOf>
+    <dc:publisher>
+      <foaf:Organization rdf:nodeID="b2">
+        <foaf:name>Example publisher</foaf:name>
+        <vcard:adr>
+          <vcard:Address rdf:nodeID="b13">
+            <vcard:locality>Berlin</vcard:locality>
+          </vcard:Address>
+        </vcard:adr>
+      </foaf:Organization>
+    </dc:publisher>
+    <bib:authors>
+      <rdf:Seq rdf:nodeID="b4">
+        <rdf:_1>
+          <foaf:Person rdf:nodeID="b3">
+            <foaf:surname>Adams</foaf:surname>
+            <foaf:givenName>Nancy K</foaf:givenName>
+          </foaf:Person>
+        </rdf:_1>
+        <rdf:_2>
+          <foaf:Person rdf:nodeID="b5">
+            <foaf:surname>DeSilva</foaf:surname>
+            <foaf:givenName>Shanaka L</foaf:givenName>
+          </foaf:Person>
+        </rdf:_2>
+        <rdf:_3>
+          <foaf:Person rdf:nodeID="b6">
+            <foaf:surname>Self</foaf:surname>
+            <foaf:givenName>Steven</foaf:givenName>
+          </foaf:Person>
+        </rdf:_3>
+        <rdf:_4>
+          <foaf:Person rdf:nodeID="b7">
+            <foaf:surname>Salas</foaf:surname>
+            <foaf:givenName>Guido</foaf:givenName>
+          </foaf:Person>
+        </rdf:_4>
+        <rdf:_5>
+          <foaf:Person rdf:nodeID="b8">
+            <foaf:surname>Schubring</foaf:surname>
+            <foaf:givenName>Steven</foaf:givenName>
+          </foaf:Person>
+        </rdf:_5>
+        <rdf:_6>
+          <foaf:Person rdf:nodeID="b9">
+            <foaf:surname>Permenter</foaf:surname>
+            <foaf:givenName>Jason L</foaf:givenName>
+          </foaf:Person>
+        </rdf:_6>
+        <rdf:_7>
+          <foaf:Person rdf:nodeID="b10">
+            <foaf:surname>Arbesman</foaf:surname>
+            <foaf:givenName>Kendra</foaf:givenName>
+          </foaf:Person>
+        </rdf:_7>
+      </rdf:Seq>
+    </bib:authors>
+    <bib:editors>
+      <rdf:Seq rdf:nodeID="b12">
+        <rdf:_1>
+          <foaf:Person rdf:nodeID="b11">
+            <foaf:surname>Editor</foaf:surname>
+            <foaf:givenName>Example</foaf:givenName>
+          </foaf:Person>
+        </rdf:_1>
+      </rdf:Seq>
+    </bib:editors>
+    <dcterms:isReferencedBy>
+      <bib:Memo rdf:about="#item_100">
+        <rdf:value><![CDATA[<div><p>Discuss the ash-layer observations at journal club.</p></div>]]></rdf:value>
+      </bib:Memo>
+    </dcterms:isReferencedBy>
+    <link:link>
+      <z:Attachment rdf:about="#item_200">
+        <z:itemType>attachment</z:itemType>
+        <dc:title>Article PDF</dc:title>
+        <dc:description><![CDATA[<p>Attachment note from the group discussion.</p>]]></dc:description>
+      </z:Attachment>
+    </link:link>
+    <dc:subject>breadcrust</dc:subject>
+    <dc:subject>plinian</dc:subject>
+    <dc:subject>Vulcanian eruptions</dc:subject>
+    <dc:date>2001</dc:date>
+    <bib:pages>493–518</bib:pages>
+    <dc:title>The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru</dc:title>
+  </bib:Article>
+  <bib:Journal rdf:about="urn:issn:0258-8900">
+    <dc:title>Bulletin of Volcanology</dc:title>
+    <prism:volume>62</prism:volume>
+    <dc:identifier>DOI 10.1007/s004450000105</dc:identifier>
+    <dc:identifier>ISSN 0258-8900</dc:identifier>
+    <dcterms:alternative>Bull. Volcanol.</dcterms:alternative>
+  </bib:Journal>
+</rdf:RDF>

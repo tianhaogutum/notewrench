@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "libraries": [
+    {
+      "label": "group",
+      "file": "group.json",
+      "sha256": "b0b8d64c67d5012b5acc348403389d795920978038389b12145162d4c420c668",
+      "format": "json",
+      "records": 3,
+      "warnings": [
+        "1 item(s) use export-local or content identities. IDs are deterministic but may change if the exporter renumbers, a citation key changes, or a keyless item is edited."
+      ]
+    },
+    {
+      "label": "personal",
+      "file": "personal.json",
+      "sha256": "8bb59995d4fb2ba86d85f7d05944fd388a02690c3b34b8d7fe21862bbf4c4658",
+      "format": "json",
+      "records": 2,
+      "warnings": [
+        "1 item(s) use export-local or content identities. IDs are deterministic but may change if the exporter renumbers, a citation key changes, or a keyless item is edited."
+      ]
+    }
+  ],
+  "records": {
+    "item-1a4fd0030d6f24b975b22ff4": {
+      "library": "personal",
+      "source_id": "key:PERSON01",
+      "identity_quality": "zotero-uri",
+      "metadata": {
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+        "type": "journalArticle",
+        "date": "2001",
+        "publication": "Bulletin of Volcanology",
+        "pages": "493–518",
+        "DOI": "10.1007/s004450000105",
+        "volume": "62",
+        "authors": "Adams, Nancy K and DeSilva, Shanaka L and Self, Steven and Salas, Guido and Schubring, Steven and Permenter, Jason L and Arbesman, Kendra",
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "extra": [],
+        "citationKey": "Adams2001"
+      },
+      "raw": {
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "date": "2001",
+        "extra": [],
+        "itemID": 1,
+        "itemType": "journalArticle",
+        "pages": "493–518",
+        "publicationTitle": "Bulletin of Volcanology",
+        "tags": [
+          {
+            "tag": "breadcrust"
+          },
+          {
+            "tag": "plinian"
+          },
+          {
+            "tag": "Vulcanian eruptions"
+          }
+        ],
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+        "volume": "62",
+        "citationKey": "Adams2001",
+        "key": "PERSON01",
+        "uri": "http://zotero.org/users/100/items/PERSON01",
+        "DOI": "10.1007/s004450000105",
+        "notes": [
+          {
+            "key": "NOTE0001",
+            "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+          }
+        ],
+        "attachments": [
+          {
+            "key": "PDF00001",
+            "title": "Article PDF",
+            "contentType": "application/pdf",
+            "annotations": [
+              {
+                "key": "ANN00001",
+                "annotationType": "highlight",
+                "annotationText": "The 1600 eruption of Huaynaputina",
+                "annotationComment": "Compare the chronology",
+                "annotationPageLabel": "494"
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        {
+          "tag": "breadcrust"
+        },
+        {
+          "tag": "plinian"
+        },
+        {
+          "tag": "Vulcanian eruptions"
+        }
+      ],
+      "notes": [
+        {
+          "key": "NOTE0001",
+          "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+        }
+      ],
+      "annotations": [
+        {
+          "key": "ANN00001",
+          "annotationType": "highlight",
+          "annotationText": "The 1600 eruption of Huaynaputina",
+          "annotationComment": "Compare the chronology",
+          "annotationPageLabel": "494"
+        }
+      ],
+      "attachments": [
+        {
+          "key": "PDF00001",
+          "title": "Article PDF",
+          "contentType": "application/pdf",
+          "annotations": [
+            {
+              "key": "ANN00001",
+              "annotationType": "highlight",
+              "annotationText": "The 1600 eruption of Huaynaputina",
+              "annotationComment": "Compare the chronology",
+              "annotationPageLabel": "494"
+            }
+          ]
+        }
+      ],
+      "id": "item-1a4fd0030d6f24b975b22ff4",
+      "fingerprint": "afb017975fc62eb0b9e6b49add3787502bdb491d036eb7a564b48af1d0b27de7"
+    },
+    "item-544d190a4470a61ac05437a8": {
+      "library": "group",
+      "source_id": "id:Olson2006-group",
+      "identity_quality": "export-id",
+      "metadata": {
+        "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+        "type": "article-journal",
+        "date": {
+          "date-parts": [
+            [
+              "2006"
+            ]
+          ]
+        },
+        "publication": "Library Quarterly",
+        "pages": "19–35",
+        "issue": "1",
+        "DOI": "10.1086/504343",
+        "volume": "76",
+        "authors": "Olson, Hope A.",
+        "creators": [
+          {
+            "family": "Olson",
+            "given": "Hope A."
+          }
+        ],
+        "citation-key": "Olson2006",
+        "container-title-short": "Libr. Q.",
+        "language": "en-US",
+        "title-short": "Codes, costs, and critiques",
+        "note": "Review the indexing terminology",
+        "keyword": [
+          "cataloguing",
+          "seminar"
+        ]
+      },
+      "raw": {
+        "id": "Olson2006-group",
+        "author": [
+          {
+            "family": "Olson",
+            "given": "Hope A."
+          }
+        ],
+        "citation-key": "Olson2006",
+        "container-title": "Library Quarterly",
+        "container-title-short": "Libr. Q.",
+        "DOI": "10.1086/504343",
+        "issue": "1",
+        "issued": {
+          "date-parts": [
+            [
+              "2006"
+            ]
+          ]
+        },
+        "language": "en-US",
+        "page": "19–35",
+        "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+        "title-short": "Codes, costs, and critiques",
+        "type": "article-journal",
+        "volume": "76",
+        "note": "Review the indexing terminology",
+        "keyword": [
+          "cataloguing",
+          "seminar"
+        ]
+      },
+      "tags": [
+        "cataloguing",
+        "seminar"
+      ],
+      "notes": [
+        {
+          "note": "Review the indexing terminology"
+        }
+      ],
+      "annotations": [],
+      "attachments": [],
+      "id": "item-544d190a4470a61ac05437a8",
+      "fingerprint": "6a00d357724807f9970ad522b037aeb0fa140e6fdb3c67057102065f5e34e2cc"
+    },
+    "item-67883b9bd3df18a228dd5663": {
+      "library": "group",
+      "source_id": "key:GROUP002",
+      "identity_quality": "zotero-uri",
+      "metadata": {
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+        "type": "preprint",
+        "date": "2004",
+        "publication": "Bulletin of Volcanology",
+        "pages": "493-518",
+        "DOI": "10.1234/different-version",
+        "volume": "62",
+        "authors": "Adams, Nancy K and DeSilva, Shanaka L and Self, Steven and Salas, Guido and Schubring, Steven and Permenter, Jason L and Arbesman, Kendra",
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "extra": [],
+        "citationKey": "Adams2001"
+      },
+      "raw": {
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "date": "2004",
+        "extra": [],
+        "itemID": 2,
+        "itemType": "preprint",
+        "pages": "493-518",
+        "publicationTitle": "Bulletin of Volcanology",
+        "tags": [
+          {
+            "tag": "reading-group",
+            "type": 0
+          },
+          {
+            "tag": "volcanology",
+            "type": 1
+          }
+        ],
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+        "volume": "62",
+        "citationKey": "Adams2001",
+        "key": "GROUP002",
+        "uri": "http://zotero.org/groups/200/items/GROUP002",
+        "DOI": "10.1234/different-version",
+        "notes": [
+          "<p>This synthetic variant intentionally has a conflicting DOI and date.</p>"
+        ],
+        "attachments": [
+          {
+            "key": "PDF00003",
+            "title": "Annotated PDF",
+            "annotations": [
+              {
+                "key": "ANN00003",
+                "annotationType": "highlight",
+                "annotationText": "Huaynaputina",
+                "annotationComment": "Check location",
+                "annotationPageLabel": "493"
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        {
+          "tag": "reading-group",
+          "type": 0
+        },
+        {
+          "tag": "volcanology",
+          "type": 1
+        }
+      ],
+      "notes": [
+        "<p>This synthetic variant intentionally has a conflicting DOI and date.</p>"
+      ],
+      "annotations": [
+        {
+          "key": "ANN00003",
+          "annotationType": "highlight",
+          "annotationText": "Huaynaputina",
+          "annotationComment": "Check location",
+          "annotationPageLabel": "493"
+        }
+      ],
+      "attachments": [
+        {
+          "key": "PDF00003",
+          "title": "Annotated PDF",
+          "annotations": [
+            {
+              "key": "ANN00003",
+              "annotationType": "highlight",
+              "annotationText": "Huaynaputina",
+              "annotationComment": "Check location",
+              "annotationPageLabel": "493"
+            }
+          ]
+        }
+      ],
+      "id": "item-67883b9bd3df18a228dd5663",
+      "fingerprint": "05a424d857b087bf7ea648eefb7bbf0d717d4f229f6f7021461a9b352d3d6e3e"
+    },
+    "item-6adf703e120a67582f09b1c6": {
+      "library": "group",
+      "source_id": "key:GROUP001",
+      "identity_quality": "zotero-uri",
+      "metadata": {
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+        "type": "journalArticle",
+        "date": "2001",
+        "publication": "Bulletin of Volcanology",
+        "pages": "493-518",
+        "DOI": "https://doi.org/10.1007/s004450000105",
+        "volume": "62",
+        "authors": "Adams, Nancy K and DeSilva, Shanaka L and Self, Steven and Salas, Guido and Schubring, Steven and Permenter, Jason L and Arbesman, Kendra",
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "extra": [],
+        "citationKey": "Adams2001"
+      },
+      "raw": {
+        "creators": [
+          {
+            "creatorType": "author",
+            "firstName": "Nancy K",
+            "lastName": "Adams"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Shanaka L",
+            "lastName": "DeSilva"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Self"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Guido",
+            "lastName": "Salas"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Steven",
+            "lastName": "Schubring"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Jason L",
+            "lastName": "Permenter"
+          },
+          {
+            "creatorType": "author",
+            "firstName": "Kendra",
+            "lastName": "Arbesman"
+          }
+        ],
+        "date": "2001",
+        "extra": [],
+        "itemID": 1,
+        "itemType": "journalArticle",
+        "pages": "493-518",
+        "publicationTitle": "Bulletin of Volcanology",
+        "tags": [
+          {
+            "tag": "reading-group",
+            "type": 0
+          },
+          {
+            "tag": "volcanology",
+            "type": 1
+          }
+        ],
+        "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+        "volume": "62",
+        "citationKey": "Adams2001",
+        "key": "GROUP001",
+        "uri": "http://zotero.org/groups/200/items/GROUP001",
+        "DOI": "https://doi.org/10.1007/s004450000105",
+        "notes": [
+          "<div><p>Group reading: verify the dating assumptions.</p></div>"
+        ],
+        "attachments": [
+          {
+            "key": "PDF00002",
+            "title": "Annotated PDF",
+            "annotations": [
+              {
+                "key": "ANN00002",
+                "annotationType": "highlight",
+                "annotationText": "Huaynaputina",
+                "annotationComment": "Check location",
+                "annotationPageLabel": "493"
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        {
+          "tag": "reading-group",
+          "type": 0
+        },
+        {
+          "tag": "volcanology",
+          "type": 1
+        }
+      ],
+      "notes": [
+        "<div><p>Group reading: verify the dating assumptions.</p></div>"
+      ],
+      "annotations": [
+        {
+          "key": "ANN00002",
+          "annotationType": "highlight",
+          "annotationText": "Huaynaputina",
+          "annotationComment": "Check location",
+          "annotationPageLabel": "493"
+        }
+      ],
+      "attachments": [
+        {
+          "key": "PDF00002",
+          "title": "Annotated PDF",
+          "annotations": [
+            {
+              "key": "ANN00002",
+              "annotationType": "highlight",
+              "annotationText": "Huaynaputina",
+              "annotationComment": "Check location",
+              "annotationPageLabel": "493"
+            }
+          ]
+        }
+      ],
+      "id": "item-6adf703e120a67582f09b1c6",
+      "fingerprint": "2b0498e53b9a00217b427c0f330146fe7b304d9bafffff925937ee7efe65c9e5"
+    },
+    "item-a7cd5ac6baf4f19e548ed246": {
+      "library": "personal",
+      "source_id": "id:Olson2006-personal",
+      "identity_quality": "export-id",
+      "metadata": {
+        "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+        "type": "article-journal",
+        "date": {
+          "date-parts": [
+            [
+              "2006"
+            ]
+          ]
+        },
+        "publication": "Library Quarterly",
+        "pages": "19–35",
+        "issue": "1",
+        "DOI": "10.1086/504343",
+        "volume": "76",
+        "authors": "Olson, Hope A.",
+        "creators": [
+          {
+            "family": "Olson",
+            "given": "Hope A."
+          }
+        ],
+        "citation-key": "Olson2006",
+        "container-title-short": "Libr. Q.",
+        "language": "en-US",
+        "title-short": "Codes, costs, and critiques"
+      },
+      "raw": {
+        "id": "Olson2006-personal",
+        "author": [
+          {
+            "family": "Olson",
+            "given": "Hope A."
+          }
+        ],
+        "citation-key": "Olson2006",
+        "container-title": "Library Quarterly",
+        "container-title-short": "Libr. Q.",
+        "DOI": "10.1086/504343",
+        "issue": "1",
+        "issued": {
+          "date-parts": [
+            [
+              "2006"
+            ]
+          ]
+        },
+        "language": "en-US",
+        "page": "19–35",
+        "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+        "title-short": "Codes, costs, and critiques",
+        "type": "article-journal",
+        "volume": "76"
+      },
+      "tags": [],
+      "notes": [],
+      "annotations": [],
+      "attachments": [],
+      "id": "item-a7cd5ac6baf4f19e548ed246",
+      "fingerprint": "80fda463c557a71844bbc99f4bafc420c5f4296923c331e2e31d517fb64edbf2"
+    }
+  },
+  "pairs": [
+    {
+      "id": "pair-11a8226eed4c846485139360",
+      "left": "item-544d190a4470a61ac05437a8",
+      "right": "item-a7cd5ac6baf4f19e548ed246",
+      "title_similarity": 100.0,
+      "reasons": [
+        "BibDedupe duplicate",
+        "Exact DOI",
+        "Exact normalized title"
+      ],
+      "warnings": [],
+      "bib_dedupe_label": "duplicate"
+    },
+    {
+      "id": "pair-c8719f718d967e9ea2c79cff",
+      "left": "item-1a4fd0030d6f24b975b22ff4",
+      "right": "item-6adf703e120a67582f09b1c6",
+      "title_similarity": 100.0,
+      "reasons": [
+        "BibDedupe duplicate",
+        "Exact DOI",
+        "Exact normalized title"
+      ],
+      "warnings": [],
+      "bib_dedupe_label": "duplicate"
+    },
+    {
+      "id": "pair-ae04a7a794f41eb4c88ba297",
+      "left": "item-1a4fd0030d6f24b975b22ff4",
+      "right": "item-67883b9bd3df18a228dd5663",
+      "title_similarity": 100.0,
+      "reasons": [
+        "BibDedupe maybe",
+        "Exact normalized title"
+      ],
+      "warnings": [
+        "Conflicting DOI values: this may be a related publication or a different version",
+        "Publication years differ by more than one",
+        "Item types differ; distinguish chapters, preprints and published versions"
+      ],
+      "bib_dedupe_label": "maybe"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-c68da48601462421b3810921",
+      "members": [
+        "item-1a4fd0030d6f24b975b22ff4",
+        "item-67883b9bd3df18a228dd5663",
+        "item-6adf703e120a67582f09b1c6"
+      ],
+      "pairs": [
+        "pair-c8719f718d967e9ea2c79cff",
+        "pair-ae04a7a794f41eb4c88ba297"
+      ]
+    },
+    {
+      "id": "cluster-11a8226eed4c846485139360",
+      "members": [
+        "item-544d190a4470a61ac05437a8",
+        "item-a7cd5ac6baf4f19e548ed246"
+      ],
+      "pairs": [
+        "pair-11a8226eed4c846485139360"
+      ]
+    }
+  ],
+  "matching": {
+    "engine": "bib-dedupe",
+    "version": "0.11.0",
+    "cpu": 1,
+    "title_threshold": 92,
+    "blocked_upper_bound": 33,
+    "block_eligible_records": 5,
+    "title_comparisons": 6,
+    "rapidfuzz_version": "3.14.6",
+    "isbnlib_version": "3.10.14"
+  },
+  "review_id": "review-caed56280aaeea07daa20e48d34325d2"
+}

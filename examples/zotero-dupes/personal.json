@@ -1,0 +1,115 @@
+{
+  "items": [
+    {
+      "creators": [
+        {
+          "creatorType": "author",
+          "firstName": "Nancy K",
+          "lastName": "Adams"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Shanaka L",
+          "lastName": "DeSilva"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Self"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Guido",
+          "lastName": "Salas"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Steven",
+          "lastName": "Schubring"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Jason L",
+          "lastName": "Permenter"
+        },
+        {
+          "creatorType": "author",
+          "firstName": "Kendra",
+          "lastName": "Arbesman"
+        }
+      ],
+      "date": "2001",
+      "extra": [],
+      "itemID": 1,
+      "itemType": "journalArticle",
+      "pages": "493–518",
+      "publicationTitle": "Bulletin of Volcanology",
+      "tags": [
+        {
+          "tag": "breadcrust"
+        },
+        {
+          "tag": "plinian"
+        },
+        {
+          "tag": "Vulcanian eruptions"
+        }
+      ],
+      "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+      "volume": "62",
+      "citationKey": "Adams2001",
+      "key": "PERSON01",
+      "uri": "http://zotero.org/users/100/items/PERSON01",
+      "DOI": "10.1007/s004450000105",
+      "notes": [
+        {
+          "key": "NOTE0001",
+          "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+        }
+      ],
+      "attachments": [
+        {
+          "key": "PDF00001",
+          "title": "Article PDF",
+          "contentType": "application/pdf",
+          "annotations": [
+            {
+              "key": "ANN00001",
+              "annotationType": "highlight",
+              "annotationText": "The 1600 eruption of Huaynaputina",
+              "annotationComment": "Compare the chronology",
+              "annotationPageLabel": "494"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Olson2006-personal",
+      "author": [
+        {
+          "family": "Olson",
+          "given": "Hope A."
+        }
+      ],
+      "citation-key": "Olson2006",
+      "container-title": "Library Quarterly",
+      "container-title-short": "Libr. Q.",
+      "DOI": "10.1086/504343",
+      "issue": "1",
+      "issued": {
+        "date-parts": [
+          [
+            "2006"
+          ]
+        ]
+      },
+      "language": "en-US",
+      "page": "19–35",
+      "title": "Codes, costs, and critiques: The organization of information in <i>Library Quarterly</i>, 1931–2004",
+      "title-short": "Codes, costs, and critiques",
+      "type": "article-journal",
+      "volume": "76"
+    }
+  ]
+}

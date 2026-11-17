@@ -1,0 +1,76 @@
+{
+  "zotero_rdf.xml": {
+    "url": "https://github.com/zotero/zotero/blob/main/test/tests/data/zotero_rdf.xml",
+    "sha256": "60b9b3699af8dccfe7a198485092dc23c9dd5e372689b8c6240dce5283207dec"
+  },
+  "book_and_snapshot.rdf": {
+    "url": "https://github.com/zotero/zotero/blob/main/test/tests/data/book_and_snapshot.rdf",
+    "sha256": "94cc456bdb1965392ea67a08ff38c785d41a4c4a001905d7c3dd11f01714415f"
+  },
+  "translatorExport.js": {
+    "url": "https://github.com/zotero/zotero/blob/main/test/tests/data/translatorExport.js",
+    "sha256": "7dbaa7e920f2b2380f6c48e8fb80edcb58b026c5f3820dc21955786b181a0864"
+  },
+  "bbt.csl.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/BBT%20CSL%20JSON;%20Do%20not%20use%20shortTitle%20and%20journalAbbreviation%20%23372.csl.json",
+    "sha256": "b751ce34eb894af19cfae9da2a752dd653e132a48a783c68da7cf9b63017229e"
+  },
+  "bbt-note.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/BBT%20does%20not%20escape%20%23%20in%20first%20argument%20of%20href%20in%20note%20%232617.json",
+    "sha256": "af6ded4fc9df6d563332da42b229d9b9b96af1e3b9f7413f750185325252c5ae"
+  },
+  "bbt-001.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Better%20BibLaTeX.001.json",
+    "sha256": "21d6a792a940434978996d9f5807cbf688eb878786c6a9c12388499971a5b877"
+  },
+  "bbt-all-fields.csl.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/CSL%20exporters;%20ignore%20[Fields%20to%20omit%20from%20export]%20setting%20%231179.csl.json",
+    "git_blob_sha": "1101c41975978235195d99a6aa487e826307b5cb",
+    "sha256": "51149d014e455522a8092f2ef58a4a65b766affba81bbb87fd11b91b4ff614b6"
+  },
+  "bbt-all-fields.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/CSL%20exporters;%20ignore%20[Fields%20to%20omit%20from%20export]%20setting%20%231179.json",
+    "git_blob_sha": "e7d2e20b48e92882c2807e477ad416bd919272c1",
+    "sha256": "9ee739984d5a5cc09ebc74b170507a946c005abee05df7c5cc5d69c28f73608d"
+  },
+  "bbt-collected-notes.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Collected%20notes.json",
+    "git_blob_sha": "2a50adfdbbb4fbe925cee552205be14519438611",
+    "sha256": "a2304cc207047778ab3785a83cbd3c5e2ae3eb409f783f7c58b909ba8f6b1d19"
+  },
+  "bbt-extra-doi.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/DOI%20with%20underscores%20in%20extra%20field%20%23108.json",
+    "git_blob_sha": "d403bd5369e30f047402a4a1b3d1500218e3c33c",
+    "sha256": "8cd69f6d78107e19a90b0c96d28e53cf97c14c865b694211210bee4c2c434242"
+  },
+  "bbt-complex-dates.csl.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Date%20export%20to%20Better%20CSL-JSON%20%23360%20%23811.csl.json",
+    "git_blob_sha": "c565fad449e09d6e5f438cb94f4126af6cf315ac",
+    "sha256": "2a0bf9386a9a91a505da66b7fcc3599c9c119f5d37adf4a573f7377540956618"
+  },
+  "bbt-nonfile-attachment.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Hang%20on%20non-file%20attachment%20export%20%23112%20-%20URL%20export%20broken%20%23114.json",
+    "git_blob_sha": "93ab57d7523014d558e24378838cceb62412b88d",
+    "sha256": "11bc384c80c9ae9f63f15dac4e1b87aa386dd16c9b2da2d75312270a859d87c4"
+  },
+  "bbt-csl-creators.csl.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Multiple%20creators%20in%20Extra%20not%20exported%20in%20Better%20CSL%20JSON%20%232015.csl.json",
+    "git_blob_sha": "92ac05a1e498f344f87352fe132415296a719028",
+    "sha256": "1dc045ce50308ed69a5e30b105bcf1a7820cf1f6f4c0eddf56fefc91c44e406f"
+  },
+  "bbt-chinese.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/Word%20segmentation%20for%20Chinese%20references%20%231682.json",
+    "git_blob_sha": "f12603ca45fdf7ff53351a0dfae0bfd1afd47754",
+    "sha256": "d06f856bd1661b43f42044d572b710f8e6084644f630ae45e66671b391953b8c"
+  },
+  "bbt-auto-tags.json": {
+    "url": "https://github.com/retorquere/zotero-better-bibtex/blob/master/test/fixtures/export/automatic%20tags%20in%20export%20%231270.json",
+    "git_blob_sha": "1c8c85b524a19c072bce287cb107c2e33a19b4e8",
+    "sha256": "d5152d66429a68d3464d13e5b2d7ed2b358908560ef37751de18011ff2439efe"
+  },
+  "zotero-rdf-translator.js": {
+    "url": "https://github.com/zotero/translators/blob/master/Zotero%20RDF.js",
+    "translator_last_updated": "2026-03-06 21:33:15",
+    "sha256": "54c949550c9bba2d7d98a2aa65a18c27685af68e96d5f6efe024e5e617ed55a2"
+  }
+}

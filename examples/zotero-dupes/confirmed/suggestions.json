@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "review_id": "review-caed56280aaeea07daa20e48d34325d2",
+  "decision_counts": {
+    "defer": 0,
+    "different": 0,
+    "same": 1,
+    "unreviewed": 2
+  },
+  "suggestions": [
+    {
+      "correspondence_id": "correspondence-c8719f718d967e9ea2c79cff",
+      "pair_id": "pair-c8719f718d967e9ea2c79cff",
+      "action": "manual-review-only",
+      "preferred": "item-1a4fd0030d6f24b975b22ff4",
+      "field_differences": {
+        "DOI": [
+          {
+            "source": "item-1a4fd0030d6f24b975b22ff4",
+            "value": "10.1007/s004450000105"
+          },
+          {
+            "source": "item-6adf703e120a67582f09b1c6",
+            "value": "https://doi.org/10.1007/s004450000105"
+          }
+        ],
+        "pages": [
+          {
+            "source": "item-1a4fd0030d6f24b975b22ff4",
+            "value": "493–518"
+          },
+          {
+            "source": "item-6adf703e120a67582f09b1c6",
+            "value": "493-518"
+          }
+        ],
+        "title": [
+          {
+            "source": "item-1a4fd0030d6f24b975b22ff4",
+            "value": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru"
+          },
+          {
+            "source": "item-6adf703e120a67582f09b1c6",
+            "value": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru"
+          }
+        ]
+      },
+      "missing_field_suggestions": [],
+      "tag_variants": [
+        {
+          "value": {
+            "tag": "Vulcanian eruptions"
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        },
+        {
+          "value": {
+            "tag": "breadcrust"
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        },
+        {
+          "value": {
+            "tag": "plinian"
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        },
+        {
+          "value": {
+            "tag": "reading-group",
+            "type": 0
+          },
+          "sources": [
+            "item-6adf703e120a67582f09b1c6"
+          ]
+        },
+        {
+          "value": {
+            "tag": "volcanology",
+            "type": 1
+          },
+          "sources": [
+            "item-6adf703e120a67582f09b1c6"
+          ]
+        }
+      ],
+      "preserve_notes": [
+        {
+          "value": "<div><p>Group reading: verify the dating assumptions.</p></div>",
+          "sources": [
+            "item-6adf703e120a67582f09b1c6"
+          ]
+        },
+        {
+          "value": {
+            "key": "NOTE0001",
+            "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        }
+      ],
+      "preserve_annotations": [
+        {
+          "value": {
+            "key": "ANN00002",
+            "annotationType": "highlight",
+            "annotationText": "Huaynaputina",
+            "annotationComment": "Check location",
+            "annotationPageLabel": "493"
+          },
+          "sources": [
+            "item-6adf703e120a67582f09b1c6"
+          ]
+        },
+        {
+          "value": {
+            "key": "ANN00001",
+            "annotationType": "highlight",
+            "annotationText": "The 1600 eruption of Huaynaputina",
+            "annotationComment": "Compare the chronology",
+            "annotationPageLabel": "494"
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        }
+      ],
+      "preserve_attachment_metadata": [
+        {
+          "value": {
+            "key": "PDF00002",
+            "title": "Annotated PDF",
+            "annotations": [
+              {
+                "key": "ANN00002",
+                "annotationType": "highlight",
+                "annotationText": "Huaynaputina",
+                "annotationComment": "Check location",
+                "annotationPageLabel": "493"
+              }
+            ]
+          },
+          "sources": [
+            "item-6adf703e120a67582f09b1c6"
+          ]
+        },
+        {
+          "value": {
+            "key": "PDF00001",
+            "title": "Article PDF",
+            "contentType": "application/pdf",
+            "annotations": [
+              {
+                "key": "ANN00001",
+                "annotationType": "highlight",
+                "annotationText": "The 1600 eruption of Huaynaputina",
+                "annotationComment": "Compare the chronology",
+                "annotationPageLabel": "494"
+              }
+            ]
+          },
+          "sources": [
+            "item-1a4fd0030d6f24b975b22ff4"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "library": "personal",
+          "source_id": "key:PERSON01",
+          "identity_quality": "zotero-uri",
+          "metadata": {
+            "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+            "type": "journalArticle",
+            "date": "2001",
+            "publication": "Bulletin of Volcanology",
+            "pages": "493–518",
+            "DOI": "10.1007/s004450000105",
+            "volume": "62",
+            "authors": "Adams, Nancy K and DeSilva, Shanaka L and Self, Steven and Salas, Guido and Schubring, Steven and Permenter, Jason L and Arbesman, Kendra",
+            "creators": [
+              {
+                "creatorType": "author",
+                "firstName": "Nancy K",
+                "lastName": "Adams"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Shanaka L",
+                "lastName": "DeSilva"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Self"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Guido",
+                "lastName": "Salas"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Schubring"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Jason L",
+                "lastName": "Permenter"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Kendra",
+                "lastName": "Arbesman"
+              }
+            ],
+            "extra": [],
+            "citationKey": "Adams2001"
+          },
+          "raw": {
+            "creators": [
+              {
+                "creatorType": "author",
+                "firstName": "Nancy K",
+                "lastName": "Adams"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Shanaka L",
+                "lastName": "DeSilva"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Self"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Guido",
+                "lastName": "Salas"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Schubring"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Jason L",
+                "lastName": "Permenter"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Kendra",
+                "lastName": "Arbesman"
+              }
+            ],
+            "date": "2001",
+            "extra": [],
+            "itemID": 1,
+            "itemType": "journalArticle",
+            "pages": "493–518",
+            "publicationTitle": "Bulletin of Volcanology",
+            "tags": [
+              {
+                "tag": "breadcrust"
+              },
+              {
+                "tag": "plinian"
+              },
+              {
+                "tag": "Vulcanian eruptions"
+              }
+            ],
+            "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+            "volume": "62",
+            "citationKey": "Adams2001",
+            "key": "PERSON01",
+            "uri": "http://zotero.org/users/100/items/PERSON01",
+            "DOI": "10.1007/s004450000105",
+            "notes": [
+              {
+                "key": "NOTE0001",
+                "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+              }
+            ],
+            "attachments": [
+              {
+                "key": "PDF00001",
+                "title": "Article PDF",
+                "contentType": "application/pdf",
+                "annotations": [
+                  {
+                    "key": "ANN00001",
+                    "annotationType": "highlight",
+                    "annotationText": "The 1600 eruption of Huaynaputina",
+                    "annotationComment": "Compare the chronology",
+                    "annotationPageLabel": "494"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "tag": "breadcrust"
+            },
+            {
+              "tag": "plinian"
+            },
+            {
+              "tag": "Vulcanian eruptions"
+            }
+          ],
+          "notes": [
+            {
+              "key": "NOTE0001",
+              "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>"
+            }
+          ],
+          "annotations": [
+            {
+              "key": "ANN00001",
+              "annotationType": "highlight",
+              "annotationText": "The 1600 eruption of Huaynaputina",
+              "annotationComment": "Compare the chronology",
+              "annotationPageLabel": "494"
+            }
+          ],
+          "attachments": [
+            {
+              "key": "PDF00001",
+              "title": "Article PDF",
+              "contentType": "application/pdf",
+              "annotations": [
+                {
+                  "key": "ANN00001",
+                  "annotationType": "highlight",
+                  "annotationText": "The 1600 eruption of Huaynaputina",
+                  "annotationComment": "Compare the chronology",
+                  "annotationPageLabel": "494"
+                }
+              ]
+            }
+          ],
+          "id": "item-1a4fd0030d6f24b975b22ff4",
+          "fingerprint": "afb017975fc62eb0b9e6b49add3787502bdb491d036eb7a564b48af1d0b27de7"
+        },
+        {
+          "library": "group",
+          "source_id": "key:GROUP001",
+          "identity_quality": "zotero-uri",
+          "metadata": {
+            "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+            "type": "journalArticle",
+            "date": "2001",
+            "publication": "Bulletin of Volcanology",
+            "pages": "493-518",
+            "DOI": "https://doi.org/10.1007/s004450000105",
+            "volume": "62",
+            "authors": "Adams, Nancy K and DeSilva, Shanaka L and Self, Steven and Salas, Guido and Schubring, Steven and Permenter, Jason L and Arbesman, Kendra",
+            "creators": [
+              {
+                "creatorType": "author",
+                "firstName": "Nancy K",
+                "lastName": "Adams"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Shanaka L",
+                "lastName": "DeSilva"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Self"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Guido",
+                "lastName": "Salas"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Schubring"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Jason L",
+                "lastName": "Permenter"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Kendra",
+                "lastName": "Arbesman"
+              }
+            ],
+            "extra": [],
+            "citationKey": "Adams2001"
+          },
+          "raw": {
+            "creators": [
+              {
+                "creatorType": "author",
+                "firstName": "Nancy K",
+                "lastName": "Adams"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Shanaka L",
+                "lastName": "DeSilva"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Self"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Guido",
+                "lastName": "Salas"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Steven",
+                "lastName": "Schubring"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Jason L",
+                "lastName": "Permenter"
+              },
+              {
+                "creatorType": "author",
+                "firstName": "Kendra",
+                "lastName": "Arbesman"
+              }
+            ],
+            "date": "2001",
+            "extra": [],
+            "itemID": 1,
+            "itemType": "journalArticle",
+            "pages": "493-518",
+            "publicationTitle": "Bulletin of Volcanology",
+            "tags": [
+              {
+                "tag": "reading-group",
+                "type": 0
+              },
+              {
+                "tag": "volcanology",
+                "type": 1
+              }
+            ],
+            "title": "The physical volcanology of the 1600 eruption of Huaynaputina, Southern Peru",
+            "volume": "62",
+            "citationKey": "Adams2001",
+            "key": "GROUP001",
+            "uri": "http://zotero.org/groups/200/items/GROUP001",
+            "DOI": "https://doi.org/10.1007/s004450000105",
+            "notes": [
+              "<div><p>Group reading: verify the dating assumptions.</p></div>"
+            ],
+            "attachments": [
+              {
+                "key": "PDF00002",
+                "title": "Annotated PDF",
+                "annotations": [
+                  {
+                    "key": "ANN00002",
+                    "annotationType": "highlight",
+                    "annotationText": "Huaynaputina",
+                    "annotationComment": "Check location",
+                    "annotationPageLabel": "493"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "tag": "reading-group",
+              "type": 0
+            },
+            {
+              "tag": "volcanology",
+              "type": 1
+            }
+          ],
+          "notes": [
+            "<div><p>Group reading: verify the dating assumptions.</p></div>"
+          ],
+          "annotations": [
+            {
+              "key": "ANN00002",
+              "annotationType": "highlight",
+              "annotationText": "Huaynaputina",
+              "annotationComment": "Check location",
+              "annotationPageLabel": "493"
+            }
+          ],
+          "attachments": [
+            {
+              "key": "PDF00002",
+              "title": "Annotated PDF",
+              "annotations": [
+                {
+                  "key": "ANN00002",
+                  "annotationType": "highlight",
+                  "annotationText": "Huaynaputina",
+                  "annotationComment": "Check location",
+                  "annotationPageLabel": "493"
+                }
+              ]
+            }
+          ],
+          "id": "item-6adf703e120a67582f09b1c6",
+          "fingerprint": "2b0498e53b9a00217b427c0f330146fe7b304d9bafffff925937ee7efe65c9e5"
+        }
+      ],
+      "candidate_warnings": [],
+      "instructions": "Review each conflicting field. Keep every distinct note and annotation with provenance. Attachment metadata does not include files. Apply any edits manually in the source tools; this file is not an import or deletion plan."
+    }
+  ]
+}

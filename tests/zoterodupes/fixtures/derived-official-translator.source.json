@@ -1,0 +1,117 @@
+{
+  "creators": [
+    {
+      "creatorType": "author",
+      "firstName": "Nancy K",
+      "lastName": "Adams"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Shanaka L",
+      "lastName": "DeSilva"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Steven",
+      "lastName": "Self"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Guido",
+      "lastName": "Salas"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Steven",
+      "lastName": "Schubring"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Jason L",
+      "lastName": "Permenter"
+    },
+    {
+      "creatorType": "author",
+      "firstName": "Kendra",
+      "lastName": "Arbesman"
+    },
+    {
+      "creatorType": "editor",
+      "lastName": "Editor",
+      "firstName": "Example"
+    }
+  ],
+  "date": "2001",
+  "extra": [],
+  "itemID": 1,
+  "itemType": "journalArticle",
+  "pages": "493–518",
+  "publicationTitle": "Bulletin of Volcanology",
+  "tags": [
+    {
+      "tag": "breadcrust"
+    },
+    {
+      "tag": "plinian"
+    },
+    {
+      "tag": "Vulcanian eruptions"
+    }
+  ],
+  "title": "The physical volcanology of the 1600 eruption of Huaynaputina, southern Peru",
+  "volume": "62",
+  "citationKey": "Adams2001",
+  "key": "PERSON01",
+  "uri": "http://zotero.org/users/100/items/PERSON01",
+  "DOI": "10.1007/s004450000105",
+  "notes": [
+    {
+      "key": "NOTE0001",
+      "note": "<div><p>Discuss the ash-layer observations at journal club.</p></div>",
+      "itemID": 100,
+      "tags": []
+    }
+  ],
+  "attachments": [
+    {
+      "key": "PDF00001",
+      "title": "Article PDF",
+      "contentType": "application/pdf",
+      "annotations": [
+        {
+          "key": "ANN00001",
+          "annotationType": "highlight",
+          "annotationText": "The 1600 eruption of Huaynaputina",
+          "annotationComment": "Compare the chronology",
+          "annotationPageLabel": "494"
+        }
+      ],
+      "itemID": 200,
+      "itemType": "attachment",
+      "uniqueFields": {
+        "title": true,
+        "note": true
+      },
+      "note": "<p>Attachment note from the group discussion.</p>",
+      "tags": []
+    }
+  ],
+  "section": "Research articles",
+  "ISSN": "0258-8900",
+  "publisher": "Example publisher",
+  "place": "Berlin",
+  "journalAbbreviation": "Bull. Volcanol.",
+  "uniqueFields": {
+    "date": true,
+    "pages": true,
+    "publicationTitle": true,
+    "title": true,
+    "volume": true,
+    "DOI": true,
+    "section": true,
+    "ISSN": true,
+    "publisher": true,
+    "place": true,
+    "journalAbbreviation": true
+  }
+}
